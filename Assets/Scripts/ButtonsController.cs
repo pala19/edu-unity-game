@@ -17,6 +17,8 @@ public class ButtonsController : MonoBehaviour
     public GameObject Button8Prefab;
     public GameObject Button9Prefab;
     public GameObject EndScreen;
+    public GameObject FireworksEffect1;
+    public GameObject FireworksEffect2;
     private GameObject[] ActiveButtons;
     private int PlayedNumber;
     AudioSource correctAudio;
@@ -25,11 +27,13 @@ public class ButtonsController : MonoBehaviour
     void Start()
     {
         EndScreen.SetActive(false);
+        DeactivateFireworks();
         AudioSource[] audios = GetComponents<AudioSource>();
         correctAudio = audios[0];
         errorAudio = audios[1];
         PlayedNumber = 0;
         ActiveButtons = new GameObject[3];
+        
     }
 
     // Update is called once per frame
@@ -74,6 +78,7 @@ public class ButtonsController : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         InstantiateButtons();
+        DeactivateFireworks();
         PositionNumbers();
         GameData.PressedButton = false;
     }
@@ -103,11 +108,34 @@ public class ButtonsController : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         Destroy(ActiveButtons[i]);
     }
-    public void PlaySuccessMusic()
+    private void DeactivateFireworks()
+    {
+        FireworksEffect1.SetActive(false);
+        FireworksEffect2.SetActive(false);
+    }
+    public void ShowCorrectAnswer()
+    {
+        PlayFailureMusic();
+        PlayedNumber = GameData.CurrentRoundSettings;
+        int number= 0;
+        if (PlayedNumber == 2 || PlayedNumber == 5 || PlayedNumber == 8)
+            number = 1;
+        else if (PlayedNumber == 3 || PlayedNumber == 6 || PlayedNumber == 9)
+            number = 2;
+        ActiveButtons[number].GetComponent<Animator>().SetTrigger("Pressed");
+    }
+    public void GoodAnswer()
+    {
+        PlaySuccessMusic();
+        FireworksEffect1.SetActive(true);
+        FireworksEffect2.SetActive(true);
+    }
+    private void PlaySuccessMusic()
     {
         correctAudio.Play();
+
     }
-    public void PlayFailureMusic()
+    private void PlayFailureMusic()
     {
         errorAudio.Play();
     }

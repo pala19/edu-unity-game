@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     public GameObject ButtonController;
     private GameObject[] Countables;
     private int CountableNumber;
+    private int GamesWon;
     // Start is called before the first frame update
     void Start()
     {
+        GamesWon = 0;
         PrepareForNextRound();
     }
 
@@ -26,14 +28,36 @@ public class GameManager : MonoBehaviour
             GameOver();
         else
         {
-            if (GameData.Round > -1)
-                GameObject.Find("Kitty").GetComponent<CharacterBehaviour>().GoodAnswer();
             GameData.Round += 1;
+            GamesWon = GameData.Success;
             DestroyCountablesAfterRound();
             StartCoroutine(MakeCountablesWithDelay());
             ButtonController.GetComponent<ButtonsController>().PrepareButtons();
         }
         
+    }
+    public void PrepareRound(bool failure)
+    {
+        if (failure)
+        {
+            ButtonController.GetComponent<ButtonsController>().ShowCorrectAnswer();
+            ShowCorrectAnswer();
+            StartCoroutine(PrepareWithDelay(CountableNumber));
+            Handheld.Vibrate();
+        }
+        else
+        {
+            GameData.Success += 1;
+            GameObject.Find("Kitty").GetComponent<CharacterBehaviour>().GoodAnswer();
+            ButtonController.GetComponent<ButtonsController>().GoodAnswer();
+            StartCoroutine(PrepareWithDelay(1));
+
+        }
+    }
+    IEnumerator PrepareWithDelay(int i)
+    {
+        yield return new WaitForSeconds(2.0f * i);
+        PrepareForNextRound();
     }
     private void GameOver()
     {
@@ -65,6 +89,8 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         MakeCountablesForRound();
+        GameData.PressedButton = false;
+
     }
     private void DestroyCountablesAfterRound()
     {
@@ -82,5 +108,18 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         Destroy(Countables[i]);
+    }
+
+    public void ShowCorrectAnswer()
+    {
+        for (int i=0; i<Countables.Length; i++)
+        {
+            StartCoroutine(ShowWithDelay(i));
+        }
+    }
+    IEnumerator ShowWithDelay(int i)
+    {
+        yield return new WaitForSeconds(i * 1.0f);
+        Countables[i].GetComponent<Animator>().SetTrigger("Show");
     }
 }

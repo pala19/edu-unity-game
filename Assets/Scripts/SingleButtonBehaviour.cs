@@ -26,24 +26,15 @@ public class SingleButtonBehaviour : MonoBehaviour
             if (Char.GetNumericValue(ButtonName[6]) == GameData.CurrentRoundSettings)
             {
                 animator.SetTrigger("Pressed");
-                GameObject.Find("Canvas").GetComponent<ButtonsController>().PlaySuccessMusic();
-                StartCoroutine(PrepareWithDelay());
+                GameObject.Find("Game").GetComponent<GameManager>().PrepareRound(false);
             }
             else
             {
-                GameObject.Find("Canvas").GetComponent<ButtonsController>().PlayFailureMusic();
-                GameData.PressedButton = false;
+                GameObject.Find("Game").GetComponent<GameManager>().PrepareRound(true);
             }
 
         }
     }
-        IEnumerator PrepareWithDelay()
-        {
-            float delay = 3.0f;
-            yield return new WaitForSeconds(delay);
-            GameObject.Find("Game").GetComponent<GameManager>().PrepareForNextRound();
-
-        }
     public void SetEndTrigger()
     {
         animator.SetTrigger("End");
