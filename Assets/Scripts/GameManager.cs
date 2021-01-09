@@ -73,14 +73,30 @@ public class GameManager : MonoBehaviour
     private void MakeCountablesForRound()
     {
         Countables = new GameObject[CountableNumber];
-        for (int i =0; i< CountableNumber; i++)
+        for (int i = 0; i< CountableNumber; i++)
         {
             Vector3 pos = new Vector3(0f,1f,90f);
-            var height = Screen.currentResolution.height / 4;
-            var width = Screen.currentResolution.width / (CountableNumber+1);
-            Countables[i] = Instantiate(CountablePrefab, pos, Quaternion.identity);
-            Countables[i].transform.SetParent(GameObject.Find("Background").transform);
-            Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((i + 1) * width), -height, 0);
+            float height = Screen.currentResolution.height / 4;
+            float width;
+            if (CountableNumber > 5)
+                width = Screen.currentResolution.width / 6;
+            else
+                width = Screen.currentResolution.width / (CountableNumber+1);
+            if (i > 4)
+            {
+                width = Screen.currentResolution.width / (CountableNumber - 4);
+                float pom = i - 5;
+                Countables[i] = Instantiate(CountablePrefab, pos, Quaternion.identity);
+                Countables[i].transform.SetParent(GameObject.Find("Background").transform);
+                Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((pom + 1) * width), -height*1.6f, 0);
+            }
+            else
+            {
+                Countables[i] = Instantiate(CountablePrefab, pos, Quaternion.identity);
+                Countables[i].transform.SetParent(GameObject.Find("Background").transform);
+                Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((i + 1) * width), -height/1.1f, 0);
+            }
+
 
         }
 
