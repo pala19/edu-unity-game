@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameData
+public static class CountGameData
 {
     private static int[] Rounds = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private static int CurrentRound = -1;
     private static bool ButtonPressedFlag = true;
     private static int successRate = 0; 
-
 
     public static int CurrentRoundSettings
     {
