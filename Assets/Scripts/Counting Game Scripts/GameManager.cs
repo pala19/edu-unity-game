@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameData = CountGameData;
 
 public class GameManager : MonoBehaviour
-public class GameManager : IGameManager
 {
     public GameObject CountablePrefab;
     public GameObject Character;
@@ -49,7 +49,7 @@ public class GameManager : IGameManager
         else
         {
             GameData.Success += 1;
-            GameObject.Find("Kitty").GetComponent<CharacterBehaviour>().GoodAnswer();
+            Character.GetComponent<CharacterBehaviour>().GoodAnswer();
             ButtonController.GetComponent<ButtonsController>().GoodAnswer();
             StartCoroutine(PrepareWithDelay(1));
 
@@ -62,8 +62,7 @@ public class GameManager : IGameManager
     }
     private void GameOver()
     {
-        //bravo!
-        GameObject.Find("Kitty").GetComponent<CharacterBehaviour>().Winner();
+        Character.GetComponent<CharacterBehaviour>().Winner();
         ButtonController.GetComponent<ButtonsController>().ActivateEndScreen();
         ButtonController.GetComponent<ButtonsController>().DestroyOldButtons();
         DestroyCountablesAfterRound();
