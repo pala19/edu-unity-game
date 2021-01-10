@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using GameData = CountGameData;
 public class SingleButtonBehaviour : MonoBehaviour
 {
     Animator animator;
