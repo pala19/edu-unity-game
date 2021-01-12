@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
         {
             for (int i=0; i< Countables.Length; i++)
             {
+                Countables[i].GetComponent<Animator>().SetBool("selected", true);
                 Countables[i].GetComponent<Animator>().SetTrigger("End");
                 StartCoroutine(DestroyWithDelay(i));
             }

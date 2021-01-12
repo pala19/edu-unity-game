@@ -38,7 +38,10 @@ public class AddGameManager : MonoBehaviour
     {
         int result = CountableNumber.Item1 + CountableNumber.Item2;
         if (result == SelectedCountables)
+        {
             ButtonController.GetComponent<CanvasBehaviour>().GoodAnswer();
+            Character.GetComponent<CharacterBehaviour>().GoodAnswer();
+        }
         else
             ButtonController.GetComponent<CanvasBehaviour>().ShowCorrectAnswer();
         SelectedCountables = 0;
