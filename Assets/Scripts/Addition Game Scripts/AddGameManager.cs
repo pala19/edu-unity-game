@@ -133,8 +133,7 @@ public class AddGameManager : MonoBehaviour
     private void GameOver()
     {
         Character.GetComponent<CharacterBehaviour>().Winner();
-        ButtonController.GetComponent<ButtonsController>().ActivateEndScreen();
-        ButtonController.GetComponent<ButtonsController>().DestroyOldButtons();
+        ButtonController.GetComponent<CanvasBehaviour>().ActivateEndScreen();
         DestroyCountablesAfterRound();
     }
 }

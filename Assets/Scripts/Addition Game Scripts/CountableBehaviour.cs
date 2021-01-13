@@ -19,7 +19,6 @@ public class CountableBehaviour : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("picked!");
         selected = !selected;
         GetComponent<Animator>().SetBool("Selected", selected);
         GameObject.Find("Game").GetComponent<AddGameManager>().ChangeSelected(id);

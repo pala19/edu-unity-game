@@ -93,6 +93,7 @@ public class CanvasBehaviour : MonoBehaviour
     }
     IEnumerator ActivateEndScreenWithDelay()
     {
+        HideButtons();
         yield return new WaitForSeconds(2.0f);
         EndScreen.SetActive(true);
     }
