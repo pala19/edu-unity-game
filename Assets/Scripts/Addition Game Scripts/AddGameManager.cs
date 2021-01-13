@@ -43,7 +43,10 @@ public class AddGameManager : MonoBehaviour
             Character.GetComponent<CharacterBehaviour>().GoodAnswer();
         }
         else
+        {
             ButtonController.GetComponent<CanvasBehaviour>().ShowCorrectAnswer();
+            Handheld.Vibrate();
+        }
         SelectedCountables = 0;
         StartCoroutine(PrepareWithDelay());
     }
@@ -116,6 +119,7 @@ public class AddGameManager : MonoBehaviour
             for (int i = 0; i < Countables.Length; i++)
             {
                 Countables[i].GetComponent<Animator>().SetTrigger("End");
+                Countables[i].GetComponents<AudioSource>()[1].Play();
                 StartCoroutine(DestroyWithDelay(i));
             }
         }
@@ -128,7 +132,9 @@ public class AddGameManager : MonoBehaviour
 
     private void GameOver()
     {
-        ButtonController.GetComponent<CanvasBehaviour>().ActivateEndScreen();
         Character.GetComponent<CharacterBehaviour>().Winner();
+        ButtonController.GetComponent<ButtonsController>().ActivateEndScreen();
+        ButtonController.GetComponent<ButtonsController>().DestroyOldButtons();
+        DestroyCountablesAfterRound();
     }
 }

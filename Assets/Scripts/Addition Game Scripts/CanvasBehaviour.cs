@@ -38,11 +38,7 @@ public class CanvasBehaviour : MonoBehaviour
         AudioSource[] audios = GetComponents<AudioSource>();
         correctAudio = audios[0];
         errorAudio = audios[1];
-        First.GetComponent<Image>().enabled = false;
-        Second.GetComponent<Image>().enabled = false;
-        PlusSign.GetComponent<SVGImage>().enabled = false;
-        EqualSign.GetComponent<Image>().enabled = false;
-        Buttons = new GameObject[] {First, Second, PlusSign, EqualSign, Result};      
+        Buttons = new GameObject[] { First, Second, PlusSign, EqualSign, Result };
     }
 
     // Update is called once per frame
@@ -59,12 +55,8 @@ public class CanvasBehaviour : MonoBehaviour
 
     private void InstantiateButtons()
     {
-        First.GetComponent<Image>().enabled = true;
-        Second.GetComponent<Image>().enabled = true;
-        PlusSign.GetComponent<SVGImage>().enabled = true;
-        EqualSign.GetComponent<Image>().enabled = true;
-        Result.GetComponent<Image>().enabled = false;
-        Result.GetComponent<Animator>().SetBool("Pressed", false);
+        ActivateButtons();
+        Result.SetActive(false);
         var current = GameData.CurrentRoundSettings;
         string name1 = "Button" + current.Item1 + "Prefab";
         string name2 = "Button" + current.Item2 + "Prefab";
@@ -73,24 +65,24 @@ public class CanvasBehaviour : MonoBehaviour
         First.GetComponent<Image>().sprite = button1.GetComponent<Image>().sprite;
         Second.GetComponent<Image>().sprite = button2.GetComponent<Image>().sprite;
     }
-    
+
     public void ChangeNumber(int number)
     {
-        Debug.Log(number);
         if (number != 0)
         {
-            Result.GetComponent<Image>().enabled = true;
+            Result.SetActive(true);
             string name1 = "Button" + number + "Prefab";
             var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
             Result.GetComponent<Image>().sprite = button1.GetComponent<Image>().sprite;
         }
         else
-            Result.GetComponent<Image>().enabled = false;
+            Result.SetActive(false);
 
     }
 
     IEnumerator PrepareButtonsWithDelay()
     {
+
         yield return new WaitForSeconds(2.0f);
         InstantiateButtons();
         GameData.PressedButton = false;
@@ -104,13 +96,14 @@ public class CanvasBehaviour : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         EndScreen.SetActive(true);
     }
-      public void ShowCorrectAnswer()
+    public void ShowCorrectAnswer()
     {
         PlayFailureMusic();
         int number = GameData.CurrentRoundSettings.Item1 + GameData.CurrentRoundSettings.Item2;
         string name1 = "Button" + number + "Prefab";
         var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
         Result.GetComponent<Image>().sprite = button1.GetComponent<Image>().sprite;
+        Result.GetComponent<Animator>().SetBool("Pressed", true);
 
     }
     private void DeactivateFireworks()
@@ -123,7 +116,7 @@ public class CanvasBehaviour : MonoBehaviour
         PlaySuccessMusic();
         FireworksEffect1.SetActive(true);
         FireworksEffect2.SetActive(true);
-        Result.GetComponent<Animator>().SetBool("Pressed", false);
+        Result.GetComponent<Animator>().SetBool("Pressed", true);
     }
     private void PlaySuccessMusic()
     {
@@ -150,7 +143,21 @@ public class CanvasBehaviour : MonoBehaviour
     private void HideButtons()
     {
         foreach (GameObject button in Buttons)
+        {
             button.GetComponent<Animator>().SetTrigger("End");
+            StartCoroutine(DeactivateButtonWithDelay(button));
+        }
 
     }
+    IEnumerator DeactivateButtonWithDelay(GameObject button)
+    {
+        yield return new WaitForSeconds(1.5f);
+        button.SetActive(false);
+    }
+    private void ActivateButtons() //activates all buttons except Result
+    {
+        for (int i = 0; i < Buttons.Length - 1; i++)
+            Buttons[i].SetActive(true);
+    } 
+
 }

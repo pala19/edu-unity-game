@@ -146,6 +146,6 @@ public class ButtonsController : MonoBehaviour
     }
     public void Exit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(1);
     }
 }
