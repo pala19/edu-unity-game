@@ -130,6 +130,7 @@ public class ButtonsController : MonoBehaviour
         PlaySuccessMusic();
         FireworksEffect1.SetActive(true);
         FireworksEffect2.SetActive(true);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(PlayedNumber - 1);
     }
     private void PlaySuccessMusic()
     {

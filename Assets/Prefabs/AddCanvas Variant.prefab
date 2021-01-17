@@ -86,6 +86,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7da5f661b37ef4ca7eff5f2b4404c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Button1Prefab: {fileID: 0}
+  Button2Prefab: {fileID: 0}
+  Button3Prefab: {fileID: 0}
+  Button4Prefab: {fileID: 0}
+  Button5Prefab: {fileID: 0}
+  Button6Prefab: {fileID: 0}
+  Button7Prefab: {fileID: 0}
+  Button8Prefab: {fileID: 0}
+  Button9Prefab: {fileID: 0}
+  EndScreen: {fileID: 0}
+  First: {fileID: 0}
+  Second: {fileID: 0}
+  PlusSign: {fileID: 0}
+  EqualSign: {fileID: 0}
+  Result: {fileID: 0}
+  FireworksEffect1: {fileID: 0}
+  FireworksEffect2: {fileID: 0}
 --- !u!114 &810129640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +154,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 511249838, guid: ccbe733a763c88143b9f6c66529e23ef, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 511249838, guid: ccbe733a763c88143b9f6c66529e23ef, type: 3}
+      propertyPath: m_Pitch
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1034885328, guid: ccbe733a763c88143b9f6c66529e23ef, type: 3}
       propertyPath: m_Transition
       value: 0
@@ -187,6 +212,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2073070686, guid: ccbe733a763c88143b9f6c66529e23ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 624896757140983276, guid: ccbe733a763c88143b9f6c66529e23ef,
         type: 3}
       propertyPath: m_Sprite
@@ -211,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 8454507705313207284, guid: ccbe733a763c88143b9f6c66529e23ef,
         type: 3}
       propertyPath: m_Name
-      value: AddCanvas
+      value: AddCanvas Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8454507705313207287, guid: ccbe733a763c88143b9f6c66529e23ef,
         type: 3}

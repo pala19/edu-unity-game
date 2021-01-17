@@ -137,5 +137,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(i * 1.0f);
         Countables[i].GetComponent<Animator>().SetTrigger("Show");
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
     }
 }
