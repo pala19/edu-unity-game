@@ -105,6 +105,7 @@ public class CanvasBehaviour : MonoBehaviour
         var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
         Result.GetComponent<Image>().sprite = button1.GetComponent<Image>().sprite;
         Result.GetComponent<Animator>().SetBool("Pressed", true);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(number - 1);
 
     }
     private void DeactivateFireworks()

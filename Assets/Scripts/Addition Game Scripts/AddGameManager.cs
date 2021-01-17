@@ -33,6 +33,8 @@ public class AddGameManager : MonoBehaviour
         else
             SelectedCountables--;
         ButtonController.GetComponent<CanvasBehaviour>().ChangeNumber(SelectedCountables);
+        if (SelectedCountables > 0)
+            GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(SelectedCountables - 1);
     }
     public void CheckResultAndPrepareRound()
     {
