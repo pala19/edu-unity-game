@@ -71,7 +71,7 @@ public class ButtonsController : MonoBehaviour
     {
         for (int i=0; i<3; i++)
         {
-            Vector3 pos =new Vector3(-Screen.currentResolution.width / 4 + Screen.currentResolution.width / 4 * i, Screen.currentResolution.height / 8, 0);
+            Vector3 pos =new Vector3(-Screen.currentResolution.width / 4 + Screen.currentResolution.width / 4 * i, Screen.currentResolution.height / 4, 0);
             ActiveButtons[i].transform.localPosition = pos;
         }
     }

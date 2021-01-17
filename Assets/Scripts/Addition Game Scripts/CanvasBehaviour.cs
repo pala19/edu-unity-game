@@ -143,11 +143,15 @@ public class CanvasBehaviour : MonoBehaviour
 
     private void HideButtons()
     {
-        foreach (GameObject button in Buttons)
+        if (Buttons[0].activeSelf)
         {
-            button.GetComponent<Animator>().SetTrigger("End");
-            StartCoroutine(DeactivateButtonWithDelay(button));
+            foreach (GameObject button in Buttons)
+            {
+                button.GetComponent<Animator>().SetTrigger("End");
+                StartCoroutine(DeactivateButtonWithDelay(button));
+            }
         }
+
 
     }
     IEnumerator DeactivateButtonWithDelay(GameObject button)
