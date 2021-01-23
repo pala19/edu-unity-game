@@ -116,15 +116,11 @@ public class GameManager : MonoBehaviour
             for (int i=0; i< Countables.Length; i++)
             {
                 Countables[i].GetComponent<Animator>().SetTrigger("End");
-                StartCoroutine(DestroyWithDelay(i));
+                Destroy(Countables[i], 2.0f);
             }
         }
     }
-    IEnumerator DestroyWithDelay(int i)
-    {
-        yield return new WaitForSeconds(2.0f);
-        Destroy(Countables[i]);
-    }
+
 
     public void ShowCorrectAnswer()
     {
@@ -135,7 +131,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator ShowWithDelay(int i)
     {
-        yield return new WaitForSeconds(i * 1.0f);
+        yield return new WaitForSeconds((i+1) * 1.0f);
         Countables[i].GetComponent<Animator>().SetTrigger("Show");
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
     }

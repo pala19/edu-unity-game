@@ -100,14 +100,10 @@ public class ButtonsController : MonoBehaviour
             for (int i=0; i<3;i++)
             {
                 ActiveButtons[i].GetComponent<SingleButtonBehaviour>().SetEndTrigger();
-                StartCoroutine(DestroyWithDelay(i));
+                ActiveButtons[i].GetComponent<SingleButtonBehaviour>().PlayDissapearSound();
+                Destroy(ActiveButtons[i], 2.0f);
             }
         }
-    }
-    IEnumerator DestroyWithDelay(int i)
-    {
-        yield return new WaitForSeconds(2.0f);
-        Destroy(ActiveButtons[i]);
     }
     private void DeactivateFireworks()
     {
@@ -130,6 +126,11 @@ public class ButtonsController : MonoBehaviour
         PlaySuccessMusic();
         FireworksEffect1.SetActive(true);
         FireworksEffect2.SetActive(true);
+        StartCoroutine(PlaySoundWithDelay());
+    }
+    IEnumerator PlaySoundWithDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(PlayedNumber - 1);
     }
     private void PlaySuccessMusic()

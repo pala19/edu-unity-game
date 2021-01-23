@@ -6,9 +6,11 @@ using GameData = CountGameData;
 public class SingleButtonBehaviour : MonoBehaviour
 {
     Animator animator;
+    AudioSource dissapearSound;
     // Start is called before the first frame update
     void Start()
     {
+        dissapearSound = GetComponents<AudioSource>()[1];
         animator = GetComponent<Animator>();
     }
 
@@ -38,6 +40,10 @@ public class SingleButtonBehaviour : MonoBehaviour
     public void SetEndTrigger()
     {
         animator.SetTrigger("End");
+    }
+    public void PlayDissapearSound()
+    {
+        dissapearSound.Play();
     }
 
 

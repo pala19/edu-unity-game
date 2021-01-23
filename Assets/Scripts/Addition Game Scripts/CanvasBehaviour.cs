@@ -62,8 +62,8 @@ public class CanvasBehaviour : MonoBehaviour
         string name2 = "Button" + current.Item2 + "Prefab";
         var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
         var button2 = this.GetType().GetField(name2).GetValue(this) as GameObject;
-        First.GetComponent<Image>().sprite = button1.GetComponent<Image>().sprite;
-        Second.GetComponent<Image>().sprite = button2.GetComponent<Image>().sprite;
+        First.GetComponent<SVGImage>().sprite = button1.GetComponent<SVGImage>().sprite;
+        Second.GetComponent<SVGImage>().sprite = button2.GetComponent<SVGImage>().sprite;
     }
 
     public void ChangeNumber(int number)
@@ -73,7 +73,7 @@ public class CanvasBehaviour : MonoBehaviour
             Result.SetActive(true);
             string name1 = "Button" + number + "Prefab";
             var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
-            Result.GetComponent<Image>().sprite = button1.GetComponent<Image>().sprite;
+            Result.GetComponent<SVGImage>().sprite = button1.GetComponent<SVGImage>().sprite;
         }
         else
             Result.SetActive(false);
@@ -103,7 +103,7 @@ public class CanvasBehaviour : MonoBehaviour
         int number = GameData.CurrentRoundSettings.Item1 + GameData.CurrentRoundSettings.Item2;
         string name1 = "Button" + number + "Prefab";
         var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
-        Result.GetComponent<Image>().sprite = button1.GetComponent<Image>().sprite;
+        Result.GetComponent<SVGImage>().sprite = button1.GetComponent<SVGImage>().sprite;
         Result.GetComponent<Animator>().SetBool("Pressed", true);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(number - 1);
 
