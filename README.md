@@ -22,4 +22,6 @@ Contributions:
 
 <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
-female polish voice from <a href='https://ttsmp3.com/text-to-speech/Polish/'> ttsmp3.com </a>
+female Polish voice from <a href='https://ttsmp3.com/text-to-speech/Polish/'> ttsmp3.com </a>
+
+<a href='https://www.freepik.com/vectors/leaf'>Leaf vector created by upklyak - www.freepik.com</a>
