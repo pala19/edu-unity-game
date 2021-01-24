@@ -31,4 +31,9 @@ public class CountableBehaviour : MonoBehaviour
     {
         this.id = id;
     }
+    public void Unselect()
+    {
+        selected = false;
+        GetComponent<Animator>().SetBool("Selected", selected);
+    }
 }

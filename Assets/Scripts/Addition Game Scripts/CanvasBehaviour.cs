@@ -100,12 +100,7 @@ public class CanvasBehaviour : MonoBehaviour
     public void ShowCorrectAnswer()
     {
         PlayFailureMusic();
-        int number = GameData.CurrentRoundSettings.Item1 + GameData.CurrentRoundSettings.Item2;
-        string name1 = "Button" + number + "Prefab";
-        var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
-        Result.GetComponent<SVGImage>().sprite = button1.GetComponent<SVGImage>().sprite;
         Result.GetComponent<Animator>().SetBool("Pressed", true);
-        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(number - 1);
 
     }
     private void DeactivateFireworks()

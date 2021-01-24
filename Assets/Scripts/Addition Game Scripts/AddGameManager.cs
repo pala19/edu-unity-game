@@ -43,18 +43,21 @@ public class AddGameManager : MonoBehaviour
         {
             ButtonController.GetComponent<CanvasBehaviour>().GoodAnswer();
             Character.GetComponent<CharacterBehaviour>().GoodAnswer();
+            result = 1;
         }
         else
         {
             ButtonController.GetComponent<CanvasBehaviour>().ShowCorrectAnswer();
+            ShowCorrectAnswer();
             Handheld.Vibrate();
         }
+        StartCoroutine(PrepareWithDelay(result));
         SelectedCountables = 0;
-        StartCoroutine(PrepareWithDelay());
+        
     }
-    IEnumerator PrepareWithDelay()
+    IEnumerator PrepareWithDelay(int i)
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(2.0f * i);
         PrepareForNextRound();
     }
 
@@ -122,14 +125,10 @@ public class AddGameManager : MonoBehaviour
             {
                 Countables[i].GetComponent<Animator>().SetTrigger("End");
                 Countables[i].GetComponents<AudioSource>()[1].Play();
-                StartCoroutine(DestroyWithDelay(i));
+                Destroy(Countables[i], 2);
             }
+            SelectedCountables = 0;
         }
-    }
-    IEnumerator DestroyWithDelay(int i)
-    {
-        yield return new WaitForSeconds(2.0f);
-        Destroy(Countables[i]);
     }
 
     private void GameOver()
@@ -138,4 +137,19 @@ public class AddGameManager : MonoBehaviour
         ButtonController.GetComponent<CanvasBehaviour>().ActivateEndScreen();
         DestroyCountablesAfterRound();
     }
+    private void ShowCorrectAnswer()
+    {
+        for (int i=0; i<Countables.Length; i++)
+        {
+            Countables[i].GetComponent<CountableBehaviour>().Unselect();
+            StartCoroutine(ShowWithDelay(i));
+        }
+
+    }
+    IEnumerator ShowWithDelay(int i)
+    {
+        yield return new WaitForSeconds(1.0f * (i+1));
+        Countables[i].GetComponent<CountableBehaviour>().OnClick();
+    }
+
 }
