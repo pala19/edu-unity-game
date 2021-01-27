@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 5ad9d83545d5f9244aea991c99b78330
+  - enabled: 1
     path: Assets/Scenes/Counting Game.unity
     guid: 850d15943212e27478a1548f2df9e704
   - enabled: 1

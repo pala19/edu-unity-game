@@ -144,10 +144,14 @@ public class ButtonsController : MonoBehaviour
     }
     public void PlayAgain()
     {
+        SceneManager.LoadScene(1);
+    }
+    public void Home()
+    {
         SceneManager.LoadScene(0);
     }
     public void Exit()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

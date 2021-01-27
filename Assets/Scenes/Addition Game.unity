@@ -673,53 +673,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4188063253322401317, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: BypassReverbZones
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4188063253322401319, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3286163911610860551, guid: 3661392adde3967438420782aa60bc9c,
-        type: 3}
-    - target: {fileID: 4188063253322401319, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.05490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 4188063253322401319, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 2100000, guid: 4d9ea2ea2bb0a3247ac11883d86fb9ba, type: 2}
-    - target: {fileID: 5043242643845741870, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3286163911610860551, guid: cc6b583865c265f42b6814b627c2aa16,
-        type: 3}
-    - target: {fileID: 5043242643845741870, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 2100000, guid: 4d9ea2ea2bb0a3247ac11883d86fb9ba, type: 2}
-    - target: {fileID: 5043242643845741870, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5043242643845741870, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5043242643845741870, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5713533697066685880, guid: ceda9d555e4ebbd4287c1be242e72f29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -835,11 +788,7 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1541085200}
-    - target: {fileID: 5713533697387599345, guid: ceda9d555e4ebbd4287c1be242e72f29,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b1e4fbdab9cef6b489249792a16770e3,
-        type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 810129640, guid: ceda9d555e4ebbd4287c1be242e72f29, type: 3}
+    - {fileID: 104252661, guid: ceda9d555e4ebbd4287c1be242e72f29, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ceda9d555e4ebbd4287c1be242e72f29, type: 3}
