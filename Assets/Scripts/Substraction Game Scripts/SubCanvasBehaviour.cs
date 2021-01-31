@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using GameData = AddGameData;
+using GameData = SubGameData;
 
-public class CanvasBehaviour : MonoBehaviour
+public class SubCanvasBehaviour : MonoBehaviour
 {
     public GameObject Button1Prefab;
     public GameObject Button2Prefab;
@@ -22,7 +22,7 @@ public class CanvasBehaviour : MonoBehaviour
     public GameObject EndScreen;
     public GameObject First;
     public GameObject Second;
-    public GameObject PlusSign;
+    public GameObject MinusSign;
     public GameObject EqualSign;
     public GameObject Result;
     public GameObject FireworksEffect1;
@@ -39,7 +39,9 @@ public class CanvasBehaviour : MonoBehaviour
         AudioSource[] audios = GetComponents<AudioSource>();
         correctAudio = audios[0];
         errorAudio = audios[1];
-        Buttons = new GameObject[] { First, Second, PlusSign, EqualSign, Result };
+        Buttons = new GameObject[] { First, Second, MinusSign, EqualSign, Result };
+        Debug.Log("Start!");
+        Debug.Log(Buttons);
     }
 
     // Update is called once per frame
@@ -127,7 +129,7 @@ public class CanvasBehaviour : MonoBehaviour
     }
     public void PlayAgain()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
     public void Home()
     {
@@ -135,17 +137,17 @@ public class CanvasBehaviour : MonoBehaviour
     }
     public void Exit()
     {
-        SceneManager.LoadScene(3);
+        Application.Quit();
     }
     public void ResultPressed()
     {
-        GameObject.Find("Game").GetComponent<AddGameManager>().CheckResultAndPrepareRound();
+        GameObject.Find("Game").GetComponent<SubGameManager>().CheckResultAndPrepareRound();
     }
 
     private void HideButtons()
     {
-        Debug.Log(Buttons);
-        if (Buttons[0].activeSelf)
+ 
+        if (Buttons != null && Buttons[0].activeSelf)
         {
             foreach (GameObject button in Buttons)
             {
@@ -165,6 +167,6 @@ public class CanvasBehaviour : MonoBehaviour
     {
         for (int i = 0; i < Buttons.Length - 1; i++)
             Buttons[i].SetActive(true);
-    } 
+    }
 
 }

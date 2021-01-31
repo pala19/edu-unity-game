@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f50946510663a534289e085c43a084c2
+guid: 8fd723d46c551d040b5043878ef5a8fe
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,17 +39,17 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: 94e5eab1-c185-4373-bfb0-0091f95dca95Sprite
+      name: 
       originalName: 
-      pivot: {x: 0.49999997, y: 0.49999997}
+      pivot: {x: 0, y: 0}
       alignment: 0
       border: {x: 0, y: 0, z: 0, w: 0}
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 512
-      spriteID: 49e8eb05827026340995c90d35e997a4
+        width: 0
+        height: 0
+      spriteID: 443d044718361b84694ecaeae9b31471
       internalID: 0
     PhysicsOutlines: []

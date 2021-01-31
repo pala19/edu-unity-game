@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Addition Game.unity
     guid: dd3a37b8f40fe8f47aab9a71427757b5
+  - enabled: 1
+    path: Assets/Scenes/Substraction Game.unity
+    guid: fba3fd51c4cf9c8418b58802b604ad54
   m_configObjects: {}
