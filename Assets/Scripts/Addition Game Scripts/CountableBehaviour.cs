@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameData = AddGameData;
 
 public class CountableBehaviour : MonoBehaviour
 {
@@ -19,9 +20,10 @@ public class CountableBehaviour : MonoBehaviour
 
     public void OnClick()
     {
-        selected = !selected;
-        GetComponent<Animator>().SetBool("Selected", selected);
-        GameObject.Find("Game").GetComponent<AddGameManager>().ChangeSelected(id);
+        if (!GameData.PressedButton)
+        {
+            Select();
+        }
     }
     public bool IsSelected()
     {
@@ -35,5 +37,11 @@ public class CountableBehaviour : MonoBehaviour
     {
         selected = false;
         GetComponent<Animator>().SetBool("Selected", selected);
+    }
+    public void Select()
+    {
+        selected = !selected;
+        GetComponent<Animator>().SetBool("Selected", selected);
+        GameObject.Find("Game").GetComponent<AddGameManager>().ChangeSelected(id);
     }
 }

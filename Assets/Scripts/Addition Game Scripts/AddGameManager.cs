@@ -38,20 +38,22 @@ public class AddGameManager : MonoBehaviour
     }
     public void CheckResultAndPrepareRound()
     {
+        GameData.PressedButton = true;
         int result = CountableNumber.Item1 + CountableNumber.Item2;
+        var delay = 1;
         if (result == SelectedCountables)
         {
             ButtonController.GetComponent<CanvasBehaviour>().GoodAnswer();
             Character.GetComponent<CharacterBehaviour>().GoodAnswer();
-            result = 1;
         }
         else
         {
             ButtonController.GetComponent<CanvasBehaviour>().ShowCorrectAnswer();
             ShowCorrectAnswer();
             Handheld.Vibrate();
+            delay = result + 1;
         }
-        StartCoroutine(PrepareWithDelay(result));
+        StartCoroutine(PrepareWithDelay(delay));
         SelectedCountables = 0;
         
     }
@@ -73,6 +75,7 @@ public class AddGameManager : MonoBehaviour
             DestroyCountablesAfterRound();
             StartCoroutine(MakeCountablesWithDelay());
             ButtonController.GetComponent<CanvasBehaviour>().PrepareButtons();
+            GameData.PressedButton = true;
         }
 
 
@@ -139,6 +142,7 @@ public class AddGameManager : MonoBehaviour
     }
     private void ShowCorrectAnswer()
     {
+        StartCoroutine(TellTheAnswerWithDelay());
         for (int i=0; i<Countables.Length; i++)
         {
             Countables[i].GetComponent<CountableBehaviour>().Unselect();
@@ -146,10 +150,17 @@ public class AddGameManager : MonoBehaviour
         }
 
     }
+    IEnumerator TellTheAnswerWithDelay()
+    {
+        var number = CountableNumber.Item1 + CountableNumber.Item2;
+        yield return new WaitForSeconds(1.0f);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(number - 1);
+        ButtonController.GetComponent<CanvasBehaviour>().ChangeNumber(number);
+    }
     IEnumerator ShowWithDelay(int i)
     {
-        yield return new WaitForSeconds(1.0f * (i+1));
-        Countables[i].GetComponent<CountableBehaviour>().OnClick();
+        yield return new WaitForSeconds(1.0f * (i + 3));
+        Countables[i].GetComponent<CountableBehaviour>().Select();
     }
 
 }
