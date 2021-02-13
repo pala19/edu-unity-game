@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 static class AddGameData
 {
-    private static int[] first = { 1, 1, 2, 1, 3, 2, 3, 3, 3 };
-    private static int[] second = { 1, 2, 2, 3, 1, 3, 2, 3, 4 };
+    private static int[,] first = { { 1, 1, 2, 1, 3, 2, 3, 3, 3 } };
+    private static int[,] second = { { 1, 2, 2, 3, 1, 3, 2, 3, 4 } };
+    private static bool[] FinishedRounds = { false };
+    private static int[] successRate = { 0 };
+    private static int currentSuccessRate;
     private static int CurrentRound = -1;
-    private static int successRate = 0;
     private static bool ButtonPressedFlag = false;
+    private static System.Random random = new System.Random();
+    private static int RandomizedGame = -1;
 
     public static Tuple<int,int> CurrentRoundSettings
     {
         get
         {
-            if (CurrentRound < first.Length)
+            if (CurrentRound < 9)
             {
-                return Tuple.Create(first[CurrentRound], second[CurrentRound]);
+                return Tuple.Create(first[RandomizedGame, CurrentRound], second[RandomizedGame, CurrentRound]);
             }
             else
             {
@@ -30,10 +35,16 @@ static class AddGameData
     {
         get
         {
-
-            if (CurrentRound + 1 < first.Length)
+            if (RandomizedGame == -1)
             {
-                return Tuple.Create(first[CurrentRound+1], second[CurrentRound+1]);
+                RandomizedGame = random.Next(0, FinishedRounds.Length - 1);
+                while (!FinishedRounds[RandomizedGame] && FinishedRounds.Any(round => round.Equals(true)))
+                    RandomizedGame = random.Next(0, FinishedRounds.Length - 1);
+            }
+
+            if (CurrentRound + 1 < 9)
+            {
+                return Tuple.Create(first[RandomizedGame, CurrentRound + 1], second[RandomizedGame, CurrentRound + 1]);
             }
             else
             {
@@ -56,11 +67,12 @@ static class AddGameData
     {
         get
         {
-            return successRate;
+            return currentSuccessRate;
         }
         set
         {
-            successRate = value;
+
+            currentSuccessRate = value;
         }
     }
     public static bool PressedButton
@@ -72,6 +84,18 @@ static class AddGameData
         set
         {
             ButtonPressedFlag = value;
+        }
+    }
+    public static bool GameOver
+    {
+        set
+        {
+            if (currentSuccessRate > successRate[RandomizedGame])
+                successRate[RandomizedGame] = currentSuccessRate;
+            if (successRate[RandomizedGame] == 9)
+                FinishedRounds[RandomizedGame] = true;
+            RandomizedGame = -1;
+            currentSuccessRate = 0;
         }
     }
 

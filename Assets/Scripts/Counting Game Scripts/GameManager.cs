@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         ButtonController.GetComponent<ButtonsController>().ActivateEndScreen();
         ButtonController.GetComponent<ButtonsController>().DestroyOldButtons();
         DestroyCountablesAfterRound();
+        GameData.GameOver = true;
 
     }
 

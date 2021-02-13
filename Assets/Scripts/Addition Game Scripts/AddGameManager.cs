@@ -54,7 +54,6 @@ public class AddGameManager : MonoBehaviour
             delay = result + 1;
         }
         StartCoroutine(PrepareWithDelay(delay));
-        SelectedCountables = 0;
         
     }
     IEnumerator PrepareWithDelay(int i)
@@ -139,6 +138,7 @@ public class AddGameManager : MonoBehaviour
         Character.GetComponent<CharacterBehaviour>().Winner();
         ButtonController.GetComponent<CanvasBehaviour>().ActivateEndScreen();
         DestroyCountablesAfterRound();
+        GameData.GameOver = true;
     }
     private void ShowCorrectAnswer()
     {

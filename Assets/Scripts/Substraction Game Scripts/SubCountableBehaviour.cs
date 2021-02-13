@@ -5,12 +5,13 @@ using GameData = SubGameData;
 
 public class SubCountableBehaviour : MonoBehaviour
 {
-    private bool selected = false;
+    private bool selected = true;
     private int id;
     // Start is called before the first frame update
     void Start()
     {
         transform.localScale = new Vector3(1, 1, 1);
+        GetComponent<Animator>().SetBool("Selected", selected);
     }
 
     // Update is called once per frame

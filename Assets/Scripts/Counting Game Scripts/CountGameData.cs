@@ -1,21 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class CountGameData
 {
-    private static int[] Rounds = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    private static int[,] Rounds = { { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
+    private static bool[] FinishedRounds = { false };
+    private static int[] successRate = { 0 };
+    private static int currentSuccessRate;
     private static int CurrentRound = -1;
     private static bool ButtonPressedFlag = true;
-    private static int successRate = 0; 
+    private static System.Random random = new System.Random();
+    private static int RandomizedGame = -1;
 
     public static int CurrentRoundSettings
     {
         get
         {
-            if (CurrentRound < Rounds.Length)
+            if (CurrentRound < 9)
             {
-                return Rounds[CurrentRound];
+                return Rounds[RandomizedGame, CurrentRound];
             }
             else
             {
@@ -28,9 +33,16 @@ public static class CountGameData
     {
         get
         {
-            if (CurrentRound + 1 < Rounds.Length)
+            if (RandomizedGame == -1)
             {
-                return Rounds[CurrentRound+1];
+                RandomizedGame = random.Next(0, FinishedRounds.Length - 1);
+                while (!FinishedRounds[RandomizedGame] && FinishedRounds.Any(round => round.Equals(true)))
+                    RandomizedGame = random.Next(0, FinishedRounds.Length - 1);
+            }
+
+            if (CurrentRound + 1 < 9)
+            {
+                return Rounds[RandomizedGame, CurrentRound+1];
             }
             else
             {
@@ -64,12 +76,24 @@ public static class CountGameData
     {
         get
         {
-            return successRate;
+            return currentSuccessRate;
         }
         set
         {
-            successRate = value; 
+            currentSuccessRate = value; 
         }
     }
-  
+    public static bool GameOver
+    {
+        set
+        {
+            if (currentSuccessRate > successRate[RandomizedGame])
+                successRate[RandomizedGame] = currentSuccessRate;
+            if (successRate[RandomizedGame] == 9)
+                FinishedRounds[RandomizedGame] = true;
+            RandomizedGame = -1;
+            currentSuccessRate = 0;
+        }
+    }
+
 }

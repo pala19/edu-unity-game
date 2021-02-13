@@ -18,14 +18,12 @@ public class SubGameManager : MonoBehaviour
     void Start()
     {
         GamesWon = 0;
-        SelectedCountables = 0;
         PrepareForNextRound();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
     public void ChangeSelected(int id)
     {
@@ -55,7 +53,6 @@ public class SubGameManager : MonoBehaviour
             delay = result + 1;
         }
         StartCoroutine(PrepareWithDelay(delay));
-        SelectedCountables = 0;
 
     }
     IEnumerator PrepareWithDelay(int i)
@@ -73,9 +70,10 @@ public class SubGameManager : MonoBehaviour
         {
             GameData.Round += 1;
             GamesWon = GameData.Success;
+            SelectedCountables = CountableNumber.Item1;
             DestroyCountablesAfterRound();
             StartCoroutine(MakeCountablesWithDelay());
-            ButtonController.GetComponent<SubCanvasBehaviour>().PrepareButtons();
+            ButtonController.GetComponent<SubCanvasBehaviour>().PrepareButtons(SelectedCountables);
             GameData.PressedButton = true;
         }
 
@@ -131,15 +129,16 @@ public class SubGameManager : MonoBehaviour
                 Countables[i].GetComponents<AudioSource>()[1].Play();
                 Destroy(Countables[i], 2);
             }
-            SelectedCountables = 0;
         }
+        
     }
 
     private void GameOver()
     {
         Character.GetComponent<CharacterBehaviour>().Winner();
-        ButtonController.GetComponent<CanvasBehaviour>().ActivateEndScreen();
+        ButtonController.GetComponent<SubCanvasBehaviour>().ActivateEndScreen();
         DestroyCountablesAfterRound();
+        GameData.GameOver = true;
     }
     private void ShowCorrectAnswer()
     {

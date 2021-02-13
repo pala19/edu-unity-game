@@ -49,14 +49,14 @@ public class SubCanvasBehaviour : MonoBehaviour
     {
 
     }
-    public void PrepareButtons()
+    public void PrepareButtons(int SelectedCountables)
     {
         DeactivateFireworks();
         HideButtons();
-        StartCoroutine(PrepareButtonsWithDelay());
+        StartCoroutine(PrepareButtonsWithDelay(SelectedCountables));
     }
 
-    private void InstantiateButtons()
+    private void InstantiateButtons(int SelectedCountables)
     {
         ActivateButtons();
         Result.SetActive(false);
@@ -67,6 +67,7 @@ public class SubCanvasBehaviour : MonoBehaviour
         var button2 = this.GetType().GetField(name2).GetValue(this) as GameObject;
         First.GetComponent<SVGImage>().sprite = button1.GetComponent<SVGImage>().sprite;
         Second.GetComponent<SVGImage>().sprite = button2.GetComponent<SVGImage>().sprite;
+        ChangeNumber(SelectedCountables);
     }
 
     public void ChangeNumber(int number)
@@ -83,11 +84,11 @@ public class SubCanvasBehaviour : MonoBehaviour
 
     }
 
-    IEnumerator PrepareButtonsWithDelay()
+    IEnumerator PrepareButtonsWithDelay(int SelectedCountables)
     {
 
         yield return new WaitForSeconds(2.0f);
-        InstantiateButtons();
+        InstantiateButtons(SelectedCountables);
         GameData.PressedButton = false;
     }
     public void ActivateEndScreen()
