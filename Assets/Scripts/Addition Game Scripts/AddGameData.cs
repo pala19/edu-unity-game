@@ -41,6 +41,7 @@ static class AddGameData
                 while (!FinishedRounds[RandomizedGame] && FinishedRounds.Any(round => round.Equals(true)))
                     RandomizedGame = random.Next(0, FinishedRounds.Length - 1);
             }
+            Debug.Log(RandomizedGame);
 
             if (CurrentRound + 1 < 9)
             {
@@ -96,6 +97,7 @@ static class AddGameData
                 FinishedRounds[RandomizedGame] = true;
             RandomizedGame = -1;
             currentSuccessRate = 0;
+            CurrentRound = -1;
         }
     }
 

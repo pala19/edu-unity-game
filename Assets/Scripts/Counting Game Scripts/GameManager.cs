@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using GameData = CountGameData;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,13 @@ public class GameManager : MonoBehaviour
     public GameObject CountablePrefab;
     public GameObject Character;
     public GameObject ButtonController;
+    public GameObject Tap;
+    public GameObject TutorialCountable1;
+    public GameObject TutorialCountable2;
+    public GameObject TutorialButton1;
+    public GameObject TutorialButton2;
+    public GameObject TutorialButton3;
+    private GameObject[] TutorialComponents;
     private GameObject[] Countables;
     private int CountableNumber;
     private int GamesWon;
@@ -15,7 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GamesWon = 0;
-        PrepareForNextRound();
+        TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialButton1, TutorialButton2, TutorialButton3 };
     }
 
     // Update is called once per frame
@@ -36,7 +44,14 @@ public class GameManager : MonoBehaviour
             ButtonController.GetComponent<ButtonsController>().PrepareButtons();
         }
         
+    }    
+    public void DeleteTutorial()
+    {
+        foreach (GameObject obj in TutorialComponents)
+            Destroy(obj);
     }
+
+
     public void PrepareRound(bool failure)
     {
         if (failure)
