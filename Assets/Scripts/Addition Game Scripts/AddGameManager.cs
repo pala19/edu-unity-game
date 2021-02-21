@@ -20,6 +20,7 @@ public class AddGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameData.PressedButton = true;
         GamesWon = 0;
         SelectedCountables = 0;
         TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2};

@@ -11,14 +11,21 @@ public class SubGameManager : MonoBehaviour
     public GameObject ButtonController;
     private GameObject[] Countables;
     private Tuple<int, int> CountableNumber;
+    public GameObject Tap;
+    public GameObject TutorialCountable1;
+    public GameObject TutorialCountable2;
+    public GameObject TutorialCountable3;
+    private GameObject[] TutorialComponents;
     private int GamesWon;
     private int SelectedCountables;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameData.PressedButton = true;
         GamesWon = 0;
-        PrepareForNextRound();
+
+        TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialCountable3 };
     }
 
     // Update is called once per frame
@@ -76,9 +83,14 @@ public class SubGameManager : MonoBehaviour
             ButtonController.GetComponent<SubCanvasBehaviour>().PrepareButtons(SelectedCountables);
             GameData.PressedButton = true;
         }
-
-
     }
+
+    public void DeleteTutorial()
+    {
+        foreach (GameObject obj in TutorialComponents)
+            Destroy(obj);
+    }
+
     IEnumerator MakeCountablesWithDelay()
     {
         yield return new WaitForSeconds(2.0f);

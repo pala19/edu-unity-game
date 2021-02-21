@@ -247,8 +247,18 @@ PlayableDirector:
     value: {fileID: 11929360}
   - key: {fileID: -7988111172651243040, guid: ee0e60ed4beae244ba5ec78ee45c0c22, type: 2}
     value: {fileID: 1402246420}
+  - key: {fileID: 6293072407967923289, guid: ee0e60ed4beae244ba5ec78ee45c0c22, type: 2}
+    value: {fileID: 872280141}
+  - key: {fileID: -987187752449191146, guid: ee0e60ed4beae244ba5ec78ee45c0c22, type: 2}
+    value: {fileID: 1032112186}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &872280141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4376213198004928611, guid: ceda9d555e4ebbd4287c1be242e72f29,
+    type: 3}
+  m_PrefabInstance: {fileID: 4188063253089334826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963536011 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1187160936, guid: ceda9d555e4ebbd4287c1be242e72f29,
@@ -524,6 +534,12 @@ PrefabInstance:
 --- !u!1 &1032112181 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2563891090312701380, guid: ceda9d555e4ebbd4287c1be242e72f29,
+    type: 3}
+  m_PrefabInstance: {fileID: 4188063253089334826}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1032112186 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4188063251898724272, guid: ceda9d555e4ebbd4287c1be242e72f29,
     type: 3}
   m_PrefabInstance: {fileID: 4188063253089334826}
   m_PrefabAsset: {fileID: 0}
