@@ -1,22 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
-using GameData = CountGameData;
 
-public class GameManager : MonoBehaviour
+public class CountGameManager : GameManager
 {
-    public GameObject CountablePrefab;
-    public GameObject Character;
-    public GameObject ButtonController;
-    public GameObject Tap;
+
     public GameObject TutorialCountable1;
     public GameObject TutorialCountable2;
     public GameObject TutorialButton1;
     public GameObject TutorialButton2;
     public GameObject TutorialButton3;
-    private GameObject[] TutorialComponents;
-    private GameObject[] Countables;
     private int CountableNumber;
     private int GamesWon;
     // Start is called before the first frame update
@@ -27,47 +19,23 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    }
-    public void PrepareForNextRound()
-    {
-        CountableNumber = GameData.NextRoundSettings;
-        if (CountableNumber == -1)
-            GameOver();
-        else
-        {
-            GameData.Round += 1;
-            GamesWon = GameData.Success;
-            DestroyCountablesAfterRound();
-            StartCoroutine(MakeCountablesWithDelay());
-            ButtonController.GetComponent<ButtonsController>().PrepareButtons();
-        }
-        
-    }    
-    public void DeleteTutorial()
-    {
-        foreach (GameObject obj in TutorialComponents)
-            Destroy(obj);
-    }
-
+    void Update() {}
 
     public void PrepareRound(bool failure)
     {
         if (failure)
         {
-            ButtonController.GetComponent<ButtonsController>().ShowCorrectAnswer();
+            ButtonController.GetComponent<CountCanvasBehaviour>().ShowCorrectAnswer();
             ShowCorrectAnswer();
             StartCoroutine(PrepareWithDelay(CountableNumber));
             Handheld.Vibrate();
         }
         else
         {
-            GameData.Success += 1;
+            CountGameData.Success += 1;
             Character.GetComponent<CharacterBehaviour>().GoodAnswer();
-            ButtonController.GetComponent<ButtonsController>().GoodAnswer();
+            ButtonController.GetComponent<CountCanvasBehaviour>().GoodAnswer();
             StartCoroutine(PrepareWithDelay(1));
-
         }
     }
     IEnumerator PrepareWithDelay(int i)
@@ -75,18 +43,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f * i);
         PrepareForNextRound();
     }
-    private void GameOver()
-    {
-        Character.GetComponent<CharacterBehaviour>().Winner();
-        ButtonController.GetComponent<ButtonsController>().ActivateEndScreen();
-        ButtonController.GetComponent<ButtonsController>().DestroyOldButtons();
-        DestroyCountablesAfterRound();
-        GameData.GameOver = true;
 
-    }
-
-
-    private void MakeCountablesForRound()
+    protected override void MakeCountablesForRound()
     {
         Countables = new GameObject[CountableNumber];
         for (int i = 0; i< CountableNumber; i++)
@@ -112,43 +70,47 @@ public class GameManager : MonoBehaviour
                 Countables[i].transform.SetParent(GameObject.Find("Background").transform);
                 Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((i + 1) * width), -height/1.1f, 0);
             }
-
-
-        }
-
-    }
-    IEnumerator MakeCountablesWithDelay()
-    {
-        yield return new WaitForSeconds(2.0f);
-        MakeCountablesForRound();
-        GameData.PressedButton = false;
-
-    }
-    private void DestroyCountablesAfterRound()
-    {
-
-        if (Countables != null)
-        {
-            for (int i=0; i< Countables.Length; i++)
-            {
-                Countables[i].GetComponent<Animator>().SetTrigger("End");
-                Destroy(Countables[i], 2.0f);
-            }
         }
     }
 
+    protected override void ChangeGameOverData()
+    {
+        CountGameData.GameOver = true;
+    }
 
-    public void ShowCorrectAnswer()
+    protected override void AssignCountableNumber() 
     {
-        for (int i=0; i<Countables.Length; i++)
-        {
-            StartCoroutine(ShowWithDelay(i));
-        }
+        CountableNumber = CountGameData.NextRoundSettings;
     }
-    IEnumerator ShowWithDelay(int i)
+
+    protected override bool CheckIfGameOver()
     {
-        yield return new WaitForSeconds((i+1) * 1.0f);
-        Countables[i].GetComponent<Animator>().SetTrigger("Show");
-        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
+        return CountableNumber == -1;
     }
+
+    protected override void AssignGamesWon()
+    {
+        CountGameData.Round += 1;
+        GamesWon = CountGameData.Success;
+    }
+
+    protected override void ChangePressedButton()
+    {
+        CountGameData.PressedButton = !CountGameData.PressedButton;
+    }
+    protected override void PrepareButtons()
+    {
+        ButtonController.GetComponent<CountCanvasBehaviour>().PrepareButtons();
+    }
+
+    protected override void AdditionalActionsBeforeDestroy(int i)
+    {
+        Countables[i].GetComponent<Animator>().SetTrigger("End");
+    }
+    protected override void ActivateEndScreen()
+    {
+    ButtonController.GetComponent<CountCanvasBehaviour>().ActivateEndScreen();
+    ButtonController.GetComponent<CountCanvasBehaviour>().DestroyOldButtons();
+    }
+
 }

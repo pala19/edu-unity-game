@@ -93,6 +93,7 @@ public static class CountGameData
                 FinishedRounds[RandomizedGame] = true;
             RandomizedGame = -1;
             currentSuccessRate = 0;
+            CurrentRound = -1;
         }
     }
 

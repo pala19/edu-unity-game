@@ -8,55 +8,29 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using GameData = SubGameData;
 
-public class SubCanvasBehaviour : MonoBehaviour
+public class SubCanvasBehaviour : CanvasBehaviour
 {
-    public GameObject Button1Prefab;
-    public GameObject Button2Prefab;
-    public GameObject Button3Prefab;
-    public GameObject Button4Prefab;
-    public GameObject Button5Prefab;
-    public GameObject Button6Prefab;
-    public GameObject Button7Prefab;
-    public GameObject Button8Prefab;
-    public GameObject Button9Prefab;
-    public GameObject EndScreen;
+
     public GameObject First;
     public GameObject Second;
     public GameObject MinusSign;
     public GameObject EqualSign;
     public GameObject Result;
-    public GameObject FireworksEffect1;
-    public GameObject FireworksEffect2;
-    AudioSource correctAudio;
-    AudioSource errorAudio;
-    GameObject[] Buttons;
+    private GameObject[] Buttons;
     // Start is called before the first frame update
     void Start()
     {
 
         EndScreen.SetActive(false);
         DeactivateFireworks();
-        AudioSource[] audios = GetComponents<AudioSource>();
-        correctAudio = audios[0];
-        errorAudio = audios[1];
+        AddAudioSourcesToArray();
         Buttons = new GameObject[] { First, Second, MinusSign, EqualSign, Result };
-        Debug.Log("Start!");
-        Debug.Log(Buttons);
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {}
 
-    }
-    public void PrepareButtons(int SelectedCountables)
-    {
-        DeactivateFireworks();
-        HideButtons();
-        StartCoroutine(PrepareButtonsWithDelay(SelectedCountables));
-    }
-
-    private void InstantiateButtons(int SelectedCountables)
+    protected override void InstantiateButtons(int SelectedCountables)
     {
         ActivateButtons();
         Result.SetActive(false);
@@ -81,73 +55,39 @@ public class SubCanvasBehaviour : MonoBehaviour
         }
         else
             Result.SetActive(false);
-
     }
 
-    IEnumerator PrepareButtonsWithDelay(int SelectedCountables)
-    {
-
-        yield return new WaitForSeconds(2.0f);
-        InstantiateButtons(SelectedCountables);
-        GameData.PressedButton = false;
-    }
-    public void ActivateEndScreen()
-    {
-        StartCoroutine(ActivateEndScreenWithDelay());
-    }
-    IEnumerator ActivateEndScreenWithDelay()
-    {
-        HideButtons();
-        yield return new WaitForSeconds(2.0f);
-        EndScreen.SetActive(true);
-    }
-    public void ShowCorrectAnswer()
+    public override void ShowCorrectAnswer()
     {
         PlayFailureMusic();
         Result.GetComponent<Animator>().SetBool("Pressed", true);
 
     }
-    private void DeactivateFireworks()
-    {
-        FireworksEffect1.SetActive(false);
-        FireworksEffect2.SetActive(false);
-    }
-    public void GoodAnswer()
+
+    public override void GoodAnswer()
     {
         PlaySuccessMusic();
-        FireworksEffect1.SetActive(true);
-        FireworksEffect2.SetActive(true);
+        ActivateFireworks();
         Result.GetComponent<Animator>().SetBool("Pressed", true);
     }
-    private void PlaySuccessMusic()
-    {
-        correctAudio.Play();
-
-    }
-    private void PlayFailureMusic()
-    {
-        errorAudio.Play();
-    }
-    public void PlayAgain()
+    
+    public override void PlayAgain()
     {
         SceneManager.LoadScene(3);
     }
-    public void Home()
-    {
-        SceneManager.LoadScene(0);
-    }
-    public void Exit()
+
+    public override void Exit()
     {
         Application.Quit();
     }
+
     public void ResultPressed()
     {
         GameObject.Find("Game").GetComponent<SubGameManager>().CheckResultAndPrepareRound();
     }
 
-    private void HideButtons()
-    {
- 
+    protected override void HideButtons()
+    { 
         if (Buttons != null && Buttons[0].activeSelf)
         {
             foreach (GameObject button in Buttons)
@@ -156,8 +96,6 @@ public class SubCanvasBehaviour : MonoBehaviour
                 StartCoroutine(DeactivateButtonWithDelay(button));
             }
         }
-
-
     }
     IEnumerator DeactivateButtonWithDelay(GameObject button)
     {
@@ -169,5 +107,8 @@ public class SubCanvasBehaviour : MonoBehaviour
         for (int i = 0; i < Buttons.Length - 1; i++)
             Buttons[i].SetActive(true);
     }
-
+    protected override void ChangePressedButton()
+    {
+        SubGameData.PressedButton = !SubGameData.PressedButton;
+    }
 }

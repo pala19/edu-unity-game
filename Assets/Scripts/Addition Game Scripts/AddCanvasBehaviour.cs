@@ -1,64 +1,37 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using Unity.VectorGraphics;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using GameData = AddGameData;
 
-public class CanvasBehaviour : MonoBehaviour
+
+public class AddCanvasBehaviour : CanvasBehaviour
 {
-    public GameObject Button1Prefab;
-    public GameObject Button2Prefab;
-    public GameObject Button3Prefab;
-    public GameObject Button4Prefab;
-    public GameObject Button5Prefab;
-    public GameObject Button6Prefab;
-    public GameObject Button7Prefab;
-    public GameObject Button8Prefab;
-    public GameObject Button9Prefab;
-    public GameObject EndScreen;
     public GameObject First;
     public GameObject Second;
     public GameObject PlusSign;
     public GameObject EqualSign;
     public GameObject Result;
-    public GameObject FireworksEffect1;
-    public GameObject FireworksEffect2;
-    AudioSource correctAudio;
-    AudioSource errorAudio;
     GameObject[] Buttons;
     // Start is called before the first frame update
     void Start()
     {
-
         EndScreen.SetActive(false);
         DeactivateFireworks();
-        AudioSource[] audios = GetComponents<AudioSource>();
-        correctAudio = audios[0];
-        errorAudio = audios[1];
+        DeactivateFireworks();
+        AddAudioSourcesToArray();
         Buttons = new GameObject[] { First, Second, PlusSign, EqualSign, Result };
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {}
 
-    }
-    public void PrepareButtons()
-    {
-        DeactivateFireworks();
-        HideButtons();
-        StartCoroutine(PrepareButtonsWithDelay());
-    }
+    public override void DestroyOldButtons() {}
 
-    private void InstantiateButtons()
+    protected override void InstantiateButtons()
     {
         ActivateButtons();
         Result.SetActive(false);
-        var current = GameData.CurrentRoundSettings;
+        var current = AddGameData.CurrentRoundSettings;
         string name1 = "Button" + current.Item1 + "Prefab";
         string name2 = "Button" + current.Item2 + "Prefab";
         var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
@@ -81,59 +54,25 @@ public class CanvasBehaviour : MonoBehaviour
 
     }
 
-    IEnumerator PrepareButtonsWithDelay()
-    {
-
-        yield return new WaitForSeconds(2.0f);
-        InstantiateButtons();
-        GameData.PressedButton = false;
-    }
-    public void ActivateEndScreen()
-    {
-        StartCoroutine(ActivateEndScreenWithDelay());
-    }
-    IEnumerator ActivateEndScreenWithDelay()
-    {
-        HideButtons();
-        yield return new WaitForSeconds(2.0f);
-        EndScreen.SetActive(true);
-    }
-    public void ShowCorrectAnswer()
+    public override void ShowCorrectAnswer()
     {
         PlayFailureMusic();
         Result.GetComponent<Animator>().SetBool("Pressed", true);
 
     }
-    private void DeactivateFireworks()
-    {
-        FireworksEffect1.SetActive(false);
-        FireworksEffect2.SetActive(false);
-    }
-    public void GoodAnswer()
+
+    public override void GoodAnswer()
     {
         PlaySuccessMusic();
-        FireworksEffect1.SetActive(true);
-        FireworksEffect2.SetActive(true);
+        ActivateFireworks();
         Result.GetComponent<Animator>().SetBool("Pressed", true);
     }
-    private void PlaySuccessMusic()
-    {
-        correctAudio.Play();
-
-    }
-    private void PlayFailureMusic()
-    {
-        errorAudio.Play();
-    }
-    public void PlayAgain()
+  
+    public override void PlayAgain()
     {
         SceneManager.LoadScene(2);
     }
-    public void Home()
-    {
-        SceneManager.LoadScene(0);
-    }
-    public void Exit()
+    public override void Exit()
     {
         SceneManager.LoadScene(3);
     }
@@ -142,9 +81,8 @@ public class CanvasBehaviour : MonoBehaviour
         GameObject.Find("Game").GetComponent<AddGameManager>().CheckResultAndPrepareRound();
     }
 
-    private void HideButtons()
+    protected override void HideButtons()
     {
-        Debug.Log(Buttons);
         if (Buttons[0].activeSelf)
         {
             foreach (GameObject button in Buttons)
@@ -153,8 +91,6 @@ public class CanvasBehaviour : MonoBehaviour
                 StartCoroutine(DeactivateButtonWithDelay(button));
             }
         }
-
-
     }
     IEnumerator DeactivateButtonWithDelay(GameObject button)
     {
@@ -165,6 +101,10 @@ public class CanvasBehaviour : MonoBehaviour
     {
         for (int i = 0; i < Buttons.Length - 1; i++)
             Buttons[i].SetActive(true);
-    } 
+    }
 
+    protected override void ChangePressedButton() 
+    {
+        AddGameData.PressedButton = !AddGameData.PressedButton;
+    }
 }
