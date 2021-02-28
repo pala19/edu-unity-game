@@ -51,11 +51,6 @@ public class SubGameManager : GameManager
         }
         StartCoroutine(PrepareWithDelay(delay));
     }
-    IEnumerator PrepareWithDelay(int i)
-    {
-        yield return new WaitForSeconds(2.0f * i);
-        PrepareForNextRound();
-    }
 
     protected override void MakeCountablesForRound()
     {
@@ -91,9 +86,9 @@ public class SubGameManager : GameManager
         StartCoroutine(TellTheAnswerWithDelay());
         for (int i = 0; i < CountableNumber.Item1; i++)
         {
-            Countables[i].GetComponent<SubCountableBehaviour>().Unselect();
+            Countables[i].GetComponent<SubCountableBehaviour>().SelectWithoutTelling();
         }
-        for (int i=0; i < CountableNumber.Item1 - CountableNumber.Item2; i++)
+        for (int i=0; i < CountableNumber.Item2; i++)
         {
             StartCoroutine(ShowWithDelay(i));
         }
@@ -101,14 +96,15 @@ public class SubGameManager : GameManager
     }
     IEnumerator TellTheAnswerWithDelay()
     {
-        var number = CountableNumber.Item1 - CountableNumber.Item2;
+        var number = CountableNumber.Item1;
+        SelectedCountables = number;
         yield return new WaitForSeconds(1.0f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(number - 1);
         ButtonController.GetComponent<SubCanvasBehaviour>().ChangeNumber(number);
     }
     IEnumerator ShowWithDelay(int i)
     {
-        yield return new WaitForSeconds(1.0f * (i + 3));
+        yield return new WaitForSeconds(1.0f * (i + 2));
         Countables[i].GetComponent<SubCountableBehaviour>().Select();
     }
     protected override void ChangeGameOverData() 
@@ -139,6 +135,7 @@ public class SubGameManager : GameManager
 
     protected override void PrepareButtons() 
     {
+        SelectedCountables = CountableNumber.Item1;
         ButtonController.GetComponent<SubCanvasBehaviour>().PrepareButtons(SelectedCountables);
     }
 

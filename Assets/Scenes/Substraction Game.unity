@@ -446,7 +446,7 @@ MonoBehaviour:
   ButtonController: {fileID: 2108097366}
   Tap: {fileID: 1454334641}
   TutorialCountable1: {fileID: 374065088}
-  TutorialCountable2: {fileID: 1266104234}
+  TutorialCountable2: {fileID: 1860455474}
   TutorialCountable3: {fileID: 1266104234}
 --- !u!4 &449055808
 Transform:
@@ -1378,6 +1378,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d0a6c1ae48a8c44386f51ba01bd94aa, type: 3}
+--- !u!1 &1860455474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 580730499240020760, guid: e6bd48c360df17543aed345bbf206ef5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1445103179}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108097366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1694662875583363231, guid: 132a5cacdf1984e4db9c53338c613d26,

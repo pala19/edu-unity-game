@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameData = SubGameData;
 
 public class SubCountableBehaviour : MonoBehaviour
 {
@@ -21,7 +20,7 @@ public class SubCountableBehaviour : MonoBehaviour
 
     public void OnClick()
     {
-        if (!GameData.PressedButton)
+        if (!SubGameData.PressedButton)
         {
             Select();
         }
@@ -34,11 +33,11 @@ public class SubCountableBehaviour : MonoBehaviour
     {
         this.id = id;
     }
-    public void Unselect()
+    public void SelectWithoutTelling()
     {
-        selected = false;
+        selected = true;
         GetComponent<Animator>().SetBool("Selected", selected);
-    }
+         }
     public void Select()
     {
         selected = !selected;

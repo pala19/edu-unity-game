@@ -61,8 +61,4 @@ public class CountCanvasBehaviour : CanvasBehaviour
     {
         PlayedNumber = CountGameData.CurrentRoundSettings;
     }
-    protected override void ChangePressedButton()
-    {
-        AddGameData.PressedButton = !AddGameData.PressedButton;
-    }
 }

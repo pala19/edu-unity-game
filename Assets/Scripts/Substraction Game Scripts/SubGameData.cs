@@ -102,8 +102,8 @@ public static class SubGameData
                 successRate[RandomizedGame] = currentSuccessRate;
             if (successRate[RandomizedGame] == 9)
                 FinishedRounds[RandomizedGame] = true; 
-            RandomizedGame = -1;
             currentSuccessRate = 0;
+            CurrentRound = -1;
         }
     }
 

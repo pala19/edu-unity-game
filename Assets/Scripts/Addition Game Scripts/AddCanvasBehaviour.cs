@@ -102,9 +102,4 @@ public class AddCanvasBehaviour : CanvasBehaviour
         for (int i = 0; i < Buttons.Length - 1; i++)
             Buttons[i].SetActive(true);
     }
-
-    protected override void ChangePressedButton() 
-    {
-        AddGameData.PressedButton = !AddGameData.PressedButton;
-    }
 }

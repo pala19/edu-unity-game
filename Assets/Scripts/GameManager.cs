@@ -42,6 +42,12 @@ public class GameManager : MonoBehaviour
     }
     protected virtual void MakeCountablesForRound() {}
 
+    protected IEnumerator PrepareWithDelay(int i)
+    {
+        yield return new WaitForSeconds(2.0f * i);
+        PrepareForNextRound();
+    }
+
     private void DestroyCountablesAfterRound()
     {
         if (Countables != null)

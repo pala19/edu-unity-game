@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameData = AddGameData;
 
 public class CountableBehaviour : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class CountableBehaviour : MonoBehaviour
 
     public void OnClick()
     {
-        if (!GameData.PressedButton)
+        if (!AddGameData.PressedButton)
         {
             Select();
         }

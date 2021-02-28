@@ -53,7 +53,6 @@ public class CanvasBehaviour : MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
         InstantiateButtons(SelectedCountables);
-        ChangePressedButton();
     }
 
     IEnumerator PrepareButtonsWithDelay()
@@ -149,8 +148,5 @@ public class CanvasBehaviour : MonoBehaviour
 
     public virtual void Exit() { }
 
-    protected virtual void AssignPlayedNumber() { }
-
-    protected virtual void ChangePressedButton() { }
-
+    protected virtual void AssignPlayedNumber() { }  
 }

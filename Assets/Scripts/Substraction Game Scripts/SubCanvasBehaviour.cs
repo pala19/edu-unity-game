@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using GameData = SubGameData;
 
 public class SubCanvasBehaviour : CanvasBehaviour
 {
@@ -34,7 +33,7 @@ public class SubCanvasBehaviour : CanvasBehaviour
     {
         ActivateButtons();
         Result.SetActive(false);
-        var current = GameData.CurrentRoundSettings;
+        var current = SubGameData.CurrentRoundSettings;
         string name1 = "Button" + current.Item1 + "Prefab";
         string name2 = "Button" + current.Item2 + "Prefab";
         var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
@@ -106,9 +105,5 @@ public class SubCanvasBehaviour : CanvasBehaviour
     {
         for (int i = 0; i < Buttons.Length - 1; i++)
             Buttons[i].SetActive(true);
-    }
-    protected override void ChangePressedButton()
-    {
-        SubGameData.PressedButton = !SubGameData.PressedButton;
     }
 }

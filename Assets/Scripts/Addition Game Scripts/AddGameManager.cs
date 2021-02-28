@@ -52,11 +52,6 @@ public class AddGameManager : GameManager
         StartCoroutine(PrepareWithDelay(delay));
         
     }
-    IEnumerator PrepareWithDelay(int i)
-    {
-        yield return new WaitForSeconds(2.0f * i);
-        PrepareForNextRound();
-    }
 
     protected override void MakeCountablesForRound()
     {
