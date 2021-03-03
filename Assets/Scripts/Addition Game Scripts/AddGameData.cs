@@ -1,20 +1,56 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-
 static class AddGameData
 {
-    private static int[,] first = { { 1, 1, 2, 1, 3, 2, 3, 3, 3 } };
-    private static int[,] second = { { 1, 2, 2, 3, 1, 3, 2, 3, 4 } };
-    private static bool[] FinishedRounds = { false };
-    private static int[] successRate = { 0 };
-    private static int currentSuccessRate;
+    private static readonly int[,] First = { 
+        { 1, 1, 2, 1, 3, 1, 3, 2, 2 },
+        { 2, 3, 4, 1, 1, 2, 3, 4, 5 },
+        { 3, 4, 5, 6, 7, 8, 1, 2, 2 },
+        { 1, 3, 5, 6, 5, 3, 1, 2, 3 },
+        { 1, 2, 3, 4, 5, 6, 7, 8, 2 },
+        { 2, 3, 4, 5, 6, 7, 8, 1, 1 }
+    };
+    private static readonly int[,] Second = {
+        { 1, 2, 2, 3, 1, 3, 1, 3, 2 },
+        { 1, 3, 4, 2, 1, 2, 3, 1, 2 },
+        { 1, 3, 3, 2, 1, 1, 5, 4, 3 },
+        { 8, 6, 2, 3, 4, 2, 6, 4, 2 },
+        { 1, 2, 3, 4, 3, 2, 1, 1, 2 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 }
+
+    };
+    private static bool[] FinishedRounds = { false, false, false, false, false, false };
+    private static int[] SuccessRate = { 0, 0, 0, 0, 0, 0 };
+    private static int CurrentSuccessRate;
     private static int CurrentRound = -1;
     private static bool ButtonPressedFlag = false;
-    private static System.Random random = new System.Random();
-    private static int RandomizedGame = -1;
+    private static int CurrentGame;
+    private static bool Completed = false;
+
+    public static int SetCurrentGame
+    {
+        set
+        {
+            CurrentGame = value;
+        }
+    }
+
+    public static bool IsCompleted
+    {
+        get
+        {
+            return Completed;
+        }
+    }
+
+    public static bool IsActive(int i)
+    {
+        if (i == 0)
+        {
+            return CountGameData.IsCompleted;
+        }
+        return FinishedRounds[i - 1];
+
+    }
 
     public static Tuple<int,int> CurrentRoundSettings
     {
@@ -22,7 +58,7 @@ static class AddGameData
         {
             if (CurrentRound < 9)
             {
-                return Tuple.Create(first[RandomizedGame, CurrentRound], second[RandomizedGame, CurrentRound]);
+                return Tuple.Create(First[CurrentGame, CurrentRound], Second[CurrentGame, CurrentRound]);
             }
             else
             {
@@ -35,16 +71,11 @@ static class AddGameData
     {
         get
         {
-            if (RandomizedGame == -1)
-            {
-                RandomizedGame = random.Next(0, FinishedRounds.Length - 1);
-                while (!FinishedRounds[RandomizedGame] && FinishedRounds.Any(round => round.Equals(true)))
-                    RandomizedGame = random.Next(0, FinishedRounds.Length - 1);
-            }
+
 
             if (CurrentRound + 1 < 9)
             {
-                return Tuple.Create(first[RandomizedGame, CurrentRound + 1], second[RandomizedGame, CurrentRound + 1]);
+                return Tuple.Create(First[CurrentGame, CurrentRound + 1], Second[CurrentGame, CurrentRound + 1]);
             }
             else
             {
@@ -67,12 +98,12 @@ static class AddGameData
     {
         get
         {
-            return currentSuccessRate;
+            return CurrentSuccessRate;
         }
         set
         {
 
-            currentSuccessRate = value;
+            CurrentSuccessRate = value;
         }
     }
     public static bool PressedButton
@@ -90,12 +121,15 @@ static class AddGameData
     {
         set
         {
-            if (currentSuccessRate > successRate[RandomizedGame])
-                successRate[RandomizedGame] = currentSuccessRate;
-            if (successRate[RandomizedGame] == 9)
-                FinishedRounds[RandomizedGame] = true;
-            RandomizedGame = -1;
-            currentSuccessRate = 0;
+            if (CurrentSuccessRate > SuccessRate[CurrentGame])
+                SuccessRate[CurrentGame] = CurrentSuccessRate;
+            if (SuccessRate[CurrentGame] == 9)
+            {
+                FinishedRounds[CurrentGame] = true;
+                if (CurrentGame == FinishedRounds.Length - 1)
+                    Completed = true;
+            }
+            CurrentSuccessRate = 0;
             CurrentRound = -1;
         }
     }

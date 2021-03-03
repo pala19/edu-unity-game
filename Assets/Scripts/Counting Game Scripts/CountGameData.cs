@@ -1,18 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-
+﻿using System.Linq;
 public static class CountGameData
 {
-    private static int[,] Rounds = { { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
-    private static bool[] FinishedRounds = { false };
-    private static int[] successRate = { 0 };
-    private static int currentSuccessRate;
+    private static readonly int[,] Rounds = { 
+        { 1, 2, 3, 2, 3, 1, 3, 2, 1 },
+        { 4, 5, 6, 4, 5, 4, 6, 5, 4 },
+        { 1, 4, 6, 2, 3, 6, 5, 3, 4 },
+        { 7, 8, 9, 7, 9, 8, 7, 9, 8 },
+        { 1, 4, 7, 2, 5, 8, 3, 6, 9 },
+        { 2, 6, 9, 1, 4, 7, 8, 3, 5 }
+    };
+    private static bool[] FinishedRounds = { false, false, false, false, false, false };
+    private static int[] SuccessRate = { 0, 0, 0, 0, 0, 0 };
+    private static int CurrentSuccessRate;
     private static int CurrentRound = -1;
     private static bool ButtonPressedFlag = true;
-    private static System.Random random = new System.Random();
-    private static int RandomizedGame = -1;
+    private static int CurrentGame;
+    private static bool Completed = false;
+
+    public static int SetCurrentGame
+    {
+        set
+        {
+            CurrentGame = value;
+        }
+    }
+    public static bool IsCompleted
+    {
+        get
+        {
+            return Completed;
+        }
+    }
+    public static bool IsActive(int i)
+    {
+        if (i == 0)
+            return true;
+        return FinishedRounds[i-1];
+    }
 
     public static int CurrentRoundSettings
     {
@@ -20,7 +44,7 @@ public static class CountGameData
         {
             if (CurrentRound < 9)
             {
-                return Rounds[RandomizedGame, CurrentRound];
+                return Rounds[CurrentGame, CurrentRound];
             }
             else
             {
@@ -33,16 +57,10 @@ public static class CountGameData
     {
         get
         {
-            if (RandomizedGame == -1)
-            {
-                RandomizedGame = random.Next(0, FinishedRounds.Length - 1);
-                while (!FinishedRounds[RandomizedGame] && FinishedRounds.Any(round => round.Equals(true)))
-                    RandomizedGame = random.Next(0, FinishedRounds.Length - 1);
-            }
 
             if (CurrentRound + 1 < 9)
             {
-                return Rounds[RandomizedGame, CurrentRound+1];
+                return Rounds[CurrentGame, CurrentRound+1];
             }
             else
             {
@@ -76,23 +94,26 @@ public static class CountGameData
     {
         get
         {
-            return currentSuccessRate;
+            return CurrentSuccessRate;
         }
         set
         {
-            currentSuccessRate = value; 
+            CurrentSuccessRate = value; 
         }
     }
     public static bool GameOver
     {
         set
         {
-            if (currentSuccessRate > successRate[RandomizedGame])
-                successRate[RandomizedGame] = currentSuccessRate;
-            if (successRate[RandomizedGame] == 9)
-                FinishedRounds[RandomizedGame] = true;
-            RandomizedGame = -1;
-            currentSuccessRate = 0;
+            if (CurrentSuccessRate > SuccessRate[CurrentGame])
+                SuccessRate[CurrentGame] = CurrentSuccessRate;
+            if (SuccessRate[CurrentGame] == 9)
+            {
+                FinishedRounds[CurrentGame] = true;
+                if (CurrentGame == FinishedRounds.Length - 1)
+                    Completed = true;
+            }
+            CurrentSuccessRate = 0;
             CurrentRound = -1;
         }
     }
