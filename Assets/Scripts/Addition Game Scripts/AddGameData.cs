@@ -25,6 +25,7 @@ static class AddGameData
     private static bool ButtonPressedFlag = false;
     private static int CurrentGame;
     private static bool Completed = false;
+    private static int[] PermutatedRound;
 
     public static int SetCurrentGame
     {
@@ -58,7 +59,7 @@ static class AddGameData
         {
             if (CurrentRound < 9)
             {
-                return Tuple.Create(First[CurrentGame, CurrentRound], Second[CurrentGame, CurrentRound]);
+                return Tuple.Create(First[CurrentGame, PermutatedRound[CurrentRound]], Second[CurrentGame, PermutatedRound[CurrentRound]]);
             }
             else
             {
@@ -71,11 +72,13 @@ static class AddGameData
     {
         get
         {
-
-
             if (CurrentRound + 1 < 9)
             {
-                return Tuple.Create(First[CurrentGame, CurrentRound + 1], Second[CurrentGame, CurrentRound + 1]);
+                if (CurrentRound == -1)
+                {
+                    PermutatedRound = Utils.GenerateRandomPermutation(First.GetUpperBound(1));
+                }
+                return Tuple.Create(First[CurrentGame, PermutatedRound[CurrentRound + 1]], Second[CurrentGame, PermutatedRound[CurrentRound + 1]]);
             }
             else
             {

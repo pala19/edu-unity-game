@@ -1,5 +1,4 @@
-﻿using System.Linq;
-public static class CountGameData
+﻿public static class CountGameData
 {
     private static readonly int[,] Rounds = { 
         { 1, 2, 3, 2, 3, 1, 3, 2, 1 },
@@ -16,6 +15,7 @@ public static class CountGameData
     private static bool ButtonPressedFlag = true;
     private static int CurrentGame;
     private static bool Completed = false;
+    private static int[] PermutatedRound;
 
     public static int SetCurrentGame
     {
@@ -44,7 +44,7 @@ public static class CountGameData
         {
             if (CurrentRound < 9)
             {
-                return Rounds[CurrentGame, CurrentRound];
+                return Rounds[CurrentGame, PermutatedRound[CurrentRound]];
             }
             else
             {
@@ -57,10 +57,13 @@ public static class CountGameData
     {
         get
         {
-
             if (CurrentRound + 1 < 9)
             {
-                return Rounds[CurrentGame, CurrentRound+1];
+                if (CurrentRound == -1)
+                {
+                    PermutatedRound = Utils.GenerateRandomPermutation(Rounds.GetUpperBound(1));
+                }
+                return Rounds[CurrentGame, PermutatedRound[CurrentRound+1]];
             }
             else
             {
