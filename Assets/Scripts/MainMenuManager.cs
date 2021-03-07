@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject CBtn1, CBtn2, CBtn3, CBtn4, CBtn5, CBtn6;
     public GameObject ABtn1, ABtn2, ABtn3, ABtn4, ABtn5, ABtn6;
     public GameObject SBtn1, SBtn2, SBtn3, SBtn4, SBtn5, SBtn6;
+    public Material Disabled;
     private GameObject[] CountGameBtns;
     private GameObject[] AddGameBtns;
     private GameObject[] SubGameBtns;
@@ -18,9 +20,15 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         if (!AddGameData.IsActive(0))
+        {
             AddGameBtn.transform.GetChild(1).gameObject.SetActive(false);
+            AddGameBtn.GetComponent<SVGImage>().material = Disabled;
+        }
         if (!SubGameData.IsActive(0))
+        {
             SubGameBtn.transform.GetChild(1).gameObject.SetActive(false);
+            SubGameBtn.GetComponent<SVGImage>().material = Disabled;
+        }
 
         CountGameBtns = new GameObject[] { CBtn1, CBtn2, CBtn3, CBtn4, CBtn5, CBtn6 };
         AddGameBtns = new GameObject[] { ABtn1, ABtn2, ABtn3, ABtn4, ABtn5, ABtn6 };
