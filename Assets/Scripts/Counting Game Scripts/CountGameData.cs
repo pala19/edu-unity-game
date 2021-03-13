@@ -24,6 +24,15 @@
             CurrentGame = value;
         }
     }
+
+    public static int GetCurrentGame
+    {
+        get
+        {
+            return CurrentGame;
+        }
+    }
+
     public static bool IsCompleted
     {
         get
@@ -31,6 +40,7 @@
             return Completed;
         }
     }
+
     public static bool IsActive(int i)
     {
         if (i == 0)

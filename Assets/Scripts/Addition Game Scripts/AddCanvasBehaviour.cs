@@ -74,7 +74,8 @@ public class AddCanvasBehaviour : CanvasBehaviour
     }
     public override void Exit()
     {
-        SceneManager.LoadScene(3);
+        AddGameData.SetCurrentGame = AddGameData.GetCurrentGame + 1;
+        SceneManager.LoadScene(2);
     }
     public void ResultPressed()
     {
@@ -101,5 +102,13 @@ public class AddCanvasBehaviour : CanvasBehaviour
     {
         for (int i = 0; i < Buttons.Length - 1; i++)
             Buttons[i].SetActive(true);
+    }
+
+    protected override void CheckIfNextGameEnabled()
+    {
+        if (!AddGameData.IsActive(AddGameData.GetCurrentGame + 1) || AddGameData.IsCompleted)
+        {
+            EndScreen.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 }

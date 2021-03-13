@@ -55,10 +55,19 @@ public class CountCanvasBehaviour : CanvasBehaviour
 
     public override void Exit()
     {
-        SceneManager.LoadScene(2);
+        CountGameData.SetCurrentGame = CountGameData.GetCurrentGame + 1;
+        SceneManager.LoadScene(1);
     }
     protected override void AssignPlayedNumber() 
     {
         PlayedNumber = CountGameData.CurrentRoundSettings;
+    }
+
+    protected override void CheckIfNextGameEnabled() 
+    {
+        if (!CountGameData.IsActive(CountGameData.GetCurrentGame+1) || CountGameData.IsCompleted)
+        {
+            EndScreen.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 }

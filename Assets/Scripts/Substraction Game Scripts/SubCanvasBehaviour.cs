@@ -77,7 +77,8 @@ public class SubCanvasBehaviour : CanvasBehaviour
 
     public override void Exit()
     {
-        Application.Quit();
+        SubGameData.SetCurrentGame = SubGameData.GetCurrentGame + 1;
+        SceneManager.LoadScene(3);
     }
 
     public void ResultPressed()
@@ -105,5 +106,13 @@ public class SubCanvasBehaviour : CanvasBehaviour
     {
         for (int i = 0; i < Buttons.Length - 1; i++)
             Buttons[i].SetActive(true);
+    }
+
+    protected override void CheckIfNextGameEnabled()
+    {
+        if (!SubGameData.IsActive(SubGameData.GetCurrentGame + 1) || SubGameData.IsCompleted)
+        {
+            EndScreen.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 }

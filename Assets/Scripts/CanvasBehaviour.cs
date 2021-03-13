@@ -120,6 +120,7 @@ public class CanvasBehaviour : MonoBehaviour
         HideButtons();
         yield return new WaitForSeconds(2.0f);
         EndScreen.SetActive(true);
+        CheckIfNextGameEnabled();
     }
 
     protected virtual void HideButtons() { }
@@ -148,5 +149,8 @@ public class CanvasBehaviour : MonoBehaviour
 
     public virtual void Exit() { }
 
-    protected virtual void AssignPlayedNumber() { }  
+    protected virtual void AssignPlayedNumber() { }
+
+    protected virtual void CheckIfNextGameEnabled() { }
+
 }

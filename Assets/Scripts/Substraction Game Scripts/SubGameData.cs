@@ -35,6 +35,14 @@ public static class SubGameData
         }
     }
 
+    public static int GetCurrentGame
+    {
+        get
+        {
+            return CurrentGame;
+        }
+    }
+
     public static bool IsCompleted
     {
         get
@@ -52,8 +60,6 @@ public static class SubGameData
         return FinishedRounds[i - 1];
 
     }
-
-
 
     public static Tuple<int, int> CurrentRoundSettings
     {

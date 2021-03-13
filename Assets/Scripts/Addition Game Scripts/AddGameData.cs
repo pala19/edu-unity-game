@@ -35,6 +35,14 @@ static class AddGameData
         }
     }
 
+    public static int GetCurrentGame
+    {
+        get
+        {
+            return CurrentGame;
+        }
+    }
+
     public static bool IsCompleted
     {
         get
