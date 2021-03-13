@@ -15,10 +15,23 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update() {}
+
+    protected void GameActivationIfTutorialPlayed()
+    {
+        if (CheckIfTutorialPlayed())
+        {
+            PrepareForNextRound();
+            DeleteTutorial();
+            GameObject.Find("Game").GetComponent<UnityEngine.Playables.PlayableDirector>().enabled = false;
+        }
+    }
+
+
     public void DeleteTutorial()
     {
         foreach (GameObject obj in TutorialComponents)
             Destroy(obj);
+        TurnOffTutorial();
     }
 
     public void PrepareForNextRound()
@@ -102,4 +115,12 @@ public class GameManager : MonoBehaviour
     protected virtual void AdditionalActionsAfterDestroy() { }
 
     protected virtual void ActivateEndScreen() { }
+
+    protected virtual void TurnOffTutorial() { }
+
+    protected virtual bool CheckIfTutorialPlayed() 
+    {
+        return false;
+    }
+
 }

@@ -17,6 +17,7 @@ public class SubGameManager : GameManager
         SubGameData.PressedButton = true;
         GamesWon = 0;
         TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialCountable3 };
+        GameActivationIfTutorialPlayed();
     }
 
     // Update is called once per frame
@@ -152,5 +153,15 @@ public class SubGameManager : GameManager
     protected override void ActivateEndScreen()
     {
         ButtonController.GetComponent<SubCanvasBehaviour>().ActivateEndScreen();
+    }
+
+    protected override void TurnOffTutorial()
+    {
+        CountGameData.TutorialShown = true;
+    }
+
+    protected override bool CheckIfTutorialPlayed()
+    {
+        return CountGameData.TutorialShown;
     }
 }
