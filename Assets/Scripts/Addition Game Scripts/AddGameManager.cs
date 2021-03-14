@@ -42,6 +42,7 @@ public class AddGameManager : GameManager
         {
             ButtonController.GetComponent<CanvasBehaviour>().GoodAnswer();
             Character.GetComponent<CharacterBehaviour>().GoodAnswer();
+            AddGameData.Success += 1;
         }
         else
         {
@@ -112,6 +113,7 @@ public class AddGameManager : GameManager
 
     protected override void ChangeGameOverData() 
     {
+        Debug.Log("ChangeGameOverData");
         AddGameData.GameOver = true;
     }
 

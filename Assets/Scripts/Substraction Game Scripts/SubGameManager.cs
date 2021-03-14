@@ -42,6 +42,7 @@ public class SubGameManager : GameManager
         {
             ButtonController.GetComponent<SubCanvasBehaviour>().GoodAnswer();
             Character.GetComponent<CharacterBehaviour>().GoodAnswer();
+            AddGameData.Success += 1;
         }
         else
         {
