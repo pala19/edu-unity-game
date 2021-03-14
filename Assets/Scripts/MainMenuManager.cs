@@ -4,6 +4,7 @@ using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -41,12 +42,12 @@ public class MainMenuManager : MonoBehaviour
         for (int i = 0; i <AddGameBtns.Length; i++)
         {
             if (AddGameData.IsActive(i))
-                CountGameBtns[i].transform.GetChild(1).gameObject.SetActive(false);
+                AddGameBtns[i].transform.GetChild(1).gameObject.SetActive(false);
         }
         for (int i = 0; i < SubGameBtns.Length; i++)
         {
             if (SubGameData.IsActive(i))
-                CountGameBtns[i].transform.GetChild(1).gameObject.SetActive(false);
+                SubGameBtns[i].transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 
