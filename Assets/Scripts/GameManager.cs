@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,7 +24,9 @@ public class GameManager : MonoBehaviour
         {
             PrepareForNextRound();
             DeleteTutorial();
-            GameObject.Find("Game").GetComponent<UnityEngine.Playables.PlayableDirector>().enabled = false;
+            var objList = SceneManager.GetActiveScene().GetRootGameObjects().Select(gObj => GameObject.Find("Game"));
+            foreach (GameObject obj in objList)
+                obj.GetComponent<UnityEngine.Playables.PlayableDirector>().enabled = false;
         }
     }
 
