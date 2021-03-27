@@ -153,4 +153,5 @@ public class CanvasBehaviour : MonoBehaviour
 
     protected virtual void CheckIfNextGameEnabled() { }
 
+
 }

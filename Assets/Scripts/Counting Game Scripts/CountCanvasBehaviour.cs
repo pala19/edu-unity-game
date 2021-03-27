@@ -58,6 +58,7 @@ public class CountCanvasBehaviour : CanvasBehaviour
         CountGameData.SetCurrentGame = CountGameData.GetCurrentGame + 1;
         SceneManager.LoadScene(1);
     }
+
     protected override void AssignPlayedNumber() 
     {
         PlayedNumber = CountGameData.CurrentRoundSettings;
@@ -70,4 +71,5 @@ public class CountCanvasBehaviour : CanvasBehaviour
             EndScreen.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
+
 }

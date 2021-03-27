@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -17,18 +18,6 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update() {}
-
-    protected void GameActivationIfTutorialPlayed()
-    {
-        if (CheckIfTutorialPlayed())
-        {
-            PrepareForNextRound();
-            DeleteTutorial();
-            var objList = SceneManager.GetActiveScene().GetRootGameObjects().Select(gObj => GameObject.Find("Game"));
-            foreach (GameObject obj in objList)
-                obj.GetComponent<UnityEngine.Playables.PlayableDirector>().enabled = false;
-        }
-    }
 
 
     public void DeleteTutorial()
@@ -125,6 +114,14 @@ public class GameManager : MonoBehaviour
     protected virtual bool CheckIfTutorialPlayed() 
     {
         return false;
+    }
+
+    public void SkipTutorial() 
+    {
+        GetComponent<UnityEngine.Playables.PlayableDirector>().enabled = false;  
+        DeleteTutorial();
+        PrepareForNextRound();
+        EventSystem.current.currentSelectedGameObject.SetActive(false);
     }
 
 }

@@ -16,7 +16,6 @@ public class CountGameManager : GameManager
     {
         GamesWon = 0;
         TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialButton1, TutorialButton2, TutorialButton3 };
-        GameActivationIfTutorialPlayed();
     }
 
     // Update is called once per frame
@@ -118,5 +117,4 @@ public class CountGameManager : GameManager
     {
         return CountGameData.TutorialShown;
     }
-
 }
