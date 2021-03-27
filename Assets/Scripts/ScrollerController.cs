@@ -9,21 +9,33 @@ public class ScrollerController : MonoBehaviour
     public Button[] btns;
     public RectTransform Center;
 
-    private float[] distance;
-    private bool dragging;
+    private int FocusLevel;
     private int btnDistance;
     private int minButtonNum;
+    private float[] distance;
 
      void Start()
     {
-        int btnLength = btns.Length;
-        distance = new float[btnLength];
-
-        btnDistance = (int)Mathf.Abs(btns[1].GetComponent<RectTransform>().anchoredPosition.x - btns[0].GetComponent<RectTransform>().anchoredPosition.x);
+        distance = new float[btns.Length];
+        for (int i = 0; i < btns.Length; i++)
+        {
+            AssessIfUsed(gameObject.name, i);
+        }
+        btnDistance = 400;
+        LerpToBtn(FocusLevel);
     }
      void Update()
     {
-        for (int i=0; i < btns.Length; i++)
+    }
+    void LerpToBtn(int num)
+    {
+        float newX = - num * btnDistance;
+        Vector2 newPosition = new Vector2(newX, Background.anchoredPosition.y);
+        Background.anchoredPosition = newPosition;
+    }
+    public void Drag()
+    {
+        for (int i = 0; i < btns.Length; i++)
         {
             distance[i] = Mathf.Abs(Center.transform.position.x - btns[i].transform.position.x);
         }
@@ -35,26 +47,34 @@ public class ScrollerController : MonoBehaviour
             if (minDistance == distance[a])
                 minButtonNum = a;
         }
-
-        if (!dragging)
-        {
-            LerpToBtn(minButtonNum * -btnDistance);
-        }
-    }
-    void LerpToBtn(int position)
-    {
-        float newX = Mathf.Lerp(Background.anchoredPosition.x, position, Time.deltaTime * 10f);
-        Vector2 newPosition = new Vector2(newX, Background.anchoredPosition.y);
-        Background.anchoredPosition = newPosition;
     }
 
-    public void StartDrag()
-    {
-        dragging = true;
-    }
     public void EndDrag()
     {
-        dragging = false;
+        LerpToBtn(minButtonNum);
+    }
+
+    private void AssessIfUsed(string name, int i)
+    {
+        if (name == "CountingScroller")
+        {
+            if (CountGameData.IsActive(i))
+                FocusLevel = i;
+        }
+        else if (name == "AddScroller")
+        {
+            if (AddGameData.IsActive(i))
+                FocusLevel = i;
+        }
+        else if (name == "SubScroller")
+        {
+            if (SubGameData.IsActive(i))
+                FocusLevel = i;
+        }
+        else
+        {
+            Debug.Log("wrong scroller used");
+        }
     }
 
 
