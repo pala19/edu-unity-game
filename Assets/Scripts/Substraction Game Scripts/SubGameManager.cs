@@ -8,6 +8,7 @@ public class SubGameManager : GameManager
     public GameObject TutorialCountable1;
     public GameObject TutorialCountable2;
     public GameObject TutorialCountable3;
+    public GameObject SkipTutorialBtn;
     private int GamesWon;
     private int SelectedCountables;
 
@@ -16,7 +17,7 @@ public class SubGameManager : GameManager
     {
         SubGameData.PressedButton = true;
         GamesWon = 0;
-        TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialCountable3 };
+        TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialCountable3, SkipTutorialBtn };
     }
 
     // Update is called once per frame

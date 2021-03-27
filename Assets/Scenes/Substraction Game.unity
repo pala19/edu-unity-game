@@ -448,6 +448,7 @@ MonoBehaviour:
   TutorialCountable1: {fileID: 374065088}
   TutorialCountable2: {fileID: 1860455474}
   TutorialCountable3: {fileID: 1266104234}
+  SkipTutorialBtn: {fileID: 1317342124}
 --- !u!4 &449055808
 Transform:
   m_ObjectHideFlags: 0

@@ -121,7 +121,6 @@ public class GameManager : MonoBehaviour
         GetComponent<UnityEngine.Playables.PlayableDirector>().enabled = false;  
         DeleteTutorial();
         PrepareForNextRound();
-        EventSystem.current.currentSelectedGameObject.SetActive(false);
     }
 
 }

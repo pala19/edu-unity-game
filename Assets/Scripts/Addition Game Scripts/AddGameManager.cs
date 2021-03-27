@@ -7,6 +7,7 @@ public class AddGameManager : GameManager
     private Tuple<int, int> CountableNumber;
     public GameObject TutorialCountable1;
     public GameObject TutorialCountable2;
+    public GameObject SkipTutorialBtn;
     private int GamesWon;
     private int SelectedCountables;
 
@@ -16,7 +17,7 @@ public class AddGameManager : GameManager
         AddGameData.PressedButton = true;
         GamesWon = 0;
         SelectedCountables = 0;
-        TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2};
+        TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, SkipTutorialBtn};
     }
 
     // Update is called once per frame

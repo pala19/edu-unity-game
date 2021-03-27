@@ -9,13 +9,14 @@ public class CountGameManager : GameManager
     public GameObject TutorialButton1;
     public GameObject TutorialButton2;
     public GameObject TutorialButton3;
+    public GameObject SkipTutorialBtn;
     private int CountableNumber;
     private int GamesWon;
     // Start is called before the first frame update
     void Start()
     {
         GamesWon = 0;
-        TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialButton1, TutorialButton2, TutorialButton3 };
+        TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialButton1, TutorialButton2, TutorialButton3, SkipTutorialBtn };
     }
 
     // Update is called once per frame

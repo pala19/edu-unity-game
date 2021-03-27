@@ -160,21 +160,25 @@ RectTransform:
   m_AnchoredPosition: {x: 850, y: 400}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &336216425
-Animation:
+--- !u!95 &336216425
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336216423}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 3777509b80e97ae47a494c9b4b170f33, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e6f7ccff0265354fb772d4eb2df5b28, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &336216426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1575,6 +1579,7 @@ MonoBehaviour:
   TutorialButton1: {fileID: 483872134}
   TutorialButton2: {fileID: 1987702692}
   TutorialButton3: {fileID: 1645956233}
+  SkipTutorialBtn: {fileID: 336216423}
 --- !u!4 &1828814325
 Transform:
   m_ObjectHideFlags: 0

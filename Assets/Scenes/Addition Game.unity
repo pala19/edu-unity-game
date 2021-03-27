@@ -194,6 +194,7 @@ MonoBehaviour:
   Tap: {fileID: 1816918263}
   TutorialCountable1: {fileID: 1646329061}
   TutorialCountable2: {fileID: 2064568543}
+  SkipTutorialBtn: {fileID: 1675162955}
 --- !u!4 &798077471
 Transform:
   m_ObjectHideFlags: 0
