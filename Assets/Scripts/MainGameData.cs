@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-static class MainGameData
+public static class MainGameData
 {
     private static SystemLanguage gameLanguage = changeLanguage = Application.systemLanguage;
 

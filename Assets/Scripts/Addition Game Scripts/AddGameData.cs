@@ -1,5 +1,5 @@
 ﻿using System;
-static class AddGameData
+public static class AddGameData
 {
     private static readonly int[,] First = { 
         { 1, 1, 2, 1, 3, 1, 3, 2, 2 },
@@ -22,7 +22,7 @@ static class AddGameData
     private static int[] SuccessRate = { 0, 0, 0, 0, 0, 0 };
     private static int CurrentSuccessRate;
     private static int CurrentRound = -1;
-    private static bool ButtonPressedFlag = false;
+    private static bool ButtonPressedFlag = true;
     private static int CurrentGame;
     private static bool Completed = false;
     private static int[] PermutatedRound;
