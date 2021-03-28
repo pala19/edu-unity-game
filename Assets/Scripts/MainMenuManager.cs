@@ -34,6 +34,7 @@ public class MainMenuManager : MonoBehaviour
         CountGameBtns = new GameObject[] { CBtn1, CBtn2, CBtn3, CBtn4, CBtn5, CBtn6 };
         AddGameBtns = new GameObject[] { ABtn1, ABtn2, ABtn3, ABtn4, ABtn5, ABtn6 };
         SubGameBtns = new GameObject[] { SBtn1, SBtn2, SBtn3, SBtn4, SBtn5, SBtn6 };
+
         for (int i=0; i<CountGameBtns.Length; i++)
         {
             if (CountGameData.IsActive(i))
