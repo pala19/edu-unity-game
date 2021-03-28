@@ -156,14 +156,4 @@ public class AddGameManager : GameManager
     {
         ButtonController.GetComponent<AddCanvasBehaviour>().ActivateEndScreen();
     }
-
-    protected override void TurnOffTutorial()
-    {
-        AddGameData.TutorialShown = true;
-    }
-
-    protected override bool CheckIfTutorialPlayed()
-    {
-        return AddGameData.TutorialShown;
-    }
 }

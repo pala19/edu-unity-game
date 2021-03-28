@@ -155,14 +155,4 @@ public class SubGameManager : GameManager
     {
         ButtonController.GetComponent<SubCanvasBehaviour>().ActivateEndScreen();
     }
-
-    protected override void TurnOffTutorial()
-    {
-        CountGameData.TutorialShown = true;
-    }
-
-    protected override bool CheckIfTutorialPlayed()
-    {
-        return CountGameData.TutorialShown;
-    }
 }

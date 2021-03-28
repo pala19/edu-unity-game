@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject obj in TutorialComponents)
             Destroy(obj);
-        TurnOffTutorial();
     }
 
     public void PrepareForNextRound()
@@ -109,12 +108,6 @@ public class GameManager : MonoBehaviour
 
     protected virtual void ActivateEndScreen() { }
 
-    protected virtual void TurnOffTutorial() { }
-
-    protected virtual bool CheckIfTutorialPlayed() 
-    {
-        return false;
-    }
 
     public void SkipTutorial() 
     {

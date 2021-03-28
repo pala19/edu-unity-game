@@ -26,19 +26,6 @@ static class AddGameData
     private static int CurrentGame;
     private static bool Completed = false;
     private static int[] PermutatedRound;
-    private static bool TutorialSeen = false;
-
-    public static bool TutorialShown
-    {
-        set
-        {
-            TutorialSeen = value;
-        }
-        get
-        {
-            return TutorialSeen;
-        }
-    }
 
     public static int SetCurrentGame
     {

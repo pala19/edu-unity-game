@@ -108,14 +108,4 @@ public class CountGameManager : GameManager
     ButtonController.GetComponent<CountCanvasBehaviour>().ActivateEndScreen();
     ButtonController.GetComponent<CountCanvasBehaviour>().DestroyOldButtons();
     }
-
-    protected override void TurnOffTutorial()
-    {
-        CountGameData.TutorialShown = true;
-    }
-
-    protected override bool CheckIfTutorialPlayed()
-    {
-        return CountGameData.TutorialShown;
-    }
 }
