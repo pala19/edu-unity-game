@@ -22,7 +22,7 @@ public static class SubGameData
     private static int[] SuccessRate = { 0, 0, 0, 0, 0, 0 };
     private static int CurrentSuccessRate;
     private static int CurrentRound = -1;
-    private static bool ButtonPressedFlag = false;
+    private static bool ButtonPressedFlag = true;
     private static int CurrentGame;
     private static bool Completed = false;
     private static int[] PermutatedRound;
