@@ -6,6 +6,7 @@ using UnityEngine;
 public static class MainGameData
 {
     private static SystemLanguage gameLanguage = changeLanguage = Application.systemLanguage;
+    private static bool ButtonPressedFlag = true;
 
     public static SystemLanguage changeLanguage
     {
@@ -19,6 +20,18 @@ public static class MainGameData
         get
         {
             return gameLanguage;
+        }
+    }
+
+    public static bool PressedButton
+    {
+        get
+        {
+            return ButtonPressedFlag;
+        }
+        set
+        {
+            ButtonPressedFlag = value;
         }
     }
 }

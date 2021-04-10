@@ -20,7 +20,7 @@ public class SubCountableBehaviour : MonoBehaviour
 
     public void OnClick()
     {
-        if (!SubGameData.PressedButton)
+        if (!MainGameData.PressedButton)
         {
             Select();
         }

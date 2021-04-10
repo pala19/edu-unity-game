@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         MakeCountablesForRound();
-        ChangePressedButton();
+        MainGameData.PressedButton = !MainGameData.PressedButton;
     }
     protected virtual void MakeCountablesForRound() {}
 
@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
     protected virtual void AssignCountableNumber() {}
 
     protected virtual void AssignGamesWon() {}
-    protected virtual void ChangePressedButton() {}
 
     protected virtual void PrepareButtons() {}
 

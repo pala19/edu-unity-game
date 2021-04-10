@@ -14,7 +14,6 @@ public class AddGameManager : GameManager
     // Start is called before the first frame update
     void Start()
     {
-        AddGameData.PressedButton = true;
         GamesWon = 0;
         SelectedCountables = 0;
         TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, SkipTutorialBtn};
@@ -35,7 +34,7 @@ public class AddGameManager : GameManager
     }
     public void CheckResultAndPrepareRound()
     {
-        AddGameData.PressedButton = true;
+        MainGameData.PressedButton = true;
         int result = CountableNumber.Item1 + CountableNumber.Item2;
         var delay = 1;
         if (result == SelectedCountables)
@@ -131,11 +130,6 @@ public class AddGameManager : GameManager
     {
         AddGameData.Round += 1;
         GamesWon = AddGameData.Success;
-    }
-
-    protected override void ChangePressedButton() 
-    {
-        AddGameData.PressedButton = !AddGameData.PressedButton;
     }
     
     protected override void PrepareButtons()

@@ -15,7 +15,6 @@ public class SubGameManager : GameManager
     // Start is called before the first frame update
     void Start()
     {
-        SubGameData.PressedButton = true;
         GamesWon = 0;
         TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialCountable3, SkipTutorialBtn };
     }
@@ -35,7 +34,7 @@ public class SubGameManager : GameManager
     }
     public void CheckResultAndPrepareRound()
     {
-        SubGameData.PressedButton = true;
+       MainGameData.PressedButton = true;
         int result = CountableNumber.Item1 - CountableNumber.Item2;
         var delay = 1;
         if (result == SelectedCountables)
@@ -129,10 +128,6 @@ public class SubGameManager : GameManager
         SubGameData.Round += 1;
         GamesWon = SubGameData.Success;
 
-    }
-    protected override void ChangePressedButton() 
-    {
-        SubGameData.PressedButton = !SubGameData.PressedButton;
     }
 
     protected override void PrepareButtons() 

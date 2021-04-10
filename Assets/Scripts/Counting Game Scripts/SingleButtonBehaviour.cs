@@ -19,9 +19,9 @@ public class SingleButtonBehaviour : MonoBehaviour
 
     public void ButtonPress()
     {
-        if (!CountGameData.PressedButton)
+        if (!MainGameData.PressedButton)
         {
-            CountGameData.PressedButton = true;
+            MainGameData.PressedButton = true;
             string ButtonName = name;
             if (Char.GetNumericValue(ButtonName[6]) == CountGameData.CurrentRoundSettings)
             {

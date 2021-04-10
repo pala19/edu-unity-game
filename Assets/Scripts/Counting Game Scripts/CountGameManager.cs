@@ -90,10 +90,6 @@ public class CountGameManager : GameManager
         GamesWon = CountGameData.Success;
     }
 
-    protected override void ChangePressedButton()
-    {
-        CountGameData.PressedButton = !CountGameData.PressedButton;
-    }
     protected override void PrepareButtons()
     {
         ButtonController.GetComponent<CountCanvasBehaviour>().PrepareButtons();

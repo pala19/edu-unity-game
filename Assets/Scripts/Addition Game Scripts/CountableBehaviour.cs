@@ -19,7 +19,7 @@ public class CountableBehaviour : MonoBehaviour
 
     public void OnClick()
     {
-        if (!AddGameData.PressedButton)
+        if (!MainGameData.PressedButton)
         {
             Select();
         }

@@ -12,7 +12,6 @@
     private static int[] SuccessRate = { 0, 0, 0, 0, 0, 0 };
     private static int CurrentSuccessRate;
     private static int CurrentRound = -1;
-    private static bool ButtonPressedFlag = true;
     private static int CurrentGame;
     private static bool Completed = false;
     private static int[] PermutatedRound;
@@ -93,17 +92,7 @@
             CurrentRound = value;
         }
     }
-    public static bool PressedButton
-    {
-        get
-        {
-            return ButtonPressedFlag;
-        }
-        set
-        {
-            ButtonPressedFlag = value;
-        }
-    }
+
     public static int Success
     {
         get

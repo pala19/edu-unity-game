@@ -50,6 +50,7 @@ public class MainMenuManager : MonoBehaviour
             if (SubGameData.IsActive(i))
                 SubGameBtns[i].transform.GetChild(1).gameObject.SetActive(false);
         }
+        MainGameData.PressedButton = true;
     }
 
     // Update is called once per frame

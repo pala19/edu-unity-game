@@ -11,25 +11,11 @@ namespace Tests
         private int NumberOfRounds = 6;
         // A Test behaves as an ordinary method
         [Test]
-        public void CountGameDataTestWithPressedButtonCheck()
+        public void MainGameDataTestWithPressedButtonCheck()
         {
-            Assert.IsTrue(CountGameData.PressedButton);
-            CountGameData.PressedButton = false;
-            Assert.IsFalse(CountGameData.PressedButton);
-        }
-        [Test]
-        public void AddGameDataTestWithPressedButtonCheck()
-        {
-            Assert.IsTrue(AddGameData.PressedButton);
-            AddGameData.PressedButton = false;
-            Assert.IsFalse(AddGameData.PressedButton);
-        }
-        [Test]
-        public void SubGameDataTestWithPressedButtonCheck()
-        {
-            Assert.IsTrue(SubGameData.PressedButton);
-            SubGameData.PressedButton = false;
-            Assert.IsFalse(SubGameData.PressedButton);
+            Assert.IsTrue(MainGameData.PressedButton);
+            MainGameData.PressedButton = false;
+            Assert.IsFalse(MainGameData.PressedButton);
         }
         [Test]
         public void CountGameDataTestWithSetCurrentGameCheck()
