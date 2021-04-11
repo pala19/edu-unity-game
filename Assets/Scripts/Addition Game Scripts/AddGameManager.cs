@@ -54,36 +54,9 @@ public class AddGameManager : GameManager
         
     }
 
-    protected override void MakeCountablesForRound()
+    protected override void SetCountablesNumber()
     {
-        Countables = new GameObject[CountableNumber.Item1 + CountableNumber.Item2];
-        for (int i = 0; i < CountableNumber.Item1 + CountableNumber.Item2; i++)
-        {
-            Vector3 pos = new Vector3(0f, 1f, 90f);
-            float height = Screen.currentResolution.height / 4;
-            float width;
-            if (CountableNumber.Item1 + CountableNumber.Item2 > 5)
-                width = Screen.currentResolution.width / 6;
-            else
-                width = Screen.currentResolution.width / (CountableNumber.Item1 + CountableNumber.Item2 + 1);
-            if (i > 4)
-            {
-                width = Screen.currentResolution.width / (CountableNumber.Item1 + CountableNumber.Item2 - 4);
-                float pom = i - 5;
-                Countables[i] = Instantiate(CountablePrefab, pos, Quaternion.identity);
-                Countables[i].transform.SetParent(GameObject.Find("Background").transform);
-                Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((pom + 1) * width), -height * 1.6f, 0);
-            }
-            else
-            {
-                Countables[i] = Instantiate(CountablePrefab, pos, Quaternion.identity);
-                Countables[i].transform.SetParent(GameObject.Find("Background").transform);
-                Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((i + 1) * width), -height / 1.1f, 0);
-            }
-            Countables[i].GetComponent<CountableBehaviour>().SetId(i);
-
-        }
-
+        CountablesNumber = CountableNumber.Item1 + CountableNumber.Item2;
     }
 
     protected override void ShowCorrectAnswer()

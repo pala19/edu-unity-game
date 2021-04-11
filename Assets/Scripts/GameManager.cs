@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject Tap;
     protected GameObject[] TutorialComponents;
     protected GameObject[] Countables;
+    protected int CountablesNumber;
 
     // Start is called before the first frame update
     void Start() {}
@@ -45,7 +46,39 @@ public class GameManager : MonoBehaviour
         MakeCountablesForRound();
         MainGameData.PressedButton = !MainGameData.PressedButton;
     }
-    protected virtual void MakeCountablesForRound() {}
+    protected void MakeCountablesForRound() 
+    {
+       SetCountablesNumber();
+        Countables = new GameObject[CountablesNumber];
+        for (int i = 0; i < CountablesNumber; i++)
+        {
+            Vector3 pos = new Vector3(0f, 1f, 90f);
+            float height = Screen.currentResolution.height / 4;
+            float width;
+            if (CountablesNumber > 5)
+                width = Screen.currentResolution.width / 6;
+            else
+                width = Screen.currentResolution.width / (CountablesNumber + 1);
+            if (i > 4)
+            {
+                width = Screen.currentResolution.width / (CountablesNumber - 4);
+                float pom = i - 5;
+                Countables[i] = Instantiate(CountablePrefab, pos, Quaternion.identity);
+                Countables[i].transform.SetParent(GameObject.Find("Background").transform);
+                Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((pom + 1) * width), -height * 1.6f, 0);
+            }
+            else
+            {
+                Countables[i] = Instantiate(CountablePrefab, pos, Quaternion.identity);
+                Countables[i].transform.SetParent(GameObject.Find("Background").transform);
+                Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((i + 1) * width), -height / 1.1f, 0);
+            }
+            SetCountableId(i);
+        }
+    }
+    protected virtual void SetCountablesNumber() { }
+
+    protected virtual void SetCountableId(int i) { }
 
     protected IEnumerator PrepareWithDelay(int i)
     {
