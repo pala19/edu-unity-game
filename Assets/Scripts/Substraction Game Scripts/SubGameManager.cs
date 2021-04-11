@@ -53,6 +53,34 @@ public class SubGameManager : GameManager
         StartCoroutine(PrepareWithDelay(delay));
     }
 
+    protected override void VoiceCurrentRound()
+    {
+        StartCoroutine(VoiceFirstNumberWithDelay(CountableNumber.Item1 - 1));
+    }
+
+    IEnumerator VoiceOtherWithDelay(int i, bool IsMinusSign)
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayOtherVoice(i);
+        if (IsMinusSign)
+            StartCoroutine(VoiceNumberWithDelay(CountableNumber.Item2 - 1));
+    }
+    IEnumerator VoiceNumberWithDelay(int i)
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
+        StartCoroutine(VoiceOtherWithDelay(0, false));
+    }
+
+    IEnumerator VoiceFirstNumberWithDelay(int i)
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
+        StartCoroutine(VoiceOtherWithDelay(2, true));
+    }
+
+
+
     protected override void SetCountablesNumber()
     {
         CountablesNumber = CountableNumber.Item1;

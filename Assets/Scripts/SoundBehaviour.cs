@@ -4,21 +4,37 @@ using UnityEngine;
 
 public class SoundBehaviour : MonoBehaviour
 {
-    private AudioSource[] PolishVoices;
-    private AudioSource[] EnglishVoices;
+    private AudioSource[] PolishNumbers;
+    private AudioSource[] EnglishNumbers;
+    private AudioSource[] PolishOthers;
+    private AudioSource[] EnglishOthers;
     // Start is called before the first frame update
     void Start()
     {
-        PolishVoices = new AudioSource[9];
-        EnglishVoices = new AudioSource[9];
+        PolishNumbers = new AudioSource[9];
+        EnglishNumbers = new AudioSource[9];
+        PolishOthers = new AudioSource[3];
+        EnglishOthers = new AudioSource[3];
+
         AudioSource[] audios = GetComponents<AudioSource>();
+        print(audios.Length);
         for (int i=0; i< audios.Length; i++)
-        {
+        {            
             if (i < 9)
-                PolishVoices[i] = audios[i];
-            else
-                EnglishVoices[i % 9] = audios[i];
+                PolishNumbers[i] = audios[i];
+            else if (i < 18)
+                EnglishNumbers[i % 9] = audios[i];
+            else            
+            {
+                print(i + " " + i % 9);
+                if (i % 2 != 0)
+                    PolishOthers[(i-1) % 3] = audios[i];
+                else
+                    EnglishOthers[i % 3] = audios[i];
+            }      
         }
+        for (int i = 0; i < PolishOthers.Length; i++)
+            print(PolishOthers[i].clip.name);
     }
 
     // Update is called once per frame
@@ -29,9 +45,16 @@ public class SoundBehaviour : MonoBehaviour
     public void PlayVoice(int i)
     {
         if (MainGameData.changeLanguage == SystemLanguage.Polish)
-            PolishVoices[i].Play();
+            PolishNumbers[i].Play();
         else
-            EnglishVoices[i].Play();
+            EnglishNumbers[i].Play();
+    }
+    public void PlayOtherVoice(int i)
+    {
+        if (MainGameData.changeLanguage == SystemLanguage.Polish)
+            PolishOthers[i].Play();
+        else
+            EnglishOthers[i].Play();
     }
 
 }

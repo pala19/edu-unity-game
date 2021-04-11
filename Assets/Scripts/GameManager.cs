@@ -38,14 +38,19 @@ public class GameManager : MonoBehaviour
             DestroyCountablesAfterRound();
             StartCoroutine(MakeCountablesWithDelay());
             PrepareButtons();
+            VoiceCurrentRound();
         }
     }
+
     IEnumerator MakeCountablesWithDelay()
     {
         yield return new WaitForSeconds(2.0f);
         MakeCountablesForRound();
         MainGameData.PressedButton = !MainGameData.PressedButton;
     }
+
+    protected virtual void VoiceCurrentRound(){ }
+
     protected void MakeCountablesForRound() 
     {
        SetCountablesNumber();
