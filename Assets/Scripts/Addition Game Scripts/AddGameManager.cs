@@ -59,6 +59,12 @@ public class AddGameManager : GameManager
         CountablesNumber = CountableNumber.Item1 + CountableNumber.Item2;
     }
 
+    protected override void SetCountableId(int i)
+    {
+        Countables[i].GetComponent<CountableBehaviour>().SetId(i);
+    }
+
+
     protected override void ShowCorrectAnswer()
     {
         StartCoroutine(TellTheAnswerWithDelay());
