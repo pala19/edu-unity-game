@@ -74,7 +74,7 @@ public class SubGameManager : GameManager
 
     IEnumerator VoiceFirstNumberWithDelay(int i)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
         StartCoroutine(VoiceOtherWithDelay(2, true));
     }
