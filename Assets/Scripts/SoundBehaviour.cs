@@ -33,8 +33,6 @@ public class SoundBehaviour : MonoBehaviour
                     EnglishOthers[i % 3] = audios[i];
             }      
         }
-        for (int i = 0; i < PolishOthers.Length; i++)
-            print(PolishOthers[i].clip.name);
     }
 
     // Update is called once per frame
