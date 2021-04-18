@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 48396157}
   - component: {fileID: 48396156}
   m_Layer: 5
-  m_Name: 'SubGameButton '
+  m_Name: SubGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
