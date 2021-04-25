@@ -17,7 +17,7 @@ public class SoundBehaviour : MonoBehaviour
         EnglishOthers = new AudioSource[3];
 
         AudioSource[] audios = GetComponents<AudioSource>();
-        print(audios.Length);
+ 
         for (int i=0; i< audios.Length; i++)
         {            
             if (i < 9)
@@ -26,7 +26,6 @@ public class SoundBehaviour : MonoBehaviour
                 EnglishNumbers[i % 9] = audios[i];
             else            
             {
-                print(i + " " + i % 9);
                 if (i % 2 != 0)
                     PolishOthers[(i-1) % 3] = audios[i];
                 else
