@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     protected virtual void VoiceCurrentRound(){ }
 
-    protected void MakeCountablesForRound() 
+    protected virtual void MakeCountablesForRound() 
     {
        SetCountablesNumber();
         Countables = new GameObject[CountablesNumber];

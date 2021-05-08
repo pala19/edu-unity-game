@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 59849b8013136404da2cf32aca62bf81
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Button1Prefab: {instanceID: 0}
+  - Button2Prefab: {instanceID: 0}
+  - Button3Prefab: {instanceID: 0}
+  - Button4Prefab: {instanceID: 0}
+  - Button5Prefab: {instanceID: 0}
+  - Button6Prefab: {instanceID: 0}
+  - Button7Prefab: {instanceID: 0}
+  - Button8Prefab: {instanceID: 0}
+  - Button9Prefab: {instanceID: 0}
+  - EndScreen: {instanceID: 0}
+  - FireworksEffect1: {instanceID: 0}
+  - FireworksEffect2: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

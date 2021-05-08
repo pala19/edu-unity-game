@@ -20,13 +20,12 @@ public class AppleBehaviour : MonoBehaviour
             {
                 var inp = Input.mousePosition;
                 var pos = Camera.main.ScreenToWorldPoint(inp);
-                print(pos.x + " " + pos.y);
                 transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(inp);
             }
             else
             {
                 GameObject.Find("Basket").GetComponent<BasketBehaviour>().AddApple();
-                Destroy(gameObject, 0.5f);
+                Destroy(gameObject, 0.1f);
             }
         }
           
