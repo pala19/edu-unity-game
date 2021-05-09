@@ -588,10 +588,30 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 219939337441088710, guid: a183bbd283d01a343b007ef233e82840,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
+      objectReference: {fileID: 0}
     - target: {fileID: 272962692316295485, guid: a183bbd283d01a343b007ef233e82840,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 421171349814409722, guid: a183bbd283d01a343b007ef233e82840,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1703256262}
+    - target: {fileID: 421171349814409723, guid: a183bbd283d01a343b007ef233e82840,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 421171349814409724, guid: a183bbd283d01a343b007ef233e82840,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 421171349814409725, guid: a183bbd283d01a343b007ef233e82840,
         type: 3}
@@ -702,6 +722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AddCanvas Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216537106431243005, guid: a183bbd283d01a343b007ef233e82840,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 441
       objectReference: {fileID: 0}
     - target: {fileID: 5373570318745112365, guid: a183bbd283d01a343b007ef233e82840,
         type: 3}
@@ -871,7 +896,7 @@ PrefabInstance:
     - target: {fileID: 8109924008657939911, guid: a183bbd283d01a343b007ef233e82840,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a183bbd283d01a343b007ef233e82840, type: 3}

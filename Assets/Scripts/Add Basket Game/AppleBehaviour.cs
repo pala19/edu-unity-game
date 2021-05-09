@@ -19,8 +19,9 @@ public class AppleBehaviour : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 var inp = Input.mousePosition;
+                inp.z = GameObject.Find("Background").transform.position.z;
                 var pos = Camera.main.ScreenToWorldPoint(inp);
-                transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(inp);
+                transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
             }
             else
             {

@@ -21,7 +21,7 @@ public class PileBehaviour : MonoBehaviour
     {
 
         var Apple = Instantiate(ApplePrefab, transform.position, Quaternion.identity);
-        Apple.transform.SetParent(GameObject.Find("Background").transform);
+        Apple.transform.SetParent(GameObject.Find("Background").transform, false);
 
     }
 }
