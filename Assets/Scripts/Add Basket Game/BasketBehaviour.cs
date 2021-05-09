@@ -20,10 +20,10 @@ public class BasketBehaviour : MonoBehaviour
         
     }
 
-    public void setAppleContained(int number)
+    public void setAppleContained(int number, bool playSound = true)
     {
         appleContained = number;
-        ChangeImage();
+        ChangeImage(playSound);
     }
     public int getAppleContained()
     {
@@ -34,7 +34,7 @@ public class BasketBehaviour : MonoBehaviour
         if (AppleIn && appleContained < 9)
         {
             appleContained++;
-            ChangeImage();
+            ChangeImage(true);
             GameObject.Find("Game").GetComponent<AddBasketManager>().ChangeResult(appleContained);
         }
         AppleIn = false;
@@ -59,15 +59,17 @@ public class BasketBehaviour : MonoBehaviour
         {
             appleContained--;
             var Apple = Instantiate(ApplePrefab, transform.position, Quaternion.identity);
-            Apple.transform.SetParent(GameObject.Find("Background").transform);
-            ChangeImage();
+            Apple.transform.SetParent(GameObject.Find("Background").transform, false);
+            ChangeImage(true);
             GameObject.Find("Game").GetComponent<AddBasketManager>().ChangeResult(appleContained);
         }
     }
 
-    private void ChangeImage()
+    private void ChangeImage(bool playSound)
     {
         GetComponent<SVGImage>().sprite = BasketPrefabs[appleContained].GetComponent<SVGImage>().sprite;
+        if (playSound)
+            GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(appleContained-1);
     }
 
 }

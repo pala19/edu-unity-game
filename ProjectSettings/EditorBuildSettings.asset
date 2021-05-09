@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Substraction Game.unity
     guid: fba3fd51c4cf9c8418b58802b604ad54
+  - enabled: 1
+    path: Assets/Scenes/Add Basket Game.unity
+    guid: d99944838ec305249aadd81f0a48d093
   m_configObjects: {}

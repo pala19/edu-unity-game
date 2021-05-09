@@ -14,7 +14,7 @@ public class AppleBehaviour : MonoBehaviour
     void Update()
     {
 
-          if (Application.platform  !=  RuntimePlatform.Android)
+        if (Application.platform != RuntimePlatform.Android)
         {
             if (Input.GetMouseButton(0))
             {
@@ -29,7 +29,19 @@ public class AppleBehaviour : MonoBehaviour
                 Destroy(gameObject, 0.1f);
             }
         }
-          
+        else
+        {
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                var pos = Camera.main.ScreenToWorldPoint(touch.position);
+                transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
+            }
+            else
+            {
+                GameObject.Find("Basket").GetComponent<BasketBehaviour>().AddApple();
+                Destroy(gameObject, 0.1f);
+            }
+        }
     }
-
 }

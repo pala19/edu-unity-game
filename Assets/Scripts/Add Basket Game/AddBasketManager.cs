@@ -45,6 +45,32 @@ public class AddBasketManager : GameManager
         StartCoroutine(PrepareWithDelay(delay));
     }
 
+    protected override void VoiceCurrentRound()
+    {
+        StartCoroutine(VoiceFirstNumberWithDelay(CountableNumber.Item1 - 1));
+    }
+
+    IEnumerator VoiceOtherWithDelay(int i, bool IsPlusSign)
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayOtherVoice(i);
+        if (IsPlusSign)
+            StartCoroutine(VoiceNumberWithDelay(CountableNumber.Item2 - 1));
+    }
+    IEnumerator VoiceNumberWithDelay(int i)
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
+        StartCoroutine(VoiceOtherWithDelay(0, false));
+    }
+
+    IEnumerator VoiceFirstNumberWithDelay(int i)
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
+        StartCoroutine(VoiceOtherWithDelay(1, true));
+    }
+
 
     protected override void ChangeGameOverData()
     {  
@@ -78,7 +104,13 @@ public class AddBasketManager : GameManager
 
     protected override void AdditionalActionsAfterDestroy() 
     {
-        GameObject.Find("Basket").GetComponent<BasketBehaviour>().setAppleContained(CountableNumber.Item1);
+        if (!CheckIfGameOver())
+        GameObject.Find("Basket").GetComponent<BasketBehaviour>().setAppleContained(CountableNumber.Item1, false);
+        else
+        {
+            GameObject.Find("Basket").GetComponent<Animator>().SetTrigger("End");
+            GameObject.Find("Pile of Apples").GetComponent<Animator>().SetTrigger("End");
+        }
     }
 
     protected override void ActivateEndScreen() 
@@ -90,6 +122,18 @@ public class AddBasketManager : GameManager
     {
         ButtonController.GetComponent<AddBasketCanvasBehaviour>().ChangeNumber(number);
     }
-    protected override void ShowCorrectAnswer() { }
+    protected override void ShowCorrectAnswer() 
+    {
+        var result = CountableNumber.Item1 + CountableNumber.Item2;
+        StartCoroutine(ShowCorrectAnswerWithDelay(result));       
+    }
+    IEnumerator ShowCorrectAnswerWithDelay(int result)
+    {
+        yield return new WaitForSeconds(1.5f);
+        ChangeResult(result);
+        GameObject.Find("Basket").GetComponent<BasketBehaviour>().setAppleContained(result);
+
+
+    }
 
 }
