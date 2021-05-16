@@ -13,34 +13,36 @@ public class AppleBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Application.platform != RuntimePlatform.Android)
+        if (!MainGameData.PressedButton)
         {
-            if (Input.GetMouseButton(0))
+            if (Application.platform != RuntimePlatform.Android)
             {
-                var inp = Input.mousePosition;
-                inp.z = GameObject.Find("Background").transform.position.z;
-                var pos = Camera.main.ScreenToWorldPoint(inp);
-                transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
+                if (Input.GetMouseButton(0))
+                {
+                    var inp = Input.mousePosition;
+                    inp.z = GameObject.Find("Background").transform.position.z;
+                    var pos = Camera.main.ScreenToWorldPoint(inp);
+                    transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
+                }
+                else
+                {
+                    GameObject.Find("Basket").GetComponent<BasketBehaviour>().AddApple();
+                    Destroy(gameObject, 0.1f);
+                }
             }
             else
             {
-                GameObject.Find("Basket").GetComponent<BasketBehaviour>().AddApple();
-                Destroy(gameObject, 0.1f);
-            }
-        }
-        else
-        {
-            if (Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                var pos = Camera.main.ScreenToWorldPoint(touch.position);
-                transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
-            }
-            else
-            {
-                GameObject.Find("Basket").GetComponent<BasketBehaviour>().AddApple();
-                Destroy(gameObject, 0.1f);
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    var pos = Camera.main.ScreenToWorldPoint(touch.position);
+                    transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
+                }
+                else
+                {
+                    GameObject.Find("Basket").GetComponent<BasketBehaviour>().AddApple();
+                    Destroy(gameObject, 0.1f);
+                }
             }
         }
     }

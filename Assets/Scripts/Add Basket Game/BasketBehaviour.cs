@@ -55,7 +55,7 @@ public class BasketBehaviour : MonoBehaviour
 
     public void TakeApple()
     {
-        if (appleContained > 0)
+        if (appleContained > 1 && !MainGameData.PressedButton)
         {
             appleContained--;
             var Apple = Instantiate(ApplePrefab, transform.position, Quaternion.identity);

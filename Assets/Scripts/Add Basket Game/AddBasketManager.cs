@@ -47,6 +47,7 @@ public class AddBasketManager : GameManager
 
     protected override void VoiceCurrentRound()
     {
+        MainGameData.PressedButton = true;
         StartCoroutine(VoiceFirstNumberWithDelay(CountableNumber.Item1));
     }
 
