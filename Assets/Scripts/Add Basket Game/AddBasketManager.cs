@@ -127,16 +127,28 @@ public class AddBasketManager : GameManager
     }
     protected override void ShowCorrectAnswer() 
     {
-        var result = CountableNumber.Item1 + CountableNumber.Item2;
-        StartCoroutine(ShowCorrectAnswerWithDelay(result));       
+        var result = Utils.DoMyMath(CountableNumber.Item1, CountableNumber.Item2, CountableNumber.Item3);
+        StartCoroutine(ShowCorrectAnswerWithDelay(result));
+        StartCoroutine(ReadCorrectAnswerWithDelay());
     }
     IEnumerator ShowCorrectAnswerWithDelay(int result)
     {
         yield return new WaitForSeconds(1.5f);
         ChangeResult(result);
-        GameObject.Find("Basket").GetComponent<BasketBehaviour>().setAppleContained(result);
-
-
+        GameObject.Find("Basket").GetComponent<BasketBehaviour>().setAppleContained(result, false);
     }
+
+    IEnumerator ReadCorrectAnswerWithDelay()
+    {
+        VoiceCurrentRound();
+        yield return new WaitForSeconds(1.5f*5);
+        VoiceResult();        
+    }
+    void VoiceResult()
+    {
+        var result = Utils.DoMyMath(CountableNumber.Item1, CountableNumber.Item2, CountableNumber.Item3);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(result - 1);
+    }
+
 
 }
