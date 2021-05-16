@@ -9,9 +9,11 @@ public class AddBasketCanvasBehaviour : CanvasBehaviour
     public GameObject First;
     public GameObject Second;
     public GameObject PlusSign;
+    public GameObject MinusSign;
     public GameObject EqualSign;
     public GameObject Result;
     GameObject[] Buttons;
+    GameObject[] Signs;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,9 @@ public class AddBasketCanvasBehaviour : CanvasBehaviour
         DeactivateFireworks();
         DeactivateFireworks();
         AddAudioSourcesToArray();
-        Buttons = new GameObject[] { First, Second, PlusSign, EqualSign, Result };
+        Buttons = new GameObject[] { First, Second, EqualSign, Result };
+        Signs = new GameObject[] { PlusSign, MinusSign };
+
     }
 
     // Update is called once per frame
@@ -46,6 +50,10 @@ public class AddBasketCanvasBehaviour : CanvasBehaviour
     {
         for (int i = 0; i < Buttons.Length - 1; i++)
             Buttons[i].SetActive(true);
+        if (AddBasketData.CurrentRoundSettings.Item3)
+            Signs[0].SetActive(true);
+        else
+            Signs[1].SetActive(true);
     }
 
     public void ChangeNumber(int number)
@@ -86,6 +94,14 @@ public class AddBasketCanvasBehaviour : CanvasBehaviour
             {
                 button.GetComponent<Animator>().SetTrigger("End");
                 StartCoroutine(DeactivateButtonWithDelay(button));
+            }
+            foreach (GameObject button in Signs)
+            {
+                if (button.activeSelf)
+                {
+                    button.GetComponent<Animator>().SetTrigger("End");
+                    StartCoroutine(DeactivateButtonWithDelay(button));
+                }
             }
         }
     }

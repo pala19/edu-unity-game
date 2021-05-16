@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AddBasketManager : GameManager
 {
-    private Tuple<int, int> CountableNumber;
+    private Tuple<int, int, bool> CountableNumber;
     //public GameObject TutorialCountable1;
    // public GameObject TutorialCountable2;
    // public GameObject SkipTutorialBtn; later
@@ -27,7 +27,7 @@ public class AddBasketManager : GameManager
     public void CheckResultAndPrepareRound()
     {
         MainGameData.PressedButton = true;
-        int result = CountableNumber.Item1 + CountableNumber.Item2;
+        int result = Utils.DoMyMath(CountableNumber.Item1, CountableNumber.Item2, CountableNumber.Item3);
         var delay = 1;
         if (result == GameObject.Find("Basket").GetComponent<BasketBehaviour>().getAppleContained())
         {
@@ -47,28 +47,31 @@ public class AddBasketManager : GameManager
 
     protected override void VoiceCurrentRound()
     {
-        StartCoroutine(VoiceFirstNumberWithDelay(CountableNumber.Item1 - 1));
+        StartCoroutine(VoiceFirstNumberWithDelay(CountableNumber.Item1));
     }
 
-    IEnumerator VoiceOtherWithDelay(int i, bool IsPlusSign)
+    IEnumerator VoiceOtherWithDelay(int i, bool IsSign)
     {
         yield return new WaitForSeconds(1.5f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayOtherVoice(i);
-        if (IsPlusSign)
-            StartCoroutine(VoiceNumberWithDelay(CountableNumber.Item2 - 1));
+        if (IsSign)
+            StartCoroutine(VoiceNumberWithDelay(CountableNumber.Item2));
     }
     IEnumerator VoiceNumberWithDelay(int i)
     {
         yield return new WaitForSeconds(1.5f);
-        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i - 1);
         StartCoroutine(VoiceOtherWithDelay(0, false));
     }
 
     IEnumerator VoiceFirstNumberWithDelay(int i)
     {
         yield return new WaitForSeconds(2f);
-        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
-        StartCoroutine(VoiceOtherWithDelay(1, true));
+        GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i - 1);
+        if (CountableNumber.Item3)
+            StartCoroutine(VoiceOtherWithDelay(1, true));
+        else
+            StartCoroutine(VoiceOtherWithDelay(2, true));
     }
 
 

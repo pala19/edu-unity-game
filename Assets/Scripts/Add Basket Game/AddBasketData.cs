@@ -5,22 +5,30 @@ using UnityEngine;
 
 public static class AddBasketData
 {
-    private static readonly int[,] First = { // TO DO: change the numbers
+    private static readonly int[,] First = {
         { 1, 1, 2, 1, 3, 1, 3, 2, 2 },
-        { 2, 3, 4, 1, 1, 2, 3, 4, 5 },
-        { 3, 4, 5, 6, 7, 8, 1, 2, 2 },
-        { 1, 3, 5, 6, 5, 3, 1, 2, 3 },
-        { 1, 2, 3, 4, 5, 6, 7, 8, 2 },
-        { 2, 3, 4, 5, 6, 7, 8, 1, 1 }
+        { 9, 3, 7, 5, 6, 2, 6, 4, 8 },
+        { 3, 4, 5, 6, 7, 8, 1, 8, 2 },
+        { 9, 3, 5, 6, 5, 3, 8, 1, 3 },
+        { 2, 5, 9, 4, 5, 6, 7, 8, 2 },
+        { 2, 3, 4, 5, 6, 7, 8, 1, 9 }
     };
     private static readonly int[,] Second = {
         { 1, 2, 2, 3, 1, 3, 1, 3, 2 },
-        { 1, 3, 4, 2, 1, 2, 3, 1, 2 },
+        { 2, 3, 4, 2, 1, 2, 3, 1, 2 },
         { 1, 3, 3, 2, 1, 1, 5, 4, 3 },
         { 8, 6, 2, 3, 4, 2, 6, 4, 2 },
         { 1, 2, 3, 4, 3, 2, 1, 1, 2 },
-        { 1, 1, 1, 1, 1, 1, 1, 1, 1 }
+        { 1, 1, 1, 1, 1, 1, 1, 1, 8 }
 
+    };
+    private static bool[,] IsPlus = { 
+        {true, true, true, true, true, true, true, true, true},
+        {false, true, false, true, false, true, false, true, false},
+        {true, false, true, false, true, false, true, false, true},
+        {false, true, false, true, false, true, false, true, false},
+        {false, true, false, true, false, true, false, true, false},
+        {false, true, false, true, false, true, false, true, false}
     };
     private static bool[] FinishedRounds = { false, false, false, false, false, false };
     private static int[] SuccessRate = { 0, 0, 0, 0, 0, 0 };
@@ -64,22 +72,22 @@ public static class AddBasketData
 
     }
 
-    public static Tuple<int, int> CurrentRoundSettings
+    public static Tuple<int, int, bool> CurrentRoundSettings
     {
         get
         {
             if (CurrentRound < 9)
             {
-                return Tuple.Create(First[CurrentGame, PermutatedRound[CurrentRound]], Second[CurrentGame, PermutatedRound[CurrentRound]]);
+                return Tuple.Create(First[CurrentGame, PermutatedRound[CurrentRound]], Second[CurrentGame, PermutatedRound[CurrentRound]], IsPlus[CurrentGame, PermutatedRound[CurrentRound]]);
             }
             else
             {
-                return Tuple.Create(-1, -1);
+                return Tuple.Create(-1, -1, false);
             }
 
         }
     }
-    public static Tuple<int, int> NextRoundSettings
+    public static Tuple<int, int, bool> NextRoundSettings
     {
         get
         {
@@ -89,11 +97,11 @@ public static class AddBasketData
                 {
                     PermutatedRound = Utils.GenerateRandomPermutation(First.GetUpperBound(1));
                 }
-                return Tuple.Create(First[CurrentGame, PermutatedRound[CurrentRound + 1]], Second[CurrentGame, PermutatedRound[CurrentRound + 1]]);
+                return Tuple.Create(First[CurrentGame, PermutatedRound[CurrentRound + 1]], Second[CurrentGame, PermutatedRound[CurrentRound + 1]], IsPlus[CurrentGame, PermutatedRound[CurrentRound+1]]);
             }
             else
             {
-                return Tuple.Create(-1, -1);
+                return Tuple.Create(-1, -1, false);
             }
         }
     }

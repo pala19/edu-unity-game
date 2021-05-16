@@ -35,7 +35,7 @@ public class AddGameManager : GameManager
     public void CheckResultAndPrepareRound()
     {
         MainGameData.PressedButton = true;
-        int result = CountableNumber.Item1 + CountableNumber.Item2;
+        int result = Utils.DoMyMath(CountableNumber.Item1,CountableNumber.Item2, true);
         var delay = 1;
         if (result == SelectedCountables)
         {

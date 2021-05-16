@@ -20,5 +20,10 @@ public class Utils
         return new System.Random(System.Guid.NewGuid().GetHashCode());
     }
 
+    public static int DoMyMath(int first, int second, bool IsAdd)
+    {
+        return IsAdd ? first + second : first - second;
+    }
+
 
 }
