@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
         ActivateEndScreen(); 
         DestroyCountablesAfterRound();
         ChangeGameOverData();
+        SetLastGame();
 
     }
 
@@ -183,5 +184,7 @@ public class GameManager : MonoBehaviour
         DeleteTutorial();
         PrepareForNextRound();
     }
+
+    protected virtual void SetLastGame() {}
 
 }

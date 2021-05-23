@@ -149,5 +149,10 @@ public class AddBasketManager : GameManager
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(result - 1);
     }
 
+    protected override void SetLastGame()
+    {
+        MainGameData.LastFinishedGame = 3;
+    }
+
 
 }

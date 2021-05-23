@@ -159,4 +159,9 @@ public class SubGameManager : GameManager
     {
         ButtonController.GetComponent<SubCanvasBehaviour>().ActivateEndScreen();
     }
+
+    protected override void SetLastGame()
+    {
+        MainGameData.LastFinishedGame = 2;
+    }
 }

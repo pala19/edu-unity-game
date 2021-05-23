@@ -17,10 +17,15 @@ public class ScrollerController : MonoBehaviour
      void Start()
     {
         distance = new float[btns.Length];
-        for (int i = 0; i < btns.Length; i++)
+        if (gameObject.name != "MenuScroller")
         {
-            AssessIfUsed(gameObject.name, i);
+            for (int i = 0; i < btns.Length; i++)
+            {
+                AssessIfUsed(gameObject.name, i);
+            }
         }
+        else
+            FocusLevel = MainGameData.LastFinishedGame;
         btnDistance = 400;
         LerpToBtn(FocusLevel);
     }
@@ -69,6 +74,11 @@ public class ScrollerController : MonoBehaviour
         else if (name == "SubScroller")
         {
             if (SubGameData.IsActive(i))
+                FocusLevel = i;
+        }
+        else if (name == "BasketScroller")
+        {
+            if (AddBasketData.IsActive(i))
                 FocusLevel = i;
         }
         else

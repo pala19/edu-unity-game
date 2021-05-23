@@ -7,6 +7,7 @@ public static class MainGameData
 {
     private static SystemLanguage gameLanguage = changeLanguage = Application.systemLanguage;
     private static bool ButtonPressedFlag = true;
+    private static int lastGame = 0;
 
     public static SystemLanguage changeLanguage
     {
@@ -32,6 +33,17 @@ public static class MainGameData
         set
         {
             ButtonPressedFlag = value;
+        }
+    }
+    public static int LastFinishedGame
+    {
+        get
+        {
+            return lastGame;
+        }
+        set
+        {
+            lastGame = value;
         }
     }
 }

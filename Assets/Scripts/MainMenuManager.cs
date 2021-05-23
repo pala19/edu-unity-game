@@ -8,15 +8,17 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public GameObject Scroller1, Scroller2, Scroller3;
-    public GameObject AddGameBtn, SubGameBtn;
+    public GameObject Scroller1, Scroller2, Scroller3, Scroller4;
+    public GameObject AddGameBtn, SubGameBtn, BasketGameBtn;
     public GameObject CBtn1, CBtn2, CBtn3, CBtn4, CBtn5, CBtn6;
     public GameObject ABtn1, ABtn2, ABtn3, ABtn4, ABtn5, ABtn6;
     public GameObject SBtn1, SBtn2, SBtn3, SBtn4, SBtn5, SBtn6;
+    public GameObject BBtn1, BBtn2, BBtn3, BBtn4, BBtn5, BBtn6;
     public Material Disabled;
     private GameObject[] CountGameBtns;
     private GameObject[] AddGameBtns;
     private GameObject[] SubGameBtns;
+    private GameObject[] BasketGameBtns;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +32,16 @@ public class MainMenuManager : MonoBehaviour
             SubGameBtn.transform.GetChild(1).gameObject.SetActive(false);
             SubGameBtn.GetComponent<SVGImage>().material = Disabled;
         }
+        if (!AddBasketData.IsActive(0))
+        {
+            BasketGameBtn.transform.GetChild(1).gameObject.SetActive(false);
+            BasketGameBtn.GetComponent<SVGImage>().material = Disabled;
+        }
 
         CountGameBtns = new GameObject[] { CBtn1, CBtn2, CBtn3, CBtn4, CBtn5, CBtn6 };
         AddGameBtns = new GameObject[] { ABtn1, ABtn2, ABtn3, ABtn4, ABtn5, ABtn6 };
         SubGameBtns = new GameObject[] { SBtn1, SBtn2, SBtn3, SBtn4, SBtn5, SBtn6 };
+        BasketGameBtns = new GameObject[] { BBtn1, BBtn2, BBtn3, BBtn4, BBtn5, BBtn6 };
 
         for (int i=0; i<CountGameBtns.Length; i++)
         {
@@ -55,6 +63,13 @@ public class MainMenuManager : MonoBehaviour
                 SubGameBtns[i].transform.GetChild(0).gameObject.SetActive(false);
             else
                 SubGameBtns[i].GetComponent<SVGImage>().material = Disabled;
+        }
+       for (int i = 0; i < BasketGameBtns.Length; i++)
+        {
+            if (AddBasketData.IsActive(i))
+                BasketGameBtns[i].transform.GetChild(0).gameObject.SetActive(false);
+            else
+                BasketGameBtns[i].GetComponent<SVGImage>().material = Disabled;
         }
         MainGameData.PressedButton = true;
     }
@@ -79,6 +94,11 @@ public class MainMenuManager : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject.transform.GetChild(0).gameObject.activeSelf)
             Scroller3.SetActive(!Scroller3.activeSelf);
     }
+    public void FourthGameOnClick()
+    {
+        if (EventSystem.current.currentSelectedGameObject.transform.GetChild(0).gameObject.activeSelf)
+            Scroller4.SetActive(!Scroller3.activeSelf);
+    }
     public void PlayCountGameOnClick(int Round)
     {
         if (!EventSystem.current.currentSelectedGameObject.transform.GetChild(0).gameObject.activeSelf)
@@ -101,6 +121,15 @@ public class MainMenuManager : MonoBehaviour
         {
             SubGameData.SetCurrentGame = Round;
             SceneManager.LoadScene(3);
+        }
+    }
+
+    public void PlayBasketGameOnClick(int Round)
+    {
+        if (!EventSystem.current.currentSelectedGameObject.transform.GetChild(0).gameObject.activeSelf)
+        {
+            AddBasketData.SetCurrentGame = Round;
+            SceneManager.LoadScene(4);
         }
     }
     public void Exit()

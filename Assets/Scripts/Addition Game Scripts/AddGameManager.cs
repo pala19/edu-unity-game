@@ -153,4 +153,9 @@ public class AddGameManager : GameManager
     {
         ButtonController.GetComponent<AddCanvasBehaviour>().ActivateEndScreen();
     }
+
+    protected override void SetLastGame()
+    {
+        MainGameData.LastFinishedGame = 1;
+    }
 }
