@@ -66,7 +66,7 @@ public static class AddBasketData
     {
         if (i == 0)
         {
-            return CountGameData.IsCompleted;
+            return SubGameData.IsCompleted;
         }
         return FinishedRounds[i - 1];
 

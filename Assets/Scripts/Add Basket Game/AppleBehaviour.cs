@@ -35,8 +35,12 @@ public class AppleBehaviour : MonoBehaviour
                 if (Input.touchCount > 0)
                 {
                     Touch touch = Input.GetTouch(0);
-                    var pos = Camera.main.ScreenToWorldPoint(touch.position);
-                    transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
+
+                    if ((touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved))
+                    {
+                        var pos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 90));
+                        transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
+                    }
                 }
                 else
                 {
