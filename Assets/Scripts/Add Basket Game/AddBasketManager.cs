@@ -6,16 +6,14 @@ using UnityEngine;
 public class AddBasketManager : GameManager
 {
     private Tuple<int, int, bool> CountableNumber;
-    //public GameObject TutorialCountable1;
-   // public GameObject TutorialCountable2;
-   // public GameObject SkipTutorialBtn; later
+    public GameObject TutorialApple;
+    public GameObject SkipTutorialBtn;
     private int GamesWon;
     // Start is called before the first frame update
     void Start()
     {
         GamesWon = 0;
-        PrepareForNextRound();
-       // TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, SkipTutorialBtn };
+        TutorialComponents = new GameObject[] { Tap, TutorialApple, SkipTutorialBtn };
     }
 
     // Update is called once per frame
