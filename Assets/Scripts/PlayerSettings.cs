@@ -40,7 +40,6 @@ public class PlayerSettings : MonoBehaviour
                 MainGameData.changeLanguage = SystemLanguage.Polish;
             else
                 MainGameData.changeLanguage = SystemLanguage.English;
-        }       
-
+        }
     }
 }
