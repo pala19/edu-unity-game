@@ -52,7 +52,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0894424
+    _testDuration: 0.1302578
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FifthBasketGameShouldNotLoadTest
@@ -63,7 +63,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0833535
+    _testDuration: 0.1087403
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FifthCountingGameShouldNotLoadTest
@@ -74,7 +74,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.1248145
+    _testDuration: 0.1413656
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FifthSubGameShouldNotLoadTest
@@ -85,7 +85,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0890917
+    _testDuration: 0.0956927
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FirstAdditionGameShouldNotLoadTest
@@ -96,7 +96,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0803409
+    _testDuration: 0.0799776
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FirstBasketGameShouldNotLoadTest
@@ -107,7 +107,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0859773
+    _testDuration: 0.0894812
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FirstCountingGameShouldLoadTest
@@ -118,7 +118,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.367524
+    _testDuration: 0.4516626
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FirstSubGameShouldNotLoadTest
@@ -129,7 +129,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.3166187
+    _testDuration: 0.3158056
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FourthAdditionGameShouldNotLoadTest
@@ -140,7 +140,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0855379
+    _testDuration: 0.0808351
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FourthBasketGameShouldNotLoadTest
@@ -151,7 +151,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.081832
+    _testDuration: 0.0803981
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FourthCountingGameShouldNotLoadTest
@@ -162,7 +162,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.1214998
+    _testDuration: 0.1123502
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.FourthSubGameShouldNotLoadTest
@@ -173,7 +173,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.1069414
+    _testDuration: 0.0823047
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.SecondAdditionGameShouldNotLoadTest
@@ -184,7 +184,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0800826
+    _testDuration: 0.0825063
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.SecondBasketGameShouldNotLoadTest
@@ -195,7 +195,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0855703
+    _testDuration: 0.0794764
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.SecondCountingGameShouldNotLoadTest
@@ -206,7 +206,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.1196613
+    _testDuration: 0.1106412
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.SecondSubGameShouldNotLoadTest
@@ -217,7 +217,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0852739
+    _testDuration: 0.0824856
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.SixthAdditionGameShouldNotLoadTest
@@ -228,7 +228,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0830794
+    _testDuration: 0.0814844
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.SixthBasketGameShouldNotLoadTest
@@ -239,7 +239,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0854542
+    _testDuration: 0.0784948
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.SixthCountingGameShouldNotLoadTest
@@ -250,7 +250,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.1250599
+    _testDuration: 0.1125352
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.SixthSubGameShouldNotLoadTest
@@ -261,7 +261,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0887905
+    _testDuration: 0.086559
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.ThirdAdditionGameShouldNotLoadTest
@@ -272,7 +272,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0804806
+    _testDuration: 0.0829652
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.ThirdBasketGameShouldNotLoadTest
@@ -283,7 +283,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0854422
+    _testDuration: 0.0795031
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.ThirdCountingGameShouldNotLoadTest
@@ -294,7 +294,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.1170195
+    _testDuration: 0.11134
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: MainMenuAltUnityTest.ThirdSubGameShouldNotLoadTest
@@ -305,7 +305,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.0877718
+    _testDuration: 0.0835769
     path: Assets/Tests/Editor/MainMenuAltUnityTest.cs
   - _selected: 1
     _testName: D:/Paulina/Praca dyplomowa/Game/edu-unity-game/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll

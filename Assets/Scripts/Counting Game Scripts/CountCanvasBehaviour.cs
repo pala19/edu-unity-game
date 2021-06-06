@@ -29,9 +29,7 @@ public class CountCanvasBehaviour : CanvasBehaviour
             number = 7;
         for (int i=0; i< 3; i++)
         {
-            string name = "Button" + number + "Prefab";
-            var button = this.GetType().GetField(name).GetValue(this) as GameObject;
-            ActiveButtons[i] = Instantiate(button, gameObject.transform.position, Quaternion.identity);
+            ActiveButtons[i] = Instantiate(ButtonPrefabs[number-1], gameObject.transform.position, Quaternion.identity);
             ActiveButtons[i].transform.SetParent(gameObject.transform);
             number++;
         }

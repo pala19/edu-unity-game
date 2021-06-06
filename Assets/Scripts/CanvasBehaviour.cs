@@ -5,15 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CanvasBehaviour : MonoBehaviour
 {
-    public GameObject Button1Prefab;
-    public GameObject Button2Prefab;
-    public GameObject Button3Prefab;
-    public GameObject Button4Prefab;
-    public GameObject Button5Prefab;
-    public GameObject Button6Prefab;
-    public GameObject Button7Prefab;
-    public GameObject Button8Prefab;
-    public GameObject Button9Prefab;
+    public GameObject[] ButtonPrefabs;
     public GameObject EndScreen;
     public GameObject FireworksEffect1;
     public GameObject FireworksEffect2;

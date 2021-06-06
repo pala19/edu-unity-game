@@ -32,12 +32,8 @@ public class AddCanvasBehaviour : CanvasBehaviour
         ActivateButtons();
         Result.SetActive(false);
         var current = AddGameData.CurrentRoundSettings;
-        string name1 = "Button" + current.Item1 + "Prefab";
-        string name2 = "Button" + current.Item2 + "Prefab";
-        var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
-        var button2 = this.GetType().GetField(name2).GetValue(this) as GameObject;
-        First.GetComponent<SVGImage>().sprite = button1.GetComponent<SVGImage>().sprite;
-        Second.GetComponent<SVGImage>().sprite = button2.GetComponent<SVGImage>().sprite;
+        First.GetComponent<SVGImage>().sprite = ButtonPrefabs[current.Item1-1].GetComponent<SVGImage>().sprite;
+        Second.GetComponent<SVGImage>().sprite = ButtonPrefabs[current.Item2-1].GetComponent<SVGImage>().sprite;
     }
 
     public void ChangeNumber(int number)
@@ -45,9 +41,7 @@ public class AddCanvasBehaviour : CanvasBehaviour
         if (number != 0)
         {
             Result.SetActive(true);
-            string name1 = "Button" + number + "Prefab";
-            var button1 = this.GetType().GetField(name1).GetValue(this) as GameObject;
-            Result.GetComponent<SVGImage>().sprite = button1.GetComponent<SVGImage>().sprite;
+            Result.GetComponent<SVGImage>().sprite = ButtonPrefabs[number-1].GetComponent<SVGImage>().sprite;
         }
         else
             Result.SetActive(false);
