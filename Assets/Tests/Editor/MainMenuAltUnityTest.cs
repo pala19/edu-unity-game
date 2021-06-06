@@ -215,4 +215,64 @@ public class MainMenuAltUnityTest
         AltUnityDriver.WaitForCurrentSceneToBe("Main Menu");
     }
 
+    [Test]
+    public void FirstBasketGameShouldNotLoadTest()
+    {
+        AltUnityDriver.LoadScene("Main Menu");
+        AltUnityDriver.FindObject(By.NAME, "BasketGameButton").Tap();
+
+        AltUnityDriver.FindObject(By.NAME, "B1").Tap();
+
+        AltUnityDriver.WaitForCurrentSceneToBe("Main Menu");
+    }
+    [Test]
+    public void SecondBasketGameShouldNotLoadTest()
+    {
+        AltUnityDriver.LoadScene("Main Menu");
+        AltUnityDriver.FindObject(By.NAME, "BasketGameButton").Tap();
+
+        AltUnityDriver.FindObject(By.NAME, "B2").Tap();
+
+        AltUnityDriver.WaitForCurrentSceneToBe("Main Menu");
+    }
+    [Test]
+    public void ThirdBasketGameShouldNotLoadTest()
+    {
+        AltUnityDriver.LoadScene("Main Menu");
+        AltUnityDriver.FindObject(By.NAME, "BasketGameButton").Tap();
+
+        AltUnityDriver.FindObject(By.NAME, "B3").Tap();
+
+        AltUnityDriver.WaitForCurrentSceneToBe("Main Menu");
+    }
+    [Test]
+    public void FourthBasketGameShouldNotLoadTest()
+    {
+        AltUnityDriver.LoadScene("Main Menu");
+        AltUnityDriver.FindObject(By.NAME, "BasketGameButton").Tap();
+
+        AltUnityDriver.FindObject(By.NAME, "B4").Tap();
+
+        AltUnityDriver.WaitForCurrentSceneToBe("Main Menu");
+    }
+    [Test]
+    public void FifthBasketGameShouldNotLoadTest()
+    {
+        AltUnityDriver.LoadScene("Main Menu");
+        AltUnityDriver.FindObject(By.NAME, "BasketGameButton").Tap();
+
+        AltUnityDriver.FindObject(By.NAME, "B5").Tap();
+
+        AltUnityDriver.WaitForCurrentSceneToBe("Main Menu");
+    }
+    [Test]
+    public void SixthBasketGameShouldNotLoadTest()
+    {
+        AltUnityDriver.LoadScene("Main Menu");
+        AltUnityDriver.FindObject(By.NAME, "BasketGameButton").Tap();
+
+        AltUnityDriver.FindObject(By.NAME, "B6").Tap();
+
+        AltUnityDriver.WaitForCurrentSceneToBe("Main Menu");
+    }
 }

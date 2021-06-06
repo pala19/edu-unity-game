@@ -5,18 +5,16 @@ using UnityEngine;
 
 public static class MainGameData
 {
-    private static SystemLanguage gameLanguage = changeLanguage = Application.systemLanguage;
+    private static SystemLanguage gameLanguage;
     private static bool ButtonPressedFlag = true;
     private static int lastGame = 0;
+    private static bool FirstLaunched = true;
 
     public static SystemLanguage changeLanguage
     {
         set
         {
-            if (value == SystemLanguage.English || value == SystemLanguage.Polish)
-                gameLanguage = value;
-            else
-                gameLanguage = SystemLanguage.English;
+            gameLanguage = value;
         }
         get
         {
@@ -44,6 +42,18 @@ public static class MainGameData
         set
         {
             lastGame = value;
+        }
+    }
+
+    public static bool FirstOpen
+    {
+        get
+        {
+            return FirstLaunched;
+        }
+        set
+        {
+            FirstLaunched = value;
         }
     }
 }

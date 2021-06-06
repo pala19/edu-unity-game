@@ -1,4 +1,6 @@
-﻿public static class CountGameData
+﻿using System;
+
+public static class CountGameData
 {
     private static readonly int[,] Rounds = { 
         { 1, 2, 3, 2, 3, 1, 3, 2, 1 },
@@ -16,6 +18,20 @@
     private static bool Completed = false;
     private static int[] PermutatedRound;
 
+    public static int[] GetSuccessRate
+    {
+        get
+        {
+            return SuccessRate;
+        }
+    }
+
+    public static void SetSuccessRate(int element, int value)
+    {
+        SuccessRate[element] = value;
+        if (value == 9)
+            FinishedRounds[element] = true;
+    }
 
     public static int SetCurrentGame
     {

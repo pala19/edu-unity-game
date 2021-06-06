@@ -128,7 +128,6 @@ public class CanvasBehaviour : MonoBehaviour
     IEnumerator PlaySoundWithDelay()
     {
         yield return new WaitForSeconds(1.0f);
-        print(PlayedNumber);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(PlayedNumber - 1);
     }
     protected virtual void PlaySuccessMusic()

@@ -141,7 +141,6 @@ public class GameManager : MonoBehaviour
         DestroyCountablesAfterRound();
         ChangeGameOverData();
         SetLastGame();
-
     }
 
     protected virtual void ShowCorrectAnswer()

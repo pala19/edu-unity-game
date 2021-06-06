@@ -26,6 +26,21 @@ public static class AddGameData
     private static bool Completed = false;
     private static int[] PermutatedRound;
 
+    public static int[] GetSuccessRate
+    {
+        get
+        {
+            return SuccessRate;
+        }
+    }
+
+    public static void SetSuccessRate(int element, int value)
+    {
+        SuccessRate[element] = value;
+        if (value == 9)
+            FinishedRounds[element] = true;
+    }
+
     public static int SetCurrentGame
     {
         set
