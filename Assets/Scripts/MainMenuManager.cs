@@ -16,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject ABtn1, ABtn2, ABtn3, ABtn4, ABtn5, ABtn6;
     public GameObject SBtn1, SBtn2, SBtn3, SBtn4, SBtn5, SBtn6;
     public GameObject BBtn1, BBtn2, BBtn3, BBtn4, BBtn5, BBtn6;
+    public GameObject GamePanel, OptionsPanel;
     public Material Disabled;
     private GameObject[] CountGameBtns;
     private GameObject[] AddGameBtns;
@@ -140,6 +141,13 @@ public class MainMenuManager : MonoBehaviour
             SceneManager.LoadScene(4);
         }
     }
+
+    public void SwitchSettings()
+    {
+        GamePanel.SetActive(!GamePanel.activeSelf);
+        OptionsPanel.SetActive(!OptionsPanel.activeSelf);
+    }
+
     public void Exit()
     {
         EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);
