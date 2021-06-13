@@ -3,6 +3,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class GameManager : MonoBehaviour
 {
@@ -141,6 +143,7 @@ public class GameManager : MonoBehaviour
         DestroyCountablesAfterRound();
         ChangeGameOverData();
         SetLastGame();
+        SaveGame();
     }
 
     protected virtual void ShowCorrectAnswer()
@@ -186,4 +189,36 @@ public class GameManager : MonoBehaviour
 
     protected virtual void SetLastGame() {}
 
+    private void SaveGame()
+    {
+        Save save = CreateSaveGameObject();
+
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        bf.Serialize(file, save);
+        file.Close();
+
+        Debug.Log("Game Saved");
+    }
+
+    private Save CreateSaveGameObject()
+    {
+        Save save = new Save();
+
+        var CountGameSuccessRate = CountGameData.GetSuccessRate;
+        var AddGameSuccessRate = AddGameData.GetSuccessRate;
+        var SubGameSuccessRate = SubGameData.GetSuccessRate;
+        var BasketGameSuccessRate = AddBasketData.GetSuccessRate;
+
+        foreach (var elem in CountGameSuccessRate)
+            save.CountingGameClearedLevels.Add(elem);
+        foreach (var elem in AddGameSuccessRate)
+            save.AddGameClearedLevels.Add(elem);
+        foreach (var elem in SubGameSuccessRate)
+            save.SubGameClearedLevels.Add(elem);
+        foreach (var elem in BasketGameSuccessRate)
+            save.BasketGameClearedLevels.Add(elem);
+
+        return save;
+    }
 }

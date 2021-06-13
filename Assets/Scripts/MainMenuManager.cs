@@ -29,10 +29,7 @@ public class MainMenuManager : MonoBehaviour
             LoadGame();
             MainGameData.FirstOpen = false;
         }
-        else
-        {
-            SaveGame();
-        }
+
         if (!AddGameData.IsActive(0))
         {
             AddGameBtn.transform.GetChild(1).gameObject.SetActive(false);
@@ -146,39 +143,6 @@ public class MainMenuManager : MonoBehaviour
     public void Exit()
     {
         EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.SetActive(false);
-    }
-
-    private Save CreateSaveGameObject()
-    {
-        Save save = new Save();
-
-        var CountGameSuccessRate = CountGameData.GetSuccessRate;
-        var AddGameSuccessRate = AddGameData.GetSuccessRate;
-        var SubGameSuccessRate = SubGameData.GetSuccessRate;
-        var BasketGameSuccessRate = AddBasketData.GetSuccessRate;
-
-        foreach (var elem in CountGameSuccessRate)
-            save.CountingGameClearedLevels.Add(elem);
-        foreach (var elem in AddGameSuccessRate)
-            save.AddGameClearedLevels.Add(elem);
-        foreach (var elem in SubGameSuccessRate)
-            save.SubGameClearedLevels.Add(elem);
-        foreach (var elem in BasketGameSuccessRate)
-            save.BasketGameClearedLevels.Add(elem);
-
-        return save;
-    }
-
-    public void SaveGame()
-    {
-        Save save = CreateSaveGameObject();
-
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
-        bf.Serialize(file, save);
-        file.Close();
-
-        Debug.Log("Game Saved");
     }
 
     public void LoadGame()
