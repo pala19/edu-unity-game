@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Audio;
+
 
 public class PlayerSettings : MonoBehaviour
 {
+    public AudioMixer audioMix;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class PlayerSettings : MonoBehaviour
         {
             if (Application.systemLanguage == SystemLanguage.Polish)
             {
-                MainGameData.changeLanguage = SystemLanguage.Polish;;
+                MainGameData.changeLanguage = SystemLanguage.Polish;
             }
             else
             {
@@ -41,5 +41,30 @@ public class PlayerSettings : MonoBehaviour
             else
                 MainGameData.changeLanguage = SystemLanguage.English;
         }
+        float musicVol;
+        if (!PlayerPrefs.HasKey("musicVol"))
+        {
+            audioMix.GetFloat("musicVol", out musicVol);
+            PlayerPrefs.SetFloat("musicVol", musicVol);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            musicVol = PlayerPrefs.GetFloat("musicVol");
+            audioMix.SetFloat("musicVol", musicVol);
+        }
+        float sfxVol;
+        if (!PlayerPrefs.HasKey("sfxVol"))
+        {
+            audioMix.GetFloat("sfxVol", out sfxVol);
+            PlayerPrefs.SetFloat("sfxVol", sfxVol);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            sfxVol = PlayerPrefs.GetFloat("sfxVol");
+            audioMix.SetFloat("sfxVol", sfxVol);
+        }
+
     }
 }
