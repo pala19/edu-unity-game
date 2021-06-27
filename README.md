@@ -1,8 +1,6 @@
 # edu-unity-game
 
-Latest release:
-http://gitbhub.com/pala-19/edu-unity-game/releases/latest/
-
+Latest release <a href='http://gitbhub.com/pala-19/edu-unity-game/releases/latest'> here </a>
 
 
 How to install on Android:
