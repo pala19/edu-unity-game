@@ -1,16 +1,17 @@
 # edu-unity-game
 
+Latest release:
+http://gitbhub.com/pala-19/edu-unity-game/releases/latest/
+
+
+
 How to install on Android:
 
-1. You need to have Unity Editor installed. You can download Unity <a href='https://store.unity.com'> here </a>. Check Android Build Support.
+1. Download latest release and copy it to your phone.
 
-2. Enable USB debugging on your phone. Instructions how to found <a href='https://developer.android.com/studio/debug/dev-options'> here </a>.
+2. Open it in folder on phone you copied it into. If it doesn't install automatically, switch off "allow installation from unknown sources" in Settings and try again.
 
-4. Plug in your phone by USB to your PC and allow USB debugging. 
 
-5. Download git repository and open it in Unity.
-
-6. Open File>Build and run. 
 
 Contributions:
 
