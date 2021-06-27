@@ -1703,6 +1703,16 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 518223226}
+    - target: {fileID: 8454507705313207281, guid: ccbe733a763c88143b9f6c66529e23ef,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454507705313207281, guid: ccbe733a763c88143b9f6c66529e23ef,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8454507705313207283, guid: ccbe733a763c88143b9f6c66529e23ef,
         type: 3}
       propertyPath: ButtonPrefabs.Array.size
