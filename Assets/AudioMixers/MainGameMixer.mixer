@@ -130,6 +130,8 @@ AudioMixerController:
     name: musicLvl
   - guid: a502479b24c40d042a13706cc701fc7e
     name: sfxLvl
+  - guid: 6278097a8d708bf48976bf357ded10d9
+    name: voiceLvl
   m_AudioMixerGroupViews:
   - guids:
     - dccab07f1f6137a47865ff38663c24cf
