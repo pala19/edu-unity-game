@@ -66,9 +66,13 @@ public class CanvasBehaviour : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                Vector3 pos = new Vector3(-Screen.currentResolution.width / 4 + Screen.currentResolution.width / 4 * i, Screen.currentResolution.height / 4, 0);
-                ActiveButtons[i].transform.localPosition = pos;
+                Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3((Screen.currentResolution.width / 4)*(i+1), Screen.currentResolution.height * 7/ 8, GameObject.Find("Background").transform.position.z));
+
+                pos.z = GameObject.Find("Background").transform.position.z;               
+
+                ActiveButtons[i].transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
             }
+
         }
     }
 
