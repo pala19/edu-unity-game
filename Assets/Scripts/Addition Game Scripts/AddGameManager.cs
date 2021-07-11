@@ -12,8 +12,9 @@ public class AddGameManager : GameManager
     private int SelectedCountables;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         GamesWon = 0;
         SelectedCountables = 0;
         TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, SkipTutorialBtn};

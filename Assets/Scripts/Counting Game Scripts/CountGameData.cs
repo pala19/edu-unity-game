@@ -3,7 +3,7 @@
 public static class CountGameData
 {
     private static readonly int[,] Rounds = { 
-        { 1, 2, 3, 2, 3, 1, 3, 2, 1 },
+        { 9, 7, 8, 2, 3, 1, 3, 2, 1 },
         { 4, 5, 6, 4, 5, 4, 6, 5, 4 },
         { 1, 4, 6, 2, 3, 6, 5, 3, 4 },
         { 7, 8, 9, 7, 9, 8, 7, 9, 8 },

@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     protected int CountablesNumber;
 
     // Start is called before the first frame update
-    void Start() {}
+    protected virtual void Start() {
+        PlaceCharacter();
+    }
 
     // Update is called once per frame
     void Update() {}
@@ -43,6 +45,12 @@ public class GameManager : MonoBehaviour
             VoiceCurrentRound();
         }
     }
+    protected void PlaceCharacter()
+    {
+        var pos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.currentResolution.width / 10, Screen.currentResolution.height* 3/4, GameObject.Find("Background").transform.position.z));
+        pos.z = GameObject.Find("Background").transform.position.z;
+        Character.transform.localPosition  = GameObject.Find("Background").transform.InverseTransformPoint(pos);
+    }
 
     IEnumerator MakeCountablesWithDelay()
     {
@@ -59,58 +67,48 @@ public class GameManager : MonoBehaviour
         Countables = new GameObject[CountablesNumber];
         for (int i = 0; i < CountablesNumber; i++)
         {
-            Vector3 pos = new Vector3(0f, 1f, 90f);
-            float height = Screen.currentResolution.height / 4;
+            float height;
             float width;
-            Countables[i] = Instantiate(CountablePrefab, pos, Quaternion.identity);
+            Countables[i] = Instantiate(CountablePrefab, new Vector3(0f, 1f, 0f), Quaternion.identity);
             Countables[i].transform.SetParent(GameObject.Find("Background").transform);
+            Vector3 position;
 
-            if (CountablesNumber > 4 && CountablesNumber < 7)
+            if (CountablesNumber > 4 && CountablesNumber < 7) //5, 6
             {
                 width = Screen.currentResolution.width / 4;
 
                 if (i > 2)
                 {
-                    width = Screen.currentResolution.width / (CountablesNumber - 2);
-                    float pom = i - 3;
-                    Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((pom + 1) * width), -height * 1.6f, 0);
+                   position = Camera.main.ScreenToWorldPoint(new Vector3(width*(i+1 - (CountablesNumber - 2.5f)), Screen.currentResolution.height / (2 + 0.5f), GameObject.Find("Background").transform.position.z));
                 }
                 else
                 {
-                    Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((i + 1) * width), -height / 1.1f, 0);
+                    position = Camera.main.ScreenToWorldPoint(new Vector3(width * (i + 1), Screen.currentResolution.height / 5, GameObject.Find("Background").transform.position.z));
                 }
             }
-            else if (CountablesNumber > 6 && CountablesNumber < 9)
+            else if (CountablesNumber > 6 && CountablesNumber < 10) //7, 8, 9
             {
+                float[] pom = { 4.5f, 5f, 5.5f };
                 width = Screen.currentResolution.width / 5;
                 if (i > 3)
                 {
-                    width = Screen.currentResolution.width / (CountablesNumber - 3);
-                    float pom = i - 4;
-                    Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((pom + 1) * width), -height * 1.6f, 0);
+                    position = Camera.main.ScreenToWorldPoint(new Vector3(width * (i - (CountablesNumber - pom[CountablesNumber%7])), Screen.currentResolution.height / (2 + 0.5f), GameObject.Find("Background").transform.position.z));
+
                 }
                 else
                 {
-                    Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((i + 1) * width), -height / 1.1f, 0);
+                    position = Camera.main.ScreenToWorldPoint(new Vector3(width*(i + 1), Screen.currentResolution.height / 5, GameObject.Find("Background").transform.position.z));
                 }
             }
-            else
+            else //1, 2 , 3, 4
             {
-                if (CountablesNumber > 5)
-                    width = Screen.currentResolution.width / 6;
-                else
-                    width = Screen.currentResolution.width / (CountablesNumber + 1);
-                if (i > 4)
-                {
-                    width = Screen.currentResolution.width / (CountablesNumber - 4);
-                    float pom = i - 5;
-                    Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((pom + 1) * width), -height * 1.6f, 0);
-                }
-                else
-                {
-                    Countables[i].transform.localPosition = new Vector3((-Screen.currentResolution.width / 2) + ((i + 1) * width), -height / 1.1f, 0);
-                }
+                width = Screen.currentResolution.width / (CountablesNumber + 1);
+                position = Camera.main.ScreenToWorldPoint(new Vector3(width * (i + 1), Screen.currentResolution.height / 5, GameObject.Find("Background").transform.position.z));
             }
+
+            position.z = GameObject.Find("Background").transform.position.z;
+            Countables[i].transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(position);
+
             SetCountableId(i);
         }
     }
