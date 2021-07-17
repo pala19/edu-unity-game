@@ -7,50 +7,63 @@ using UnityEngine.UI;
 public class AudioMix : MonoBehaviour
 {
     public AudioMixer audioMix;
+    public GameObject MainMenu;
     public GameObject MusicSlider, SfxSlider, VoiceSlider;
     public Image OnMusic, OffMusic, OnSfx, OffSfx, OnVoice, OffVoice;
     private AudioSource[] audios;
+    private bool MusicMutedByButton = false;
     // Start is called before the first frame update
 
     private void Start()
     {
         audios = GetComponents<AudioSource>();
+        SetSliders();
     }
 
     public void SetMusicLvl(float musicLvl)
     {
         audioMix.SetFloat("musicLvl", Mathf.Log10(musicLvl)*20);
-        if (musicLvl == MusicSlider.GetComponent<Slider>().minValue)
-            MusicSlider.transform.GetChild(3).gameObject.GetComponent<Image>().sprite = OffMusic.sprite;
-        else
-            MusicSlider.transform.GetChild(3).gameObject.GetComponent<Image>().sprite = OnMusic.sprite;
+
+        ChangeSprite(musicLvl, MusicSlider, OnMusic, OffMusic);
+
+        MainMenu.GetComponent<PlayerSettings>().SaveMusicSettings(musicLvl);
     }
 
     public void SetSfxLvl(float sfxLvl)
     {
         audioMix.SetFloat("sfxLvl", Mathf.Log10(sfxLvl) * 20);
-        if (sfxLvl == SfxSlider.GetComponent<Slider>().minValue)
-            SfxSlider.transform.GetChild(3).gameObject.GetComponent<Image>().sprite = OffSfx.sprite;
-        else
-            SfxSlider.transform.GetChild(3).gameObject.GetComponent<Image>().sprite = OnSfx.sprite;
+        ChangeSprite(sfxLvl, SfxSlider, OnSfx, OffSfx);
 
-        audios[0].Play();
+        if (audios != null)
+            audios[0].Play();
+
+        MainMenu.GetComponent<PlayerSettings>().SaveSfxSettings(sfxLvl);
     }
 
     public void SetVoiceLvl(float voiceLvl)
     {
         audioMix.SetFloat("voiceLvl", Mathf.Log10(voiceLvl) * 20);
-        if (voiceLvl == VoiceSlider.GetComponent<Slider>().minValue)
-            VoiceSlider.transform.GetChild(3).gameObject.GetComponent<Image>().sprite = OffVoice.sprite;
-        else
-            VoiceSlider.transform.GetChild(3).gameObject.GetComponent<Image>().sprite = OnVoice.sprite;
 
-        if (MainGameData.changeLanguage == SystemLanguage.Polish)
-            audios[1].Play();
-        else
-            audios[2].Play();
+        ChangeSprite(voiceLvl, VoiceSlider, OnVoice, OffVoice);
+
+        if (audios != null)
+        {
+            if (MainGameData.changeLanguage == SystemLanguage.Polish)
+                audios[1].Play();
+            else
+                audios[2].Play();
+        }
+
+        MainMenu.GetComponent<PlayerSettings>().SaveVoiceSettings(voiceLvl);
     }
 
+    void ChangeSprite(float lvl, GameObject Slider, Image OnSprite, Image OffSprite)
+    {
+        if (lvl == Slider.GetComponent<Slider>().minValue)
+            Slider.transform.GetChild(3).gameObject.GetComponent<Image>().sprite = OffSprite.sprite;
+        else
+            Slider.transform.GetChild(3).gameObject.GetComponent<Image>().sprite = OnSprite.sprite;
+    }
 
     public void OnMusicBtnClick()
     {
@@ -89,5 +102,48 @@ public class AudioMix : MonoBehaviour
 
         SetVoiceLvl(value);
         VoiceSlider.GetComponent<Slider>().value = value;
+    }
+    public void SetSliders()
+    {
+        ChangeAudioEnabled(false);
+
+        float value;
+        if (!PlayerPrefs.HasKey("musicVol"))
+        {
+            value = 0.75f;
+        }
+        else
+        {
+            value = PlayerPrefs.GetFloat("musicVol");
+        }
+        MusicSlider.GetComponent<Slider>().value = value;
+
+        if (!PlayerPrefs.HasKey("sfxVol"))
+        {
+            value = 0.75f;
+        }
+        else
+        {
+            value = PlayerPrefs.GetFloat("sfxVol");
+        }
+        SfxSlider.GetComponent<Slider>().value = value;
+
+        if (!PlayerPrefs.HasKey("voiceVol"))
+        {
+           value = 0.75f;
+        }
+        else
+        {
+            value = PlayerPrefs.GetFloat("voiceVol");
+        }      
+        VoiceSlider.GetComponent<Slider>().value = value;
+
+        ChangeAudioEnabled(true);
+    }
+
+    void ChangeAudioEnabled(bool enabled)
+    {
+        foreach (AudioSource audio in audios)
+            audio.enabled = enabled;
     }
 }

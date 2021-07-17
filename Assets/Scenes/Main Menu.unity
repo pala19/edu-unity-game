@@ -1484,6 +1484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMix: {fileID: 24100000, guid: bf2c3ce0bbb9d0b47b67110e875579c2, type: 2}
+  MainMenu: {fileID: 1101650523}
   MusicSlider: {fileID: 874356679}
   SfxSlider: {fileID: 1624271116}
   VoiceSlider: {fileID: 2079564766}
@@ -1714,7 +1715,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 179272514626968247, guid: bf2c3ce0bbb9d0b47b67110e875579c2,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4da10ba454a15a3499bda85dbadb4d3f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a74e9c4b07dee674581fedf9e3906d2a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5255,7 +5256,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.75
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -6854,6 +6855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMix: {fileID: 24100000, guid: bf2c3ce0bbb9d0b47b67110e875579c2, type: 2}
+  AudioMix: {fileID: 152279351}
 --- !u!1 &1104355203
 GameObject:
   m_ObjectHideFlags: 0
@@ -8784,7 +8786,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.75
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -10937,7 +10939,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.75
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

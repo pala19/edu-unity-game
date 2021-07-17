@@ -347,7 +347,7 @@ MonoBehaviour:
     _buildIndex: 4
   platform: 1
   StandaloneTarget: 5
-  RanInEditor: 0
+  RanInEditor: 1
   RequestSeparator: ;
   RequestEnding: '&'
   ServerPort: 13000
@@ -355,4 +355,4 @@ MonoBehaviour:
   InputVisualizer: 1
   ShowPopUp: 1
   BuildLocationPath: 
-  LatestInspectorVersion: 1.2.0
+  LatestInspectorVersion: 1.3.0

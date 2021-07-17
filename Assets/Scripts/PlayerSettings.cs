@@ -5,9 +5,12 @@ using UnityEngine.Audio;
 public class PlayerSettings : MonoBehaviour
 {
     public AudioMixer audioMix;
+    public GameObject AudioMix;
     // Start is called before the first frame update
     void Start()
     {
+        audioMix.GetFloat("musicVol", out float musicVol);
+        print(musicVol);
 
     }
 
@@ -19,9 +22,17 @@ public class PlayerSettings : MonoBehaviour
 
     public void Awake()
     {
-        var languageValue = 0;
+        LoadLanguageSettings();
+        LoadDefaultMusicSettings();
+        LoadDefaultSfxSettings();
+        LoadDefaultVoiceSettings();
+    }
+
+    void LoadLanguageSettings()
+    {
         if (!PlayerPrefs.HasKey("language"))
         {
+            int languageValue = 0;
             if (Application.systemLanguage == SystemLanguage.Polish)
             {
                 MainGameData.changeLanguage = SystemLanguage.Polish;
@@ -32,7 +43,7 @@ public class PlayerSettings : MonoBehaviour
                 languageValue = 1;
             }
             PlayerPrefs.SetInt("language", languageValue);
-            PlayerPrefs.Save();                
+            PlayerPrefs.Save();
         }
         else
         {
@@ -41,30 +52,44 @@ public class PlayerSettings : MonoBehaviour
             else
                 MainGameData.changeLanguage = SystemLanguage.English;
         }
-        float musicVol;
+    }
+    void LoadDefaultMusicSettings()
+    {
         if (!PlayerPrefs.HasKey("musicVol"))
         {
-            audioMix.GetFloat("musicVol", out musicVol);
-            PlayerPrefs.SetFloat("musicVol", musicVol);
-            PlayerPrefs.Save();
+            PlayerPrefs.SetFloat("musicVol", 0.75f);
         }
-        else
-        {
-            musicVol = PlayerPrefs.GetFloat("musicVol");
-            audioMix.SetFloat("musicVol", musicVol);
-        }
-        float sfxVol;
+    }
+    public void SaveMusicSettings(float musicVol)
+    {
+        PlayerPrefs.SetFloat("musicVol", musicVol);
+    }
+    void LoadDefaultSfxSettings()
+    {
         if (!PlayerPrefs.HasKey("sfxVol"))
         {
-            audioMix.GetFloat("sfxVol", out sfxVol);
-            PlayerPrefs.SetFloat("sfxVol", sfxVol);
-            PlayerPrefs.Save();
+            PlayerPrefs.SetFloat("sfxVol", 0.75f);
         }
-        else
-        {
-            sfxVol = PlayerPrefs.GetFloat("sfxVol");
-            audioMix.SetFloat("sfxVol", sfxVol);
-        }
-
     }
+    public void SaveSfxSettings(float sfxVol)
+    {
+        PlayerPrefs.SetFloat("sfxVol", sfxVol);
+    }
+    void LoadDefaultVoiceSettings()
+    {
+        if (!PlayerPrefs.HasKey("voiceVol"))
+        {
+            PlayerPrefs.SetFloat("voiceVol", 0.75f);
+        }
+    }
+    public void SaveVoiceSettings(float voiceVol)
+    {
+        PlayerPrefs.SetFloat("voiceVol", voiceVol);
+    }
+    public void SavePrefs()
+    {
+        PlayerPrefs.Save();
+    }
+
+
 }

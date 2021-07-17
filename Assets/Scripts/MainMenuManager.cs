@@ -146,6 +146,8 @@ public class MainMenuManager : MonoBehaviour
     {
         GamePanel.SetActive(!GamePanel.activeSelf);
         OptionsPanel.SetActive(!OptionsPanel.activeSelf);
+        if (!OptionsPanel.activeSelf)
+            gameObject.GetComponent<PlayerSettings>().SavePrefs();
     }
 
     public void Exit()

@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
         Countables = new GameObject[CountablesNumber];
         for (int i = 0; i < CountablesNumber; i++)
         {
-            float height;
             float width;
             Countables[i] = Instantiate(CountablePrefab, new Vector3(0f, 1f, 0f), Quaternion.identity);
             Countables[i].transform.SetParent(GameObject.Find("Background").transform);
