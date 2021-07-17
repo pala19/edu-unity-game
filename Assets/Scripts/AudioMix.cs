@@ -12,6 +12,11 @@ public class AudioMix : MonoBehaviour
     public Image OnMusic, OffMusic, OnSfx, OffSfx, OnVoice, OffVoice;
     private AudioSource[] audios;
     private bool MusicMutedByButton = false;
+    private float previousMusicValue = 0.75f;
+    private bool SfxMutedByButton = false;
+    private float previousSfxValue = 0.75f;
+    private bool VoiceMutedByButton = false;
+    private float previousVoiceValue = 0.75f;
     // Start is called before the first frame update
 
     private void Start()
@@ -69,8 +74,16 @@ public class AudioMix : MonoBehaviour
     {
         var value = MusicSlider.GetComponent<Slider>().maxValue;
 
+        if (MusicMutedByButton)
+        {
+            MusicMutedByButton = false;
+            value = previousMusicValue;
+        }
+
         if (MusicSlider.GetComponent<Slider>().value != MusicSlider.GetComponent<Slider>().minValue)
         {
+            MusicMutedByButton = true;
+            previousMusicValue = MusicSlider.GetComponent<Slider>().value;
             value = MusicSlider.GetComponent<Slider>().minValue;
         }
 
@@ -82,9 +95,17 @@ public class AudioMix : MonoBehaviour
     {
         var value = SfxSlider.GetComponent<Slider>().maxValue;
 
+        if (SfxMutedByButton)
+        {
+            SfxMutedByButton = false;
+            value = previousSfxValue;
+        }
+
         if (SfxSlider.GetComponent<Slider>().value != SfxSlider.GetComponent<Slider>().minValue)
         {
-            value = SfxSlider.GetComponent<Slider>().minValue;
+            SfxMutedByButton = true;
+            previousSfxValue = SfxSlider.GetComponent<Slider>().value;
+            value = SfxSlider.GetComponent<Slider>().minValue;            
         }
 
         SetSfxLvl(value);
@@ -95,8 +116,16 @@ public class AudioMix : MonoBehaviour
     {
         var value = VoiceSlider.GetComponent<Slider>().maxValue;
 
+        if (VoiceMutedByButton)
+        {
+            VoiceMutedByButton = false;
+            value = previousVoiceValue;
+        }
+
         if (VoiceSlider.GetComponent<Slider>().value != VoiceSlider.GetComponent<Slider>().minValue)
         {
+            VoiceMutedByButton = true;
+            previousVoiceValue = VoiceSlider.GetComponent<Slider>().value;
             value = VoiceSlider.GetComponent<Slider>().minValue;
         }
 

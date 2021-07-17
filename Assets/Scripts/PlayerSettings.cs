@@ -9,9 +9,6 @@ public class PlayerSettings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioMix.GetFloat("musicVol", out float musicVol);
-        print(musicVol);
-
     }
 
     // Update is called once per frame
