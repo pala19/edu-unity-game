@@ -142,7 +142,6 @@ public class CanvasBehaviour : MonoBehaviour
     IEnumerator ActivateStarsWithDelay()
     {
         yield return new WaitForSeconds(2f);
-        print("play! animation");
         Star.GetComponent<Animation>().Play("OneStar");
 
     }

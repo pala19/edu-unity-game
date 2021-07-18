@@ -116,6 +116,6 @@ public class AddBasketCanvasBehaviour : CanvasBehaviour
     }
     protected override int GetRoundSuccessRate()
     {
-        return CountGameData.GetSuccessRate[CountGameData.GetCurrentGame];
+        return AddBasketData.Success;
     }
 }

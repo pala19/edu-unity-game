@@ -71,7 +71,7 @@ public class CountCanvasBehaviour : CanvasBehaviour
     }
     protected override int GetRoundSuccessRate()
     {
-        return CountGameData.GetSuccessRate[CountGameData.GetCurrentGame];
+        return CountGameData.Success;
     }
 
 }
