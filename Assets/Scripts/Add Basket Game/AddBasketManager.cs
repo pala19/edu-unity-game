@@ -39,7 +39,7 @@ public class AddBasketManager : GameManager
             ButtonController.GetComponent<CanvasBehaviour>().ShowCorrectAnswer();
             ShowCorrectAnswer();
             Handheld.Vibrate();
-            delay = result + 1;
+            delay = 2;
         }
         StartCoroutine(PrepareWithDelay(delay));
     }
@@ -52,21 +52,21 @@ public class AddBasketManager : GameManager
 
     IEnumerator VoiceOtherWithDelay(int i, bool IsSign)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayOtherVoice(i);
         if (IsSign)
             StartCoroutine(VoiceNumberWithDelay(CountableNumber.Item2));
     }
     IEnumerator VoiceNumberWithDelay(int i)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i - 1);
         StartCoroutine(VoiceOtherWithDelay(0, false));
     }
 
     IEnumerator VoiceFirstNumberWithDelay(int i)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i - 1);
         if (CountableNumber.Item3)
             StartCoroutine(VoiceOtherWithDelay(1, true));
@@ -129,21 +129,15 @@ public class AddBasketManager : GameManager
     {
         var result = Utils.DoMyMath(CountableNumber.Item1, CountableNumber.Item2, CountableNumber.Item3);
         StartCoroutine(ShowCorrectAnswerWithDelay(result));
-        StartCoroutine(ReadCorrectAnswerWithDelay());
     }
     IEnumerator ShowCorrectAnswerWithDelay(int result)
     {
         yield return new WaitForSeconds(1.5f);
         ChangeResult(result);
         GameObject.Find("Basket").GetComponent<BasketBehaviour>().setAppleContained(result, false);
+        VoiceResult();
     }
 
-    IEnumerator ReadCorrectAnswerWithDelay()
-    {
-        VoiceCurrentRound();
-        yield return new WaitForSeconds(1.5f*5);
-        VoiceResult();        
-    }
     void VoiceResult()
     {
         var result = Utils.DoMyMath(CountableNumber.Item1, CountableNumber.Item2, CountableNumber.Item3);

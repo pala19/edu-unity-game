@@ -43,13 +43,13 @@ public class CanvasBehaviour : MonoBehaviour
     IEnumerator PrepareButtonsWithDelay(int SelectedCountables)
     {
 
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         InstantiateButtons(SelectedCountables);
     }
 
     IEnumerator PrepareButtonsWithDelay()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         InstantiateButtons();
         DeactivateFireworks();
         PositionNumbers();

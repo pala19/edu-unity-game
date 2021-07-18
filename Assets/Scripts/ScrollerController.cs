@@ -60,7 +60,6 @@ public class ScrollerController : MonoBehaviour
 
     public void EndDrag()
     {
-        print("enddrag " + minButtonNum);
         LerpToBtn(minButtonNum);
     }
 

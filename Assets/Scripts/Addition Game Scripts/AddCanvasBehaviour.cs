@@ -89,7 +89,7 @@ public class AddCanvasBehaviour : CanvasBehaviour
     }
     IEnumerator DeactivateButtonWithDelay(GameObject button)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         button.SetActive(false);
     }
     private void ActivateButtons()

@@ -42,7 +42,6 @@ public class SubGameManager : GameManager
         {
             ButtonController.GetComponent<SubCanvasBehaviour>().GoodAnswer();
             Character.GetComponent<CharacterBehaviour>().GoodAnswer();
-            AddGameData.Success += 1;
             SubGameData.Success += 1;
         }
         else
@@ -50,7 +49,7 @@ public class SubGameManager : GameManager
             ButtonController.GetComponent<SubCanvasBehaviour>().ShowCorrectAnswer();
             ShowCorrectAnswer();
             Handheld.Vibrate();
-            delay = result + 1;
+            delay = CountableNumber.Item2 + 1;
         }
         StartCoroutine(PrepareWithDelay(delay));
     }
@@ -62,21 +61,21 @@ public class SubGameManager : GameManager
 
     IEnumerator VoiceOtherWithDelay(int i, bool IsMinusSign)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayOtherVoice(i);
         if (IsMinusSign)
             StartCoroutine(VoiceNumberWithDelay(CountableNumber.Item2 - 1));
     }
     IEnumerator VoiceNumberWithDelay(int i)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
         StartCoroutine(VoiceOtherWithDelay(0, false));
     }
 
     IEnumerator VoiceFirstNumberWithDelay(int i)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
         StartCoroutine(VoiceOtherWithDelay(2, true));
     }

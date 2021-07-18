@@ -93,10 +93,10 @@ public class SubCanvasBehaviour : CanvasBehaviour
     }
     IEnumerator DeactivateButtonWithDelay(GameObject button)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         button.SetActive(false);
     }
-    private void ActivateButtons() //activates all buttons except Result
+    private void ActivateButtons()
     {
         for (int i = 0; i < Buttons.Length - 1; i++)
             Buttons[i].SetActive(true);

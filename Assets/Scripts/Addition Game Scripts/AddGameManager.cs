@@ -61,21 +61,21 @@ public class AddGameManager : GameManager
 
     IEnumerator VoiceOtherWithDelay(int i, bool IsPlusSign)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayOtherVoice(i);
         if (IsPlusSign)
             StartCoroutine(VoiceNumberWithDelay(CountableNumber.Item2-1));
     }
     IEnumerator VoiceNumberWithDelay(int i)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
         StartCoroutine(VoiceOtherWithDelay(0, false));
     }
 
     IEnumerator VoiceFirstNumberWithDelay(int i)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(i);
         StartCoroutine(VoiceOtherWithDelay(1, true));
     }
@@ -103,16 +103,15 @@ public class AddGameManager : GameManager
     }
     IEnumerator TellTheAnswerWithDelay()
     {
-        var number = CountableNumber.Item1 - CountableNumber.Item2;
         var number = CountableNumber.Item1 + CountableNumber.Item2;
         SelectedCountables = 0;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(number - 1);
         ButtonController.GetComponent<AddCanvasBehaviour>().ChangeNumber(number);
     }
     IEnumerator ShowWithDelay(int i)
     {
-        yield return new WaitForSeconds(1.0f * (i + 3));
+        yield return new WaitForSeconds(1.0f * (i + 2));
         Countables[i].GetComponent<CountableBehaviour>().Select();
     }
 
