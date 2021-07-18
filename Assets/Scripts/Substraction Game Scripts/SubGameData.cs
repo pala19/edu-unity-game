@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 public static class SubGameData
 {
@@ -23,7 +24,6 @@ public static class SubGameData
     private static int CurrentSuccessRate;
     private static int CurrentRound = -1;
     private static int CurrentGame;
-    private static bool Completed = false;
     private static int[] PermutatedRound;
 
     public static int[] GetSuccessRate
@@ -61,7 +61,7 @@ public static class SubGameData
     {
         get
         {
-            return Completed;
+            return Enumerable.All(FinishedRounds, round => round.Equals(true));
         }
     }
 
@@ -141,8 +141,6 @@ public static class SubGameData
             if (SuccessRate[CurrentGame] == 9)
             {
                 FinishedRounds[CurrentGame] = true;
-                if (CurrentGame == FinishedRounds.Length - 1)
-                    Completed = true;
             }
             CurrentSuccessRate = 0;
             CurrentRound = -1;

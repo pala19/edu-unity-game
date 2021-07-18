@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 public static class CountGameData
 {
@@ -53,7 +54,7 @@ public static class CountGameData
     {
         get
         {
-            return Completed;
+            return Enumerable.All(FinishedRounds, round => round.Equals(true));
         }
     }
 
@@ -129,8 +130,6 @@ public static class CountGameData
             if (SuccessRate[CurrentGame] == 9)
             {
                 FinishedRounds[CurrentGame] = true;
-                if (CurrentGame == FinishedRounds.Length - 1)
-                    Completed = true;
             }
             CurrentSuccessRate = 0;
             CurrentRound = -1;

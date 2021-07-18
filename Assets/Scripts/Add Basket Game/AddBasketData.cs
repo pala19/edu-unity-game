@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class AddBasketData
@@ -35,7 +36,6 @@ public static class AddBasketData
     private static int CurrentSuccessRate;
     private static int CurrentRound = -1;
     private static int CurrentGame;
-    private static bool Completed = false;
     private static int[] PermutatedRound;
 
     public static int[] GetSuccessRate
@@ -72,7 +72,7 @@ public static class AddBasketData
     {
         get
         {
-            return Completed;
+            return Enumerable.All(FinishedRounds, round => round.Equals(true));
         }
     }
 
@@ -151,8 +151,6 @@ public static class AddBasketData
             if (SuccessRate[CurrentGame] == 9)
             {
                 FinishedRounds[CurrentGame] = true;
-                if (CurrentGame == FinishedRounds.Length - 1)
-                    Completed = true;
             }
             CurrentSuccessRate = 0;
             CurrentRound = -1;
