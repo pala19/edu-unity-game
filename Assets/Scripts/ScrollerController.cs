@@ -30,7 +30,8 @@ public class ScrollerController : MonoBehaviour
         LerpToBtn(FocusLevel);
     }
      void Update()
-    {
+    {        
+
     }
     void LerpToBtn(int num)
     {
@@ -50,12 +51,16 @@ public class ScrollerController : MonoBehaviour
         for (int a = 0; a < btns.Length; a++)
         {
             if (minDistance == distance[a])
+            {
                 minButtonNum = a;
+                break;
+            }
         }
     }
 
     public void EndDrag()
     {
+        print("enddrag " + minButtonNum);
         LerpToBtn(minButtonNum);
     }
 
