@@ -69,5 +69,9 @@ public class CountCanvasBehaviour : CanvasBehaviour
             EndScreen.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
+    protected override int GetRoundSuccessRate()
+    {
+        return CountGameData.GetSuccessRate[CountGameData.GetCurrentGame];
+    }
 
 }

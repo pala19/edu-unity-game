@@ -114,4 +114,8 @@ public class AddBasketCanvasBehaviour : CanvasBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    protected override int GetRoundSuccessRate()
+    {
+        return CountGameData.GetSuccessRate[CountGameData.GetCurrentGame];
+    }
 }

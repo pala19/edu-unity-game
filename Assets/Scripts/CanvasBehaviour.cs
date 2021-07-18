@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class CanvasBehaviour : MonoBehaviour
     public GameObject EndScreen;
     public GameObject FireworksEffect1;
     public GameObject FireworksEffect2;
+    public GameObject Star;
     protected GameObject[] ActiveButtons;
     protected AudioSource correctAudio;
     protected AudioSource errorAudio;
@@ -72,7 +74,6 @@ public class CanvasBehaviour : MonoBehaviour
 
                 ActiveButtons[i].transform.localPosition = GameObject.Find("Background").transform.InverseTransformPoint(pos);
             }
-
         }
     }
 
@@ -117,6 +118,38 @@ public class CanvasBehaviour : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         EndScreen.SetActive(true);
         CheckIfNextGameEnabled();
+        ActivateStars();
+    }
+
+    void ActivateStars()
+    {
+        int RoundSuccessRate = GetRoundSuccessRate();
+        if (RoundSuccessRate < 9)
+        {
+            Star.transform.GetChild(2).gameObject.GetComponent<SVGImage>().color = new Color(0.5f, 0.5f, 0.5f);
+        }
+        if (RoundSuccessRate < 5)
+        {
+            Star.transform.GetChild(1).gameObject.GetComponent<SVGImage>().color = new Color(0.5f, 0.5f, 0.5f);
+        }
+        if (RoundSuccessRate == 0)
+        {
+            Star.transform.GetChild(0).gameObject.GetComponent<SVGImage>().color = new Color(0.5f, 0.5f, 0.5f);
+        }
+        StartCoroutine(ActivateStarsWithDelay());
+    }
+
+    IEnumerator ActivateStarsWithDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        print("play! animation");
+        Star.GetComponent<Animation>().Play("OneStar");
+
+    }
+
+    protected virtual int GetRoundSuccessRate()
+    {
+        return 0;
     }
 
     protected virtual void HideButtons() { }
