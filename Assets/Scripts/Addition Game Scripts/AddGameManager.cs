@@ -104,6 +104,7 @@ public class AddGameManager : GameManager
     IEnumerator TellTheAnswerWithDelay()
     {
         var number = CountableNumber.Item1 - CountableNumber.Item2;
+        var number = CountableNumber.Item1 + CountableNumber.Item2;
         SelectedCountables = 0;
         yield return new WaitForSeconds(1.0f);
         GameObject.Find("SoundObject").GetComponent<SoundBehaviour>().PlayVoice(number - 1);
