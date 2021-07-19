@@ -123,7 +123,7 @@ public class CanvasBehaviour : MonoBehaviour
 
     void ActivateStars()
     {
-        int RoundSuccessRate = GetRoundSuccessRate();
+        int RoundSuccessRate = GameObject.Find("Game").GetComponent<GameManager>().GetGamesWon();
         if (RoundSuccessRate < 9)
         {
             Star.transform.GetChild(2).gameObject.GetComponent<SVGImage>().color = new Color(0.5f, 0.5f, 0.5f);
@@ -144,11 +144,6 @@ public class CanvasBehaviour : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Star.GetComponent<Animation>().Play("OneStar");
 
-    }
-
-    protected virtual int GetRoundSuccessRate()
-    {
-        return 0;
     }
 
     protected virtual void HideButtons() { }

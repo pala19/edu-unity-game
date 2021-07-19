@@ -8,7 +8,6 @@ public class AddGameManager : GameManager
     public GameObject TutorialCountable1;
     public GameObject TutorialCountable2;
     public GameObject SkipTutorialBtn;
-    private int GamesWon;
     private int SelectedCountables;
 
     // Start is called before the first frame update

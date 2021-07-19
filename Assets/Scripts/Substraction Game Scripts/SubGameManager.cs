@@ -9,14 +9,12 @@ public class SubGameManager : GameManager
     public GameObject TutorialCountable2;
     public GameObject TutorialCountable3;
     public GameObject SkipTutorialBtn;
-    private int GamesWon;
     private int SelectedCountables;
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
-        GamesWon = 0;
+        base.Start();      
         TutorialComponents = new GameObject[] { Tap, TutorialCountable1, TutorialCountable2, TutorialCountable3, SkipTutorialBtn };
     }
 

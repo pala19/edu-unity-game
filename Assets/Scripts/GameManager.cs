@@ -15,10 +15,12 @@ public class GameManager : MonoBehaviour
     protected GameObject[] TutorialComponents;
     protected GameObject[] Countables;
     protected int CountablesNumber;
+    protected int GamesWon;
 
     // Start is called before the first frame update
     protected virtual void Start() {
         PlaceCharacter();
+        GamesWon = 0;
     }
 
     // Update is called once per frame
@@ -34,11 +36,11 @@ public class GameManager : MonoBehaviour
     public void PrepareForNextRound()
     {
         AssignCountableNumber();
+        AssignGamesWon();
         if (CheckIfGameOver())
             GameOver();
         else
         {
-            AssignGamesWon();
             DestroyCountablesAfterRound();
             StartCoroutine(MakeCountablesWithDelay());
             PrepareButtons();
@@ -167,6 +169,11 @@ public class GameManager : MonoBehaviour
     protected virtual void AssignCountableNumber() {}
 
     protected virtual void AssignGamesWon() {}
+
+    public int GetGamesWon() 
+    {
+        return GamesWon;
+    }
 
     protected virtual void PrepareButtons() {}
 

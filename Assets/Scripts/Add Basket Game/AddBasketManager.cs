@@ -8,12 +8,10 @@ public class AddBasketManager : GameManager
     private Tuple<int, int, bool> CountableNumber;
     public GameObject TutorialApple;
     public GameObject SkipTutorialBtn;
-    private int GamesWon;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        GamesWon = 0;
         TutorialComponents = new GameObject[] { Tap, TutorialApple, SkipTutorialBtn };
     }
 

@@ -347,7 +347,7 @@ MonoBehaviour:
     _buildIndex: 4
   platform: 1
   StandaloneTarget: 5
-  RanInEditor: 1
+  RanInEditor: 0
   RequestSeparator: ;
   RequestEnding: '&'
   ServerPort: 13000
