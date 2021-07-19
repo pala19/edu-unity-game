@@ -1700,16 +1700,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 150944037, guid: 132a5cacdf1984e4db9c53338c613d26, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 150944039, guid: 132a5cacdf1984e4db9c53338c613d26, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 3286163911610860551, guid: 07e36bbd3f811b940ac39d87e8a04cdc,
         type: 3}
+    - target: {fileID: 809435816, guid: 132a5cacdf1984e4db9c53338c613d26, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 809435818, guid: 132a5cacdf1984e4db9c53338c613d26, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 3286163911610860551, guid: 0a0f8f1bf9c775a45b3ab1c611145f27,
         type: 3}
+    - target: {fileID: 1760070759, guid: 132a5cacdf1984e4db9c53338c613d26, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1760070762, guid: 132a5cacdf1984e4db9c53338c613d26, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1768,6 +1780,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4858710328966826456, guid: f3c792b746471994e8560bd11cadbeae,
         type: 3}
+    - target: {fileID: 1266964960374698076, guid: 132a5cacdf1984e4db9c53338c613d26,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1694662875583363226, guid: 132a5cacdf1984e4db9c53338c613d26,
         type: 3}
       propertyPath: m_MatchWidthOrHeight
@@ -1887,6 +1904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AddCanvas Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826097296677633892, guid: 132a5cacdf1984e4db9c53338c613d26,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7120427537732814635, guid: 132a5cacdf1984e4db9c53338c613d26,
         type: 3}
