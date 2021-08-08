@@ -79,7 +79,7 @@ public class AddBasketManager : GameManager
     }
     protected override bool CheckIfGameOver()
     {
-        return Tuple.Equals(CountableNumber, Tuple.Create(-1, -1));
+        return Tuple.Equals(CountableNumber, Tuple.Create(-1, -1, false));
     }
     protected override void MakeCountablesForRound() { }
 
@@ -106,7 +106,7 @@ public class AddBasketManager : GameManager
     protected override void AdditionalActionsAfterDestroy() 
     {
         if (!CheckIfGameOver())
-        GameObject.Find("Basket").GetComponent<BasketBehaviour>().setAppleContained(CountableNumber.Item1, false);
+            GameObject.Find("Basket").GetComponent<BasketBehaviour>().setAppleContained(CountableNumber.Item1, false);
         else
         {
             GameObject.Find("Basket").GetComponent<Animator>().SetTrigger("End");

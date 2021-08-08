@@ -325,25 +325,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5373570319856741499}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &729015770
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729015762}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7b8b8ecee96745946833a27fb8aa36fc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &792071677 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 421171349814409726, guid: a183bbd283d01a343b007ef233e82840,
@@ -637,7 +618,7 @@ PlayableDirector:
   - key: {fileID: 7196836115355766620, guid: 87f5bc119d9608b4b8dc19c4ed4eb60b, type: 2}
     value: {fileID: 1083038600}
   - key: {fileID: -7315050669725162705, guid: 87f5bc119d9608b4b8dc19c4ed4eb60b, type: 2}
-    value: {fileID: 729015770}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &920169691 stripped
@@ -1878,6 +1859,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5969661490523922984, guid: a183bbd283d01a343b007ef233e82840,
+        type: 3}
+      propertyPath: Basket
+      value: 
+      objectReference: {fileID: 729015762}
     - target: {fileID: 5969661490523922984, guid: a183bbd283d01a343b007ef233e82840,
         type: 3}
       propertyPath: BasketPrefabs.Array.data[0]
