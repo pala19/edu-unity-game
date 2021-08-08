@@ -39,7 +39,7 @@ public class PlayerSettings : MonoBehaviour
                 MainGameData.changeLanguage = SystemLanguage.English;
                 languageValue = 1;
             }
-            PlayerPrefs.SetInt("language", languageValue);
+            SaveLanguageSettings(languageValue);
             PlayerPrefs.Save();
         }
         else
@@ -83,6 +83,12 @@ public class PlayerSettings : MonoBehaviour
     {
         PlayerPrefs.SetFloat("voiceVol", voiceVol);
     }
+
+    public void SaveLanguageSettings(int languageValue)
+    {
+        PlayerPrefs.SetInt("language", languageValue);
+    }
+
     public void SavePrefs()
     {
         PlayerPrefs.Save();

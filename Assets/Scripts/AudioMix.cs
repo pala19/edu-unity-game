@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -9,7 +10,9 @@ public class AudioMix : MonoBehaviour
     public AudioMixer audioMix;
     public GameObject MainMenu;
     public GameObject MusicSlider, SfxSlider, VoiceSlider;
+    public GameObject ENG, PL;
     public Image OnMusic, OffMusic, OnSfx, OffSfx, OnVoice, OffVoice;
+    public Material Disabled;
     private AudioSource[] audios;
     private bool MusicMutedByButton = false;
     private float previousMusicValue = 0.75f;
@@ -23,6 +26,7 @@ public class AudioMix : MonoBehaviour
     {
         audios = GetComponents<AudioSource>();
         SetSliders();
+        SetLanguage();
     }
 
     public void SetMusicLvl(float musicLvl)
@@ -132,6 +136,27 @@ public class AudioMix : MonoBehaviour
         SetVoiceLvl(value);
         VoiceSlider.GetComponent<Slider>().value = value;
     }
+
+    public void OnClickChangeLanguage(int languageValue)
+    {
+        
+        if (languageValue == 0)
+        {
+            ENG.GetComponent<SVGImage>().material = Disabled;
+            PL.GetComponent<SVGImage>().material = null;
+            MainGameData.changeLanguage = SystemLanguage.Polish;
+            
+        }
+        else
+        {
+            ENG.GetComponent<SVGImage>().material = null;
+            PL.GetComponent<SVGImage>().material = Disabled;
+            MainGameData.changeLanguage = SystemLanguage.English;
+        }
+        MainMenu.GetComponent<PlayerSettings>().SaveLanguageSettings(languageValue);
+    }
+
+
     public void SetSliders()
     {
         ChangeAudioEnabled(false);
@@ -168,6 +193,28 @@ public class AudioMix : MonoBehaviour
         VoiceSlider.GetComponent<Slider>().value = value;
 
         ChangeAudioEnabled(true);
+    }
+
+    public void SetLanguage()
+    {
+        if (!PlayerPrefs.HasKey("language"))
+        {
+            if (Application.systemLanguage == SystemLanguage.Polish)
+            {
+                ENG.GetComponent<SVGImage>().material = Disabled;
+            }
+            else
+            {
+                PL.GetComponent<SVGImage>().material = Disabled;
+            }
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("language") == 0)
+                ENG.GetComponent<SVGImage>().material = Disabled;
+            else
+                PL.GetComponent<SVGImage>().material = Disabled;
+        }
     }
 
     void ChangeAudioEnabled(bool enabled)
