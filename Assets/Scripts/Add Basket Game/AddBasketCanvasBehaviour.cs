@@ -112,6 +112,15 @@ public class AddBasketCanvasBehaviour : CanvasBehaviour
 
     public override void Exit() 
     {
-        SceneManager.LoadScene(0);
+        AddBasketData.SetCurrentGame = AddBasketData.GetCurrentGame + 1;
+        SceneManager.LoadScene(4);
+    }
+
+    protected override void CheckIfNextGameEnabled()
+    {
+        if (!AddBasketData.IsActive(AddBasketData.GetCurrentGame + 1) || AddBasketData.IsCompleted)
+        {
+            EndScreen.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 }

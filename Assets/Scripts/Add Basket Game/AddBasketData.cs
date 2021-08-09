@@ -28,7 +28,7 @@ public static class AddBasketData
         {false, true, false, true, false, true, false, true, false},
         {true, false, true, false, true, false, true, false, true},
         {false, true, false, true, false, true, false, true, false},
-        {false, true, false, true, false, true, false, true, false},
+        {false, true, false, true, false, true, false, true, true},
         {false, true, false, true, false, true, false, true, false}
     };
     private static bool[] FinishedRounds = { false, false, false, false, false, false };
