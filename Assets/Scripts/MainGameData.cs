@@ -43,7 +43,7 @@ public static class MainGameData
                 return AddGameData.IsCompleted ? lastGame : lastGame - 1;
             else if (lastGame == 2)
                 return SubGameData.IsCompleted ? lastGame : lastGame - 1;
-            return lastGame;
+            return 0;
         }
         set
         {
