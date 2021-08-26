@@ -5,16 +5,16 @@ Tworzona w ramach pracy inżynierskiej gra edukacyjna ucząca matematyki.
 
 
 
-Najnowszą wersję gry można pobrać <a href='https://github.com/pala19/edu-unity-game/releases/latest/'> tutaj </a>
+Najnowszą wersję gry można pobrać <a href='https://github.com/pala19/edu-unity-game/releases/latest/'> tutaj </a>.
 
 
 Instrukcja pobrania gry:
 
-1) Upewniamy się, że wersja gry jest najnowsza - musi być przy niej dopisek <b>latest release </b>
+1) Upewniamy się, że wersja gry jest najnowsza - musi być przy niej dopisek <b>latest release </b>.
 
-2) Pobieramy plik z rozszerzeniem .apk klikając na jego nazwę. 
+2) Pobieramy plik z rozszerzeniem <b>.apk</b> klikając na jego nazwę. 
 
-<img src = "tutorial.png">
+![image](tutorial1.png)
 
 
 Instalacja gry na urządzeniu z Androidem:
@@ -27,19 +27,26 @@ Przykład:
 Model telefonu: OPPO Reno5 Z
 Android: 11
 
-1) Wchodzimy w Ustawienia telefonu
+Wchodzimy w Ustawienia telefonu:
 
-2)
-<img src = "Screenshot_Android1.png">
-3) 
-<img src = "Screenshot_Android2.png">
 
-4)
-<img src = "Screenshot_Android3.png">
+![image](Screenshot_Android1.jpg)
+
+ 
+![image](Screenshot_Android2.jpg)
+
+
+![image](Screenshot_Android3.jpg)
 
 Wystarczy, aby opcja instalacji z nieznanego źródła była włączona dla menedżera plików.
 
+3) Wchodzimy do folderu, do którego skopiowaliśmy plik .apk za pomocą Menedżera plików. Kliknięcie w ikonę pliku powinno uruchomić instalację.
 
+
+4) Ikona aplikacji o nazwie edu-unity-game powinna się pojawić na ekranie głównym urządzenia.
+
+
+<b>UWAGA.</b> Gra została stworzona na system Android, nie zadziała na systemie iOS w iPhonach.
 
 
 
