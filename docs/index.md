@@ -1,7 +1,9 @@
 
 
 
-                                Tworzona w ramach pracy inżynierskiej gra edukacyjna do nauki matematyki.
+Tworzona w ramach pracy inżynierskiej gra edukacyjna do nauki matematyki.
+
+
 
 * * *
 
