@@ -39,11 +39,6 @@ namespace Tests
             Assert.AreNotEqual(curr1, SubGameData.GetCurrentGame);
         }
         [Test]
-        public void GameDataTestLanguageCheck()
-        {
-            Assert.AreEqual(MainGameData.changeLanguage, Application.systemLanguage);
-        }
-        [Test]
         public void CountGameDataTestIsActiveCheck()
         {
             Assert.IsTrue(CountGameData.IsActive(0));
@@ -68,7 +63,5 @@ namespace Tests
                 Assert.IsFalse(SubGameData.IsActive(i));
             }
         }
-
-
     }
 }
