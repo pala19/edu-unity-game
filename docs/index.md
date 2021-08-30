@@ -7,18 +7,7 @@ Tworzona w ramach pracy inżynierskiej gra edukacyjna do nauki matematyki.
 
 * * *
 
-Najnowszą wersję gry można pobrać <a href='https://github.com/pala19/edu-unity-game/releases/latest/'> tutaj </a>.
-
-
-Instrukcja pobrania gry:
-
-1) Upewniamy się, że wersja gry jest najnowsza - musi być przy niej dopisek <b>latest release </b>.
-
-2) Pobieramy plik z rozszerzeniem <b>.apk</b> klikając na jego nazwę. 
-
-
-<img src="tutorial1.png">
-
+Najnowszą wersję gry można pobrać <a href='https://github.com/pala19/edu-unity-game/releases/download/v.1.0-beta/edu-unity-game-v-2-0.apk'> tutaj </a>.
 
 Instalacja gry na urządzeniu z Androidem:
 
