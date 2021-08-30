@@ -11,7 +11,7 @@ Najnowszą wersję gry można pobrać <a href='https://github.com/pala19/edu-uni
 
 Instalacja gry na przykładzie Androida 11:
 
-Otwieramy stronę na telefonie:
+Otwieramy stronę na telefonie i klikamy w powyższy link:
 
 <img src = "Screenshot_2021-08-30-21-58-47-36.jpg" width="300">
 
